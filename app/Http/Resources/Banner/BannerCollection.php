@@ -15,11 +15,11 @@ class BannerCollection extends ResourceCollection
     public function toArray($request)
     {
         return [
-            'data'=>$this->collection->transform(function ($category){
+            'data'=>$this->collection->transform(function ($banner){
                 return [
-                    'ID'=>$category->ID,
-                    'BannerName'=>$category->BannerName,
-                    'BannerImage'=>$category->BannerImage,
+                    'ID'=>$banner->ID,
+                    'BannerName'=>$banner->BannerName,
+                    'BannerImage'=>$banner->BannerImage,
                 ];
             })
         ];

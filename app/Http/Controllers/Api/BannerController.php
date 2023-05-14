@@ -5,15 +5,18 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Banner\BannerStoreRequest;
 use App\Http\Requests\Banner\BannerUpdateRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Http\Resources\Banner\BannerCollection;
 use App\Models\Banner;
 use Intervention\Image\Facades\Image;
+use function Sodium\increment;
 
 class BannerController extends Controller
 {
+
     public function index()
     {
-        $banners = Banner::orderby('ID', 'desc')->paginate(15);
+        $banners = Banner::orderBy('ID', 'desc')->paginate(15);
         return new BannerCollection($banners);
     }
 
@@ -24,23 +27,24 @@ class BannerController extends Controller
             $name = uniqid() . time() . '.' . explode('/', explode(':', substr($BannerImage, 0, strpos($BannerImage, ';')))[1])[1];
             Image::make($BannerImage)->save(public_path('images/banner/') . $name);
         } else {
-            $name = 'not_found_jpg';
+            $name = 'not_found.jpg';
         }
-
         $banner = new Banner();
         $banner->BannerName = $request->BannerName;
-        $banner->BannerImage =$name;
+        $banner->BannerImage = $name;
         $banner->save();
-        return response()->json(['message' => 'Banner Created successfully', 200]);
+
+        return response()->json(['message' => 'Banner Created Successfully'], 200);
     }
 
-    public function update(BannerUpdateRequest $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
+
         $banner = Banner::where('ID', $id)->first();
         $BannerImage = $request->BannerImage;
 
         if ($BannerImage != $banner->BannerImage) {
-            if ($request->has('BannerImage')) {
+            if ($request->has('BannerImage ')) {
                 //code for remove old file
                 if ($banner->BannerImage != '' && $banner->BannerImage != null) {
                     $destinationPath = 'images/banner/';
@@ -50,19 +54,20 @@ class BannerController extends Controller
                     }
                 }
                 $name = uniqid() . time() . '.' . explode('/', explode(':', substr($BannerImage, 0, strpos($BannerImage, ';')))[1])[1];
-                Image::make($BannerImage)->resize(400, 300)->save(public_path('images/portfolio/') . $name);
+                Image::make($BannerImage)->resize(400, 300)->save(public_path('images/banner/') . $name);
             } else {
                 $name = $banner->BannerImage;
             }
         } else {
-            $name = $banner->BannerImage;
+            $name = $banner->PBannerImage;
         }
 
         $banner->BannerName = $request->BannerName;
-        $banner->BannerImagee = $name;
+        $banner->BannerImage = $name;
         $banner->save();
         return response()->json(['message' => 'Banner Updated Successfully'], 200);
     }
+
 
     public function destroy($id)
     {
@@ -70,9 +75,8 @@ class BannerController extends Controller
         return response()->json(['message' => 'Banner Deleted Successfully'], 200);
     }
 
-
     public function search($query)
     {
-        return new BannerCollection(Banner::where('CategoryName', 'LIKE', "%$query%")->latest()->paginate(20));
+        return new BannerCollection(Banner::where('BannerName', 'LIKE', "%$query%")->latest()->paginate(20));
     }
 }

@@ -30,9 +30,10 @@
                                     <table class="table table-bordered table-striped dt-responsive nowrap dataTable no-footer dtr-inline table-sm small">
                                         <thead>
                                         <tr>
-                                            <th class="text-center">Id</th>
-                                            <th class="text-center">BannerName</th>
-                                            <th class="text-center">BannerImage</th>
+
+                                            <th class="text-center">ID</th>
+                                            <th class="text-center">Banner Name</th>
+                                            <th class="text-center">Banner Image</th>
                                             <th class="text-center">Action</th>
                                         </tr>
                                         </thead>
@@ -40,7 +41,7 @@
                                         <tr v-for="(banner, i) in banners" :key="banner.ID" v-if="banners.length">
                                             <th class="text-center" scope="row">{{ ++i }}</th>
                                             <td class="text-center">{{ banner.BannerName }}</td>
-                                            <td class="text-center">{{ banner.BannerImage }}</td>
+                                            <td class="text-center">{{ banner.BannerImage}}</td>
                                             <td class="text-center">
                                                 <button @click="edit(banner)" class="btn btn-success btn-sm"><i class="far fa-edit"></i></button>
                                                 <button @click="destroy(banner.ID)" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
@@ -87,7 +88,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Banner Image</label>
-                                            <input @change="changeImage($event)" type="file" name="BannerImage" class="form-control" :class="{ 'is-invalid': form.errors.has('BannerImage') }">
+                                            <input @change="changeImage($event)" type="file" name="Image" class="form-control" :class="{ 'is-invalid': form.errors.has('BannerImage') }">
                                             <div class="error" v-if="form.errors.has('BannerImage')" v-html="form.errors.get('BannerImage')" />
                                             <img v-if="form.BannerImage" :src="showImage(form.BannerImage)" alt="" height="40px" width="40px">
                                         </div>
@@ -97,7 +98,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="closeModal">Close</button>
-                            <button :disabled="form.busy" type="submit" class="btn btn-primary">{{ editMode ? "Update" : "Create" }} Banner</button>
+                            <button :disabled="form.busy" type="submit" class="btn btn-primary">{{ editMode ? "Update" : "Create" }} User</button>
                         </div>
                     </form>
                 </div>
@@ -113,6 +114,7 @@ export default {
     data() {
         return {
             banners: [],
+            roles: [],
             pagination: {
                 current_page: 1
             },
@@ -136,14 +138,15 @@ export default {
         }
     },
     mounted() {
-        document.title = 'Banner List | AHMobileApp';
+        document.title = 'Banner List | Diesel Engine';
         this.getAllBanner();
     },
     methods: {
         getAllBanner(){
             this.isLoading = true;
             axios.get('/api/banner?page='+ this.pagination.current_page).then((response)=>{
-                this.portfolios = response.data.data;
+                console.log(response.data.data)
+                this.banners = response.data.data;
                 this.pagination = response.data.meta;
                 this.isLoading = false;
             }).catch((error)=>{
@@ -152,7 +155,7 @@ export default {
         },
         searchData(){
             axios.get("/api/search/banner/" + this.query + "?page=" + this.pagination.current_page).then(response => {
-                this.portfolios = response.data.data;
+                this.banners = response.data.data;
                 this.pagination = response.data.meta;
             }).catch(e => {
                 this.isLoading = false;
@@ -172,6 +175,7 @@ export default {
             this.form.clear();
             $("#bannerModal").modal("show");
         },
+
         store(){
             this.form.busy = true;
             this.form.post("/api/banner").then(response => {
@@ -201,7 +205,7 @@ export default {
             let file = event.target.files[0];
             let reader = new FileReader();
             reader.onload = event => {
-                this.form.PortfolioImage = event.target.result;
+                this.form.BannerImage = event.target.result;
             };
             reader.readAsDataURL(file);
         },
@@ -210,7 +214,7 @@ export default {
             if (img.length > 100){
                 return this.form.BannerImage;
             }else{
-                return window.location.origin + "/AHMobileApp/banner/" + this.form.BannerImage;
+                return window.location.origin + "/DEGS/images/banner/" + this.form.BannerImage;
             }
         },
         destroy(id){

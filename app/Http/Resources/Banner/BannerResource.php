@@ -14,6 +14,14 @@ class BannerResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'data'=>$this->collection->transform(function ($banner){
+                return [
+                    'ID'=>$banner->ID,
+                    'BannerName'=>$banner->BannerName,
+                    'BannerImage'=>$banner->BannerImage,
+                ];
+            })
+        ];
     }
 }

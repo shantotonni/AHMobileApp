@@ -99,7 +99,7 @@ const routes = [
             },
             //banner route
             {
-                path: base_url + '/banner', name: 'Banner', component: Banner
+                path: base_url + '/banner-list', name: 'Banner', component: Banner
             },
         ],
         beforeEnter(to, from, next) {
