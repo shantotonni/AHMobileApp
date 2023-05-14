@@ -37,7 +37,9 @@ import RoleList from '../views/role/List'
 import BrandList from '../views/brand/List'
 import Profile from '../views/profile/Profile'
 import AdminDashboard from '../views/admin_dashboard/Index'
-
+import Portfolio from '../views/portfolio/List.vue'
+import Category from '../views/category/List.vue'
+import Banner from '../views/banner/List.vue'
 const routes = [
     {
         path: base_url + '/',
@@ -86,6 +88,18 @@ const routes = [
             //admin dashboard
             {
                 path: base_url + '/admin-dashboard', name: 'AdminDashboard', component: AdminDashboard
+            },
+           // portfolio route
+            {
+                path: base_url + '/portfolio-list', name: 'Portfolio', component: Portfolio
+            },
+            //category route
+            {
+                path: base_url + '/category-list', name: 'Category', component: Category
+            },
+            //banner route
+            {
+                path: base_url + '/banner', name: 'Banner', component: Banner
             },
         ],
         beforeEnter(to, from, next) {

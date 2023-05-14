@@ -6,9 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Http\Resources\User\UserCollection;
-use App\Http\Resources\User\UserResource;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -22,7 +20,6 @@ class UserController extends Controller
     }
 
     public function store(UserStoreRequest $request){
-
         if ($request->has('Image')) {
             $image = $request->Image;
             $name = uniqid().time().'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
@@ -32,6 +29,7 @@ class UserController extends Controller
         }
 
         $user = new User();
+
         $user->Name = $request->Name;
         $user->UserID = $request->UserID;
         $user->RoleId = $request->RoleId;

@@ -12,6 +12,7 @@ use App\Http\Resources\SparePartsCollection;
 use App\Http\Resources\Technician\TechnicianCollection;
 use App\Models\GeneratorBasicInfo;
 use App\Models\GeneratorInfo;
+use App\Models\Portfolio;
 use App\Models\ProblemSection;
 use App\Models\Question;
 use App\Models\ServiceType;
@@ -21,43 +22,11 @@ use Illuminate\Http\Request;
 
 class CommonController extends Controller
 {
-    public function getAllGeneratorInfoForWarehouse(){
-        $generator_info = GeneratorInfo::with('brand')->where('delivery_status','pending')->latest()->get();
-        return new GeneratorInfoCollection($generator_info);
+    public function getAllPortfolio(){
+        $portfolios = Portfolio::orderBy('CreatedDate','desc')->get();
+        return response()->json([
+            'portfolios'=>$portfolios
+        ]);
     }
 
-    public function getAllGeneratorInfo(){
-        $generator_info = GeneratorInfo::with('brand')->where('delivery_status','delivered')->latest()->get();
-        return new GeneratorInfoCollection($generator_info);
-    }
-
-    public function getAllTechnician(){
-        $technician = User::where('role_id',3)->with('role')->paginate(20);
-        return new TechnicianCollection($technician);
-    }
-
-    public function getAllServiceType(){
-        $service_types = ServiceType::latest()->get();
-        return new ServiceTypeCollection($service_types);
-    }
-
-    public function getAllProblemSection(){
-        $problem_sections = ProblemSection::all();
-        return new ProblemSectionCollection($problem_sections);
-    }
-
-    public function getAllQuestion(){
-        $question = Question::all();
-        return new QuestionCollection($question);
-    }
-
-    public function getAllParts(){
-        $parts = SpareParts::all();
-        return new SparePartsCollection($parts);
-    }
-
-    public function getAllGeneratorBasicInfo(){
-        $generator_basic_info = GeneratorBasicInfo::all();
-        return new GeneratorBasicInfoCollection($generator_basic_info);
-    }
 }
