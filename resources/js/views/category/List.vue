@@ -34,11 +34,11 @@
                                         <tr>
                                             <th class="text-center">Id</th>
 
-                                            <th class="text-center">CategoryName</th>
-                                            <th class="text-center">CategoryImage</th>
+                                            <th class="text-center">Category Name</th>
+                                            <th class="text-center">Category Image</th>
                                             <th class="text-center">Details</th>
                                             <th class="text-center">Status</th>
-                                            <th class="text-center">PortfolioName</th>
+                                            <th class="text-center">Portfolio Name</th>
                                             <th class="text-center">Action</th>
                                         </tr>
                                         </thead>
@@ -251,6 +251,7 @@ export default {
             this.form.reset();
             this.form.clear();
             this.form.fill(category);
+            this.getAllPortfolio();
             $("#categoryModal").modal("show");
         },
         update() {

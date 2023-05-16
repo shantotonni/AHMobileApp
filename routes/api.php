@@ -21,6 +21,7 @@ use App\Http\Controllers\Api\Mobile\TechnicianController;
 use App\Http\Controllers\Api\Mobile\WarehouseController;
 use App\Http\Controllers\Api\PortfolioController;
 use App\Http\Controllers\Api\ProblemSectionController;
+use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\QuestionController;
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\ServiceTypeController;
@@ -55,6 +56,9 @@ Route::group(['middleware' => 'jwtauth:api'], function () {
 //banner route
     Route::apiResource('banner', BannerController::class);
     Route::get('search/banner/{query}', [BannerController::class,'search']);
+    //product route
+    Route::apiResource('product', ProductController::class);
+    Route::get('search/product/{query}', [ProductController::class,'search']);
     //menu resource route
     Route::apiResource('menu', MenuController::class);
     Route::get('search/menu/{query}', [MenuController::class,'search']);
@@ -82,6 +86,8 @@ Route::group(['middleware' => 'jwtauth:api'], function () {
 
     //common route
     Route::get('get-all-portfolio', [CommonController::class,'getAllPortfolio']);
+    //common route
+    Route::get('get-all-category', [CommonController::class,'getAllCategory']);
 
     //get dashboard data route
     Route::get('get-all-dashboard-data', [DashboardController::class,'getDashboardAllDara']);

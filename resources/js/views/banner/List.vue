@@ -214,7 +214,7 @@ export default {
             if (img.length > 100){
                 return this.form.BannerImage;
             }else{
-                return window.location.origin + "/DEGS/images/banner/" + this.form.BannerImage;
+                return window.location.origin + "/AHMobileApp/images/banner/" + this.form.BannerImage;
             }
         },
         destroy(id){

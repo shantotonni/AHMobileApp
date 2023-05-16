@@ -40,6 +40,7 @@ import AdminDashboard from '../views/admin_dashboard/Index'
 import Portfolio from '../views/portfolio/List.vue'
 import Category from '../views/category/List.vue'
 import Banner from '../views/banner/List.vue'
+import Product from '../views/product/List.vue'
 const routes = [
     {
         path: base_url + '/',
@@ -100,6 +101,10 @@ const routes = [
             //banner route
             {
                 path: base_url + '/banner-list', name: 'Banner', component: Banner
+            },
+            //product route
+            {
+                path: base_url + '/product-list', name: 'Product', component: Product
             },
         ],
         beforeEnter(to, from, next) {

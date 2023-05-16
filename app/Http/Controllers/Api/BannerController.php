@@ -5,11 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Banner\BannerStoreRequest;
 use App\Http\Requests\Banner\BannerUpdateRequest;
-use App\Http\Requests\UserUpdateRequest;
 use App\Http\Resources\Banner\BannerCollection;
 use App\Models\Banner;
 use Intervention\Image\Facades\Image;
-use function Sodium\increment;
+
 
 class BannerController extends Controller
 {
@@ -37,17 +36,16 @@ class BannerController extends Controller
         return response()->json(['message' => 'Banner Created Successfully'], 200);
     }
 
-    public function update(UserUpdateRequest $request, $id)
+    public function update(BannerUpdateRequest $request, $id)
     {
 
         $banner = Banner::where('ID', $id)->first();
         $BannerImage = $request->BannerImage;
-
         if ($BannerImage != $banner->BannerImage) {
-            if ($request->has('BannerImage ')) {
+            if ($request->has('BannerImage')) {
                 //code for remove old file
                 if ($banner->BannerImage != '' && $banner->BannerImage != null) {
-                    $destinationPath = 'images/banner/';
+                    $destinationPath = 'images/product/';
                     $file_old = $destinationPath . $banner->BannerImage;
                     if (file_exists($file_old)) {
                         unlink($file_old);
@@ -59,8 +57,9 @@ class BannerController extends Controller
                 $name = $banner->BannerImage;
             }
         } else {
-            $name = $banner->PBannerImage;
+            $name = $banner->BannerImage;
         }
+
 
         $banner->BannerName = $request->BannerName;
         $banner->BannerImage = $name;
@@ -77,6 +76,6 @@ class BannerController extends Controller
 
     public function search($query)
     {
-        return new BannerCollection(Banner::where('BannerName', 'LIKE', "%$query%")->latest()->paginate(20));
+        return new BannerCollection(Banner::where('BannerName', 'LIKE', "%$query%")->orWhere('BannerID', 'like', '%' . $query . '%')->latest()->paginate(20));
     }
 }
