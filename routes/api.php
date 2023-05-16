@@ -2,13 +2,8 @@
 
 use App\Http\Controllers\Api\AdminDashboardController;
 use App\Http\Controllers\Api\BrandController;
-use App\Http\Controllers\Api\CheckingInputNameController;
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\DashboardController;
-use App\Http\Controllers\Api\DeliveryInfoController;
-use App\Http\Controllers\Api\GeneratorBasicInfoController;
-use App\Http\Controllers\Api\GeneratorInfoController;
-use App\Http\Controllers\Api\JobCardController;
 use App\Http\Controllers\Api\MenuController;
 use App\Http\Controllers\Api\MenuPermissionController;
 use App\Http\Controllers\Api\Mobile\CommonController;
@@ -17,12 +12,8 @@ use App\Http\Controllers\Api\Mobile\ServiceRequestController;
 use App\Http\Controllers\Api\Mobile\SparesController;
 use App\Http\Controllers\Api\Mobile\TechnicianController;
 use App\Http\Controllers\Api\Mobile\WarehouseController;
-use App\Http\Controllers\Api\ProblemSectionController;
-use App\Http\Controllers\Api\QuestionController;
 use App\Http\Controllers\Api\RoleController;
-use App\Http\Controllers\Api\ServiceTypeController;
 use App\Http\Controllers\Api\SettingController;
-use App\Http\Controllers\Api\SparePartsController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerAuthController;
@@ -67,49 +58,6 @@ Route::group(['middleware' => 'jwtauth:api'], function () {
 
     //change-password
     Route::post('change-password', [SettingController::class,'changePassword']);
-
-    //Service Type resource route
-    Route::apiResource('service-type', ServiceTypeController::class);
-    Route::get('search/service-type/{query}', [ServiceTypeController::class,'search']);
-
-    //generator info resource route
-    Route::apiResource('generator-info', GeneratorInfoController::class);
-    Route::get('search/generator-info/{query}', [GeneratorInfoController::class,'search']);
-    Route::get('generator-unique-code-check/{value}', [GeneratorInfoController::class,'uniqueCodeCheck']);
-    Route::get('generator-export', [GeneratorInfoController::class,'exportGenerator']);
-
-    //generator info resource route
-    Route::apiResource('delivery-info',DeliveryInfoController::class);
-    Route::get('search/delivery-info/{query}', [DeliveryInfoController::class,'search']);
-
-    //checking input name resource route
-    Route::apiResource('checking-input-name',CheckingInputNameController::class);
-    Route::get('search/checking-input-name/{query}', [CheckingInputNameController::class,'search']);
-
-    //problem section resource route
-    Route::apiResource('problem-section',ProblemSectionController::class);
-    Route::get('search/problem-section/{query}', [ProblemSectionController::class,'search']);
-
-    //question resource route
-    Route::apiResource('question',QuestionController::class);
-    Route::get('search/question/{query}', [QuestionController::class,'search']);
-
-    //spare parts resource route
-    Route::apiResource('parts',SparePartsController::class);
-    Route::get('search/parts/{query}', [SparePartsController::class,'search']);
-
-    //Generator Basic Info resource route
-    Route::apiResource('generator-basic-info',GeneratorBasicInfoController::class);
-    Route::get('search/generator-basic-info/{query}', [GeneratorBasicInfoController::class,'search']);
-
-    //service Request route for web
-    Route::get('pending-service-request-list',[\App\Http\Controllers\Api\ServiceRequestController::class,'getAllPendingServiceRequestList']);
-    Route::get('completed-service-request-list',[\App\Http\Controllers\Api\ServiceRequestController::class,'getAllCompletedServiceRequestList']);
-    Route::post('service-request-store',[\App\Http\Controllers\Api\ServiceRequestController::class,'serviceRequestCreate']);
-    Route::put('service-request-update/{id}',[\App\Http\Controllers\Api\ServiceRequestController::class,'serviceRequestUpdate']);
-    Route::get('service-request-details/{id}',[\App\Http\Controllers\Api\ServiceRequestController::class,'serviceRequestDetails']);
-    Route::post('service-request-approved',[\App\Http\Controllers\Api\ServiceRequestController::class,'serviceRequestApprove']);
-    Route::get('export-completed-service-list',[\App\Http\Controllers\Api\ServiceRequestController::class,'completedServiceRequestExport']);
 
 
     //For mobile route
