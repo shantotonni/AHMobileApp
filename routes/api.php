@@ -1,7 +1,13 @@
 <?php
 
 use App\Http\Controllers\Api\AdminDashboardController;
+use App\Http\Controllers\Api\BannerController;
 use App\Http\Controllers\Api\BrandController;
+<<<<<<< HEAD
+=======
+use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\CheckingInputNameController;
+>>>>>>> 2f23a87a4254a2ea06014416e68adac05b342f61
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\MenuController;
@@ -12,6 +18,13 @@ use App\Http\Controllers\Api\Mobile\ServiceRequestController;
 use App\Http\Controllers\Api\Mobile\SparesController;
 use App\Http\Controllers\Api\Mobile\TechnicianController;
 use App\Http\Controllers\Api\Mobile\WarehouseController;
+<<<<<<< HEAD
+=======
+use App\Http\Controllers\Api\PortfolioController;
+use App\Http\Controllers\Api\ProblemSectionController;
+use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\QuestionController;
+>>>>>>> 2f23a87a4254a2ea06014416e68adac05b342f61
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\SettingController;
 use App\Http\Controllers\Api\UserController;
@@ -33,7 +46,19 @@ Route::group(['middleware' => 'jwtauth:api'], function () {
     Route::get('get-all-users/', [UserController::class, 'getAllUser']);
     Route::get('user-by-user-id', [UserController::class, 'getUserByUserId']);
     Route::post('user-profile-update', [UserController::class, 'updateProfile']);
+    //Portfolio route
+    Route::apiResource('portfolio', PortfolioController::class);
+    Route::get('search/portfolio/{query}', [PortfolioController::class,'search']);
 
+    //Portfolio route
+    Route::apiResource('category', CategoryController::class);
+    Route::get('search/category/{query}', [CategoryController::class,'search']);
+//banner route
+    Route::apiResource('banner', BannerController::class);
+    Route::get('search/banner/{query}', [BannerController::class,'search']);
+    //product route
+    Route::apiResource('product', ProductController::class);
+    Route::get('search/product/{query}', [ProductController::class,'search']);
     //menu resource route
     Route::apiResource('menu', MenuController::class);
     Route::get('search/menu/{query}', [MenuController::class,'search']);
@@ -59,48 +84,19 @@ Route::group(['middleware' => 'jwtauth:api'], function () {
     //change-password
     Route::post('change-password', [SettingController::class,'changePassword']);
 
+<<<<<<< HEAD
 
     //For mobile route
     //store generator and delivery info route
     Route::post('generator-info-store', [WarehouseController::class,'generatorInfoStore']);
     Route::post('delivery-info-store', [WarehouseController::class,'deliveryInfoStore']);
 
+=======
+>>>>>>> 2f23a87a4254a2ea06014416e68adac05b342f61
     //common route
-    Route::get('get-all-generator-info-for-warehouse', [CommonController::class,'getAllGeneratorInfoForWarehouse']);
-    Route::get('get-all-generator-info', [CommonController::class,'getAllGeneratorInfo']);
-    Route::get('get-all-technician', [CommonController::class,'getAllTechnician']);
-    Route::get('get-all-service-type', [CommonController::class,'getAllServiceType']);
-    Route::get('get-all-problem-section', [CommonController::class,'getAllProblemSection']);
-    Route::get('get-all-question', [CommonController::class,'getAllQuestion']);
-
-    //delivery process route route
-    Route::post('add-technician-to-delivery', [EngineerController::class,'addTechnicianToDelivery']);
-    Route::get('engineer-all-pending-delivery-list', [EngineerController::class,'EngineerAllPendingDeliveryList']);
-    Route::get('engineer-all-delivery-list', [EngineerController::class,'EngineerAllDeliveryList']);
-
-    //Technician Service Request route
-    Route::get('technician-assign-all-delivery-list', [TechnicianController::class,'technicianAssignDeliveryList']);
-    Route::post('technician-submit-delivery-info', [TechnicianController::class,'technicianSubmitDeliveryInfo']);
-    Route::get('technician-delivery-info-list', [TechnicianController::class,'technicianDeliveryInfoList']);
-
-    //Service Request route
-    Route::get('engineer-service-request-list', [ServiceRequestController::class,'engineerServiceRequestList']);
-    Route::post('engineer-service-request-create', [ServiceRequestController::class,'engineerServiceRequestCreate']);
-    Route::get('technician-pending-service-request-list', [ServiceRequestController::class,'technicianPendingServiceRequestList']);
-    Route::post('technician-start-service-request', [ServiceRequestController::class,'technicianStartServiceRequest']);
-    Route::post('technician-arrived-at-site-for-service-request', [ServiceRequestController::class,'technicianArrivedSiteForServiceRequest']);
-    Route::post('technician-submit-service-request', [ServiceRequestController::class,'technicianSubmitServiceRequest']);
-    Route::post('technician-add-additional-generator-info-for-service-request', [ServiceRequestController::class,'technicianAddAdditionalGeneratorInfoServiceRequest']);
-    Route::post('get-checking-input', [ServiceRequestController::class,'getCheckingInput']);
-    Route::post('get-service-request-by-service-request-id', [ServiceRequestController::class,'getServiceRequestByServiceRequestId']);
-    Route::post('update-checking-input', [ServiceRequestController::class,'updateCheckingInput']);
-    Route::post('get-service-period-category', [ServiceRequestController::class,'getServicePeriodCategory']);
-    Route::post('update-service-period-category-details', [ServiceRequestController::class,'updateServicePeriodCategoryDetails']);
-    Route::get('technician-completed-service-request-list', [ServiceRequestController::class,'technicianCompletedServiceRequestList']);
-
-    //spares inquiry route
-    Route::get('get-all-spares-inquiry', [SparesController::class,'getAllSparesInquiry']);
-    Route::post('add-spares-inquiry', [SparesController::class,'addSparesInquiry']);
+    Route::get('get-all-portfolio', [CommonController::class,'getAllPortfolio']);
+    //common route
+    Route::get('get-all-category', [CommonController::class,'getAllCategory']);
 
     //get dashboard data route
     Route::get('get-all-dashboard-data', [DashboardController::class,'getDashboardAllDara']);
