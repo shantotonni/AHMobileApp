@@ -42,6 +42,8 @@ import Category from '../views/category/List.vue'
 import Banner from '../views/banner/List.vue'
 import Product from '../views/product/List.vue'
 import Doctor from '../views/doctor/List.vue'
+import MOInfo from '../views/moinfo/List.vue'
+import Shop from '../views/shop/List.vue'
 const routes = [
     {
         path: base_url + '/',
@@ -110,6 +112,14 @@ const routes = [
             //doctor route
             {
                 path: base_url + '/doctor-list', name: 'Doctor', component: Doctor
+            },
+            //MOInfo route
+            {
+                path: base_url + '/moinfo-list', name: 'MOInfo', component: MOInfo
+            },
+            //MOInfo route
+            {
+                path: base_url + '/shop-list', name: 'Shop', component: Shop
             },
         ],
         beforeEnter(to, from, next) {

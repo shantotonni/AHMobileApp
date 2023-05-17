@@ -62,7 +62,7 @@
                                             <td class="text-center">
                                                 <button @click="edit(category)" class="btn btn-success btn-sm"><i
                                                     class="far fa-edit"></i></button>
-                                                <button @click="destroy(category.ID)" class="btn btn-danger btn-sm"><i
+                                                <button hidden="hidden" @click="destroy(category.ID)" class="btn btn-danger btn-sm"><i
                                                     class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>

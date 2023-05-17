@@ -23,6 +23,8 @@ class DoctorController extends Controller
         $doctor = new Doctor();
         $doctor->DoctorName = $request->DoctorName;
         $doctor->Designation = $request->Designation;
+        $doctor->Mobile = $request->Mobile;
+        $doctor->Email = $request->Email;
         $doctor->Details = $request->Details;
         $doctor->AddressOne = $request->AddressOne;
         $doctor->AddressTwo = $request->AddressTwo;
@@ -37,6 +39,8 @@ class DoctorController extends Controller
         $doctor = Doctor::where('ID', $id)->first();
         $doctor->DoctorName = $request->DoctorName;
         $doctor->Designation = $request->Designation;
+        $doctor->Mobile = $request->Mobile;
+        $doctor->Email = $request->Email;
         $doctor->Details = $request->Details;
         $doctor->AddressOne = $request->AddressOne;
         $doctor->AddressTwo = $request->AddressTwo;
@@ -54,9 +58,6 @@ class DoctorController extends Controller
 
     public function search($query)
     {
-        return new DoctorCollection(Doctor::where('DoctorName', 'LIKE', "%$query%")
-            ->orWhere('Designation', 'like', '%' . $query . '%')
-            ->orderBy('DoctorID', 'desc')
-            ->latest()->paginate(20));
+        return new DoctorCollection(Doctor::where('DoctorName', 'LIKE', "%$query%")->latest()->paginate(20));
     }
 }

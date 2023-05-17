@@ -80,7 +80,7 @@ class MenuController extends Controller
     }
 
     public function getAllMenu(){
-        $menus = Menu::latest()->get();
+        $menus = Menu::orderBy('MenuID','desc')->get();
         return response()->json([
             'menus'=>$menus
         ]);

@@ -20,6 +20,8 @@ class DoctorCollection extends ResourceCollection
                     'ID' => $doctor->ID,
                     'DoctorName' => $doctor->DoctorName,
                     'Designation' => $doctor->Designation,
+                    'Mobile'=>$doctor->Mobile,
+                    'Email'=>$doctor->Email,
                     'Details' => $doctor->Details,
                     'AddressOne' => $doctor->AddressOne,
                     'AddressTwo' => $doctor->AddressTwo,

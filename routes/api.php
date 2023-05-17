@@ -11,10 +11,12 @@ use App\Http\Controllers\Api\DoctorController;
 use App\Http\Controllers\Api\MenuController;
 use App\Http\Controllers\Api\MenuPermissionController;
 use App\Http\Controllers\Api\Mobile\CommonController;
+use App\Http\Controllers\Api\MOInfoController;
 use App\Http\Controllers\Api\PortfolioController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\SettingController;
+use App\Http\Controllers\Api\ShopController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerAuthController;
@@ -50,6 +52,13 @@ Route::group(['middleware' => 'jwtauth:api'], function () {
     //doctor route
     Route::apiResource('doctor', DoctorController::class);
     Route::get('search/doctor/{query}', [DoctorController::class,'search']);
+    //moinfo route
+    Route::apiResource('moinfo', MOInfoController::class);
+    Route::get('search/moinfo/{query}', [MOInfoController::class,'search']);
+
+    //shop route
+    Route::apiResource('shop', ShopController::class);
+    Route::get('search/shop/{query}', [ShopController::class,'search']);
     //menu resource route
     Route::apiResource('menu', MenuController::class);
     Route::get('search/menu/{query}', [MenuController::class,'search']);
@@ -77,15 +86,9 @@ Route::group(['middleware' => 'jwtauth:api'], function () {
 
 
     //common route
-    Route::get('get-all-portfolio', [CommonController::class,'getAllPortfolio']);
-    Route::get('get-all-category', [CommonController::class,'getAllCategory']);
-    Route::get('get-all-banner', [CommonController::class, 'getAllBanner']);
     Route::get('get-all-brand', [CommonController::class, 'getAllBrand']);
     Route::get('get-all-user', [CommonController::class, 'getAllUser']);
     Route::get('get-all-customer', [CommonController::class, 'getAllCustomer']);
-    Route::get('get-all-product', [CommonController::class, 'getAllProduct']);
-    Route::get('get-all-doctor', [CommonController::class, 'getAllDoctor']);
-    Route::get('get-all-menu', [CommonController::class, 'getAllMenu']);
     Route::get('get-all-role', [CommonController::class, 'getAllRole']);
 
     //get dashboard data route
@@ -112,10 +115,12 @@ Route::group(['middleware' => 'CustomerAuth'], function () {
     Route::post('product-details', [\App\Http\Controllers\Api\Mobile\ProductController::class, 'productDetails']);
 
     //get data route
-    Route::get('get-all-banner', [\App\Http\Controllers\Api\Mobile\CommonController::class, 'getAllBanner']);
-    Route::get('get-all-portfolio', [\App\Http\Controllers\Api\Mobile\CommonController::class,'getAllPortfolio']);
-    Route::get('get-all-category', [\App\Http\Controllers\Api\Mobile\CommonController::class,'getAllCategory']);
-    Route::get('get-all-product', [\App\Http\Controllers\Api\Mobile\CommonController::class, 'getAllProduct']);
-    Route::get('get-all-doctor', [\App\Http\Controllers\Api\Mobile\CommonController::class, 'getAllDoctor']);
+    Route::get('get-all-banner', [CommonController::class, 'getAllBanner']);
+    Route::get('get-all-portfolio', [CommonController::class,'getAllPortfolio']);
+    Route::get('get-all-category', [CommonController::class,'getAllCategory']);
+    Route::get('get-all-product', [CommonController::class, 'getAllProduct']);
+    Route::get('get-all-doctor', [CommonController::class, 'getAllDoctor']);
+    Route::get('get-all-shop', [CommonController::class, 'getAllShop']);
+    Route::get('get-all-moinfo', [CommonController::class, 'getAllMOInfo']);
 
 });

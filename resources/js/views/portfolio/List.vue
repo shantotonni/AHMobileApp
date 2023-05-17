@@ -50,7 +50,7 @@
                                             </td>
                                             <td class="text-center">
                                                 <button @click="edit(portfolio)" class="btn btn-success btn-sm"><i class="far fa-edit"></i></button>
-                                                <button @click="destroy(portfolio.ID)" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                                <button hidden="hidden" @click="destroy(portfolio.ID)" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
                                         </tbody>

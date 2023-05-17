@@ -35,6 +35,8 @@
                                             <th class="text-center">Id</th>
                                             <th class="text-center">Doctor Name</th>
                                             <th class="text-center">Designation</th>
+                                            <th class="text-center">Mobile No</th>
+                                            <th class="text-center">Email</th>
                                             <th class="text-center">Details</th>
                                             <th class="text-center">Address one</th>
                                             <th class="text-center">Address two</th>
@@ -48,6 +50,8 @@
                                             <td class="text-center" scope="row">{{ ++i }}</td>
                                             <td class="text-center">{{ doctor.DoctorName }}</td>
                                             <td class="text-center">{{ doctor.Designation }}</td>
+                                            <td class="text-center">{{ doctor.Mobile }}</td>
+                                            <td class="text-center">{{ doctor.Email }}</td>
                                             <td class="text-center">{{ doctor.Details }}</td>
                                             <td class="text-center">{{ doctor.AddressOne }}</td>
                                             <td class="text-center">{{ doctor.AddressTwo }}</td>
@@ -56,7 +60,7 @@
                                             <td class="text-center">
                                                 <button @click="edit(doctor)" class="btn btn-success btn-sm"><i
                                                     class="far fa-edit"></i></button>
-                                                <button @click="destroy(doctor.ID)" class="btn btn-danger btn-sm"><i
+                                                <button hidden="hidden" @click="destroy(doctor.ID)" class="btn btn-danger btn-sm"><i
                                                     class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
@@ -113,6 +117,25 @@
                                                    :class="{ 'is-invalid': form.errors.has('Designation') }">
                                             <div class="error" v-if="form.errors.has('Designation')"
                                                  v-html="form.errors.get('Designation')"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Mobile</label>
+                                            <input type="number" name="Mobile" v-model="form.Mobile"
+                                                   class="form-control"
+                                                   :class="{ 'is-invalid': form.errors.has('Mobile') }">
+                                            <div class="error" v-if="form.errors.has('Mobile')"
+                                                 v-html="form.errors.get('Mobile')"/>
+                                        </div>
+                                    </div>   <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <input type="email" name="Email" v-model="form.Email"
+                                                   class="form-control"
+                                                   :class="{ 'is-invalid': form.errors.has('Email') }">
+                                            <div class="error" v-if="form.errors.has('Email')"
+                                                 v-html="form.errors.get('Email')"/>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -201,6 +224,9 @@ export default {
             form: new Form({
                 ID: '',
                 DoctorName: '',
+                Designation: '',
+                Mobile: '',
+                Email: '',
                 Details: '',
                 AddressOne: '',
                 AddressTwo: '',

@@ -58,7 +58,7 @@
                                             </td>
                                             <td class="text-center">
                                                 <button @click="edit(product)" class="btn btn-success btn-sm"><i class="far fa-edit"></i></button>
-                                                <button @click="destroy(product.ID)" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                                <button hidden="hidden" @click="destroy(product.ID)" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
                                         </tbody>
