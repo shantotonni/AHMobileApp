@@ -217,7 +217,7 @@ export default {
             if (img.length > 100){
                 return this.form.PortfolioImage;
             }else{
-                return window.location.origin + "/AHMobileApp/portfolio/" + this.form.PortfolioImage;
+                return window.location.origin + "/AHMobileApp/images/portfolio/" + this.form.PortfolioImage;
             }
         },
         destroy(id){

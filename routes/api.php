@@ -3,13 +3,11 @@
 use App\Http\Controllers\Api\AdminDashboardController;
 use App\Http\Controllers\Api\BannerController;
 use App\Http\Controllers\Api\BrandController;
-<<<<<<< HEAD
-=======
+
 use App\Http\Controllers\Api\CategoryController;
-use App\Http\Controllers\Api\CheckingInputNameController;
->>>>>>> 2f23a87a4254a2ea06014416e68adac05b342f61
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\DashboardController;
+use App\Http\Controllers\Api\DoctorController;
 use App\Http\Controllers\Api\MenuController;
 use App\Http\Controllers\Api\MenuPermissionController;
 use App\Http\Controllers\Api\Mobile\CommonController;
@@ -18,13 +16,8 @@ use App\Http\Controllers\Api\Mobile\ServiceRequestController;
 use App\Http\Controllers\Api\Mobile\SparesController;
 use App\Http\Controllers\Api\Mobile\TechnicianController;
 use App\Http\Controllers\Api\Mobile\WarehouseController;
-<<<<<<< HEAD
-=======
 use App\Http\Controllers\Api\PortfolioController;
-use App\Http\Controllers\Api\ProblemSectionController;
 use App\Http\Controllers\Api\ProductController;
-use App\Http\Controllers\Api\QuestionController;
->>>>>>> 2f23a87a4254a2ea06014416e68adac05b342f61
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\SettingController;
 use App\Http\Controllers\Api\UserController;
@@ -59,6 +52,9 @@ Route::group(['middleware' => 'jwtauth:api'], function () {
     //product route
     Route::apiResource('product', ProductController::class);
     Route::get('search/product/{query}', [ProductController::class,'search']);
+    //doctor route
+    Route::apiResource('doctor', DoctorController::class);
+    Route::get('search/doctor/{query}', [DoctorController::class,'search']);
     //menu resource route
     Route::apiResource('menu', MenuController::class);
     Route::get('search/menu/{query}', [MenuController::class,'search']);
@@ -84,19 +80,24 @@ Route::group(['middleware' => 'jwtauth:api'], function () {
     //change-password
     Route::post('change-password', [SettingController::class,'changePassword']);
 
-<<<<<<< HEAD
 
     //For mobile route
     //store generator and delivery info route
     Route::post('generator-info-store', [WarehouseController::class,'generatorInfoStore']);
     Route::post('delivery-info-store', [WarehouseController::class,'deliveryInfoStore']);
 
-=======
->>>>>>> 2f23a87a4254a2ea06014416e68adac05b342f61
     //common route
     Route::get('get-all-portfolio', [CommonController::class,'getAllPortfolio']);
-    //common route
     Route::get('get-all-category', [CommonController::class,'getAllCategory']);
+    Route::get('get-all-banner', [CommonController::class, 'getAllBanner']);
+    Route::get('get-all-brand', [CommonController::class, 'getAllBrand']);
+    Route::get('get-all-user', [CommonController::class, 'getAllUser']);
+    Route::get('get-all-customer', [CommonController::class, 'getAllCustomer']);
+    Route::get('get-all-product', [CommonController::class, 'getAllProduct']);
+    Route::get('get-all-doctor', [CommonController::class, 'getAllDoctor']);
+    Route::get('get-all-menu', [CommonController::class, 'getAllMenu']);
+    Route::get('get-all-role', [CommonController::class, 'getAllRole']);
+
 
     //get dashboard data route
     Route::get('get-all-dashboard-data', [DashboardController::class,'getDashboardAllDara']);

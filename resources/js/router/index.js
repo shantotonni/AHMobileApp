@@ -41,6 +41,7 @@ import Portfolio from '../views/portfolio/List.vue'
 import Category from '../views/category/List.vue'
 import Banner from '../views/banner/List.vue'
 import Product from '../views/product/List.vue'
+import Doctor from '../views/doctor/List.vue'
 const routes = [
     {
         path: base_url + '/',
@@ -105,6 +106,10 @@ const routes = [
             //product route
             {
                 path: base_url + '/product-list', name: 'Product', component: Product
+            },
+            //doctor route
+            {
+                path: base_url + '/doctor-list', name: 'Doctor', component: Doctor
             },
         ],
         beforeEnter(to, from, next) {
