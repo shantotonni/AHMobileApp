@@ -11,12 +11,17 @@ class Customer extends Authenticatable implements JWTSubject
 {
     use HasFactory;
 
-    protected $table = 'customers';
-    public $primaryKey = 'id';
+    protected $table = 'Customer';
+    public $primaryKey = 'ID';
     protected $guarded = [];
 
-    const CREATED_AT = 'CreatedAt';
-    const UPDATED_AT = 'UpdatedAt';
+    const CREATED_AT = 'CreatedDate';
+    const UPDATED_AT = 'UpdatedDate';
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
     public function getJWTIdentifier()
     {

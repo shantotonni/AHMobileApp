@@ -30,62 +30,38 @@ use App\Models\User;
 
 class CommonController extends Controller
 {
-    public function getAllPortfolio(){
-        $portfolios = Portfolio::orderBy('CreatedDate','desc')->get();
-        return response()->json([
-            'portfolios'=>$portfolios
-        ]);
-    }
-    public function getAllCategory(){
-        $categories = Category::orderBy('CreatedDate','desc')->get();
-        return response()->json([
-            'categories'=>$categories
-        ]);
-    }
-    public function getAllDoctor(){
-        $doctors = Doctor::orderBy('CreatedDate','desc')->get();
-        return response()->json([
-            'doctors'=>$doctors
-        ]);
-    }
     public function getAllBanner(){
         $banners = Banner::orderBy('CreatedDate','desc')->get();
         return response()->json([
             'banners'=>$banners
         ]);
     }
-    public function getAllBrand(){
-        $brands = Brand::orderBy('CreatedDate','desc')->get();
+
+    public function getAllPortfolio(){
+        $portfolios = Portfolio::orderBy('CreatedDate','desc')->get();
         return response()->json([
-            'brands'=>$brands
+            'portfolios'=>$portfolios
         ]);
     }
-    public function getAllCustomer(){
-        $customers = Customer::orderBy('CreatedDate','desc')->get();
+
+    public function getAllCategory(){
+        $categories = Category::orderBy('CreatedDate','desc')->get();
         return response()->json([
-            'customers'=>$customers
+            'categories'=>$categories
         ]);
-    }  public function getAllProduct(){
+    }
+
+    public function getAllDoctor(){
+        $doctors = Doctor::orderBy('CreatedDate','desc')->get();
+        return response()->json([
+            'doctors'=>$doctors
+        ]);
+    }
+
+    public function getAllProduct(){
         $products = Product::orderBy('CreatedDate','desc')->get();
         return response()->json([
             'products'=>$products
-        ]);
-    }  public function getAllMenu(){
-        $menus = Menu::orderBy('CreatedDate','desc')->get();
-        return response()->json([
-            'menus'=>$menus
-        ]);
-    }
-    public function getAllRole(){
-        $roles = Role::orderBy('CreatedDate','desc')->get();
-        return response()->json([
-            'roles'=>$roles
-        ]);
-    }
-    public function getAllUser(){
-        $users = User::orderBy('CreatedDate','desc')->get();
-        return response()->json([
-            'users'=>$users
         ]);
     }
 

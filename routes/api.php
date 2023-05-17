@@ -11,11 +11,6 @@ use App\Http\Controllers\Api\DoctorController;
 use App\Http\Controllers\Api\MenuController;
 use App\Http\Controllers\Api\MenuPermissionController;
 use App\Http\Controllers\Api\Mobile\CommonController;
-use App\Http\Controllers\Api\Mobile\EngineerController;
-use App\Http\Controllers\Api\Mobile\ServiceRequestController;
-use App\Http\Controllers\Api\Mobile\SparesController;
-use App\Http\Controllers\Api\Mobile\TechnicianController;
-use App\Http\Controllers\Api\Mobile\WarehouseController;
 use App\Http\Controllers\Api\PortfolioController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\RoleController;
@@ -81,11 +76,6 @@ Route::group(['middleware' => 'jwtauth:api'], function () {
     Route::post('change-password', [SettingController::class,'changePassword']);
 
 
-    //For mobile route
-    //store generator and delivery info route
-    Route::post('generator-info-store', [WarehouseController::class,'generatorInfoStore']);
-    Route::post('delivery-info-store', [WarehouseController::class,'deliveryInfoStore']);
-
     //common route
     Route::get('get-all-portfolio', [CommonController::class,'getAllPortfolio']);
     Route::get('get-all-category', [CommonController::class,'getAllCategory']);
@@ -97,7 +87,6 @@ Route::group(['middleware' => 'jwtauth:api'], function () {
     Route::get('get-all-doctor', [CommonController::class, 'getAllDoctor']);
     Route::get('get-all-menu', [CommonController::class, 'getAllMenu']);
     Route::get('get-all-role', [CommonController::class, 'getAllRole']);
-
 
     //get dashboard data route
     Route::get('get-all-dashboard-data', [DashboardController::class,'getDashboardAllDara']);
@@ -119,11 +108,14 @@ Route::group(['middleware' => 'CustomerAuth'], function () {
     Route::post('auth/profile-update', [CustomerAuthController::class, 'updateProfile']);
     Route::post('change-password', [CustomerAuthController::class, 'changePassword']);
 
-    //Customer Service Request Route
-    Route::post('customer-service-request-create', [\App\Http\Controllers\Api\Mobile\CustomerController::class, 'customerCreateServiceRequest']);
-    Route::get('customer-service-request-list', [\App\Http\Controllers\Api\Mobile\CustomerController::class, 'customerServiceRequestList']);
+    //product
+    Route::post('product-details', [\App\Http\Controllers\Api\Mobile\ProductController::class, 'productDetails']);
 
     //get data route
-    Route::get('get-all-parts', [\App\Http\Controllers\Api\Mobile\CommonController::class, 'getAllParts']);
-    Route::get('get-all-generator-basic-info', [\App\Http\Controllers\Api\Mobile\CommonController::class, 'getAllGeneratorBasicInfo']);
+    Route::get('get-all-banner', [\App\Http\Controllers\Api\Mobile\CommonController::class, 'getAllBanner']);
+    Route::get('get-all-portfolio', [\App\Http\Controllers\Api\Mobile\CommonController::class,'getAllPortfolio']);
+    Route::get('get-all-category', [\App\Http\Controllers\Api\Mobile\CommonController::class,'getAllCategory']);
+    Route::get('get-all-product', [\App\Http\Controllers\Api\Mobile\CommonController::class, 'getAllProduct']);
+    Route::get('get-all-doctor', [\App\Http\Controllers\Api\Mobile\CommonController::class, 'getAllDoctor']);
+
 });
