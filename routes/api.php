@@ -111,16 +111,14 @@ Route::group(['middleware' => 'CustomerAuth'], function () {
     Route::post('auth/profile-update', [CustomerAuthController::class, 'updateProfile']);
     Route::post('change-password', [CustomerAuthController::class, 'changePassword']);
 
-    //product
-    Route::post('product-details', [\App\Http\Controllers\Api\Mobile\ProductController::class, 'productDetails']);
-
-    //get data route
-    Route::get('get-all-banner', [CommonController::class, 'getAllBanner']);
-    Route::get('get-all-portfolio', [CommonController::class,'getAllPortfolio']);
-    Route::get('get-all-category', [CommonController::class,'getAllCategory']);
-    Route::get('get-all-product', [CommonController::class, 'getAllProduct']);
-    Route::get('get-all-doctor', [CommonController::class, 'getAllDoctor']);
-    Route::get('get-all-shop', [CommonController::class, 'getAllShop']);
-    Route::get('get-all-moinfo', [CommonController::class, 'getAllMOInfo']);
-
 });
+
+//get data route
+Route::get('get-all-banner', [CommonController::class, 'getAllBanner']);
+Route::get('get-all-portfolio', [CommonController::class,'getAllPortfolio']);
+Route::get('get-all-category', [CommonController::class,'getAllCategory']);
+Route::get('get-all-product', [CommonController::class, 'getAllProduct']);
+Route::get('get-all-doctor', [CommonController::class, 'getAllDoctor']);
+Route::get('get-all-shop', [CommonController::class, 'getAllShop']);
+Route::get('get-all-moinfo', [CommonController::class, 'getAllMOInfo']);
+Route::post('product-details', [\App\Http\Controllers\Api\Mobile\ProductController::class, 'productDetails']);
