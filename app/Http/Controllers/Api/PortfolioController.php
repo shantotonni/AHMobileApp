@@ -22,7 +22,7 @@ class PortfolioController extends Controller
         if ($request->has('PortfolioImage')) {
             $PortfolioImage = $request->PortfolioImage;
             $name = uniqid() . time() . '.' . explode('/', explode(':', substr($PortfolioImage, 0, strpos($PortfolioImage, ';')))[1])[1];
-            Image::make($PortfolioImage)->save(public_path('portfolio/') . $name);
+            Image::make($PortfolioImage)->save(public_path('images/portfolio/') . $name);
         } else {
             $name = 'not_found.jpg';
         }
@@ -43,7 +43,7 @@ class PortfolioController extends Controller
             if ($request->has('PortfolioImage')) {
                 //code for remove old file
                 if ($portfolio->PortfolioImage != '' && $portfolio->PortfolioImage != null) {
-                    $destinationPath = 'portfolio/';
+                    $destinationPath = 'images/portfolio/';
                     $file_old = $destinationPath . $portfolio->PortfolioImage;
                     if (file_exists($file_old)) {
                         unlink($file_old);

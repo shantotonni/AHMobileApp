@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\CheckingInputNameController;
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\DeliveryInfoController;
+use App\Http\Controllers\Api\DoctorController;
 use App\Http\Controllers\Api\GeneratorBasicInfoController;
 use App\Http\Controllers\Api\GeneratorInfoController;
 use App\Http\Controllers\Api\JobCardController;
@@ -59,6 +60,9 @@ Route::group(['middleware' => 'jwtauth:api'], function () {
     //product route
     Route::apiResource('product', ProductController::class);
     Route::get('search/product/{query}', [ProductController::class,'search']);
+    //doctor route
+    Route::apiResource('doctor', DoctorController::class);
+    Route::get('search/doctor/{query}', [DoctorController::class,'search']);
     //menu resource route
     Route::apiResource('menu', MenuController::class);
     Route::get('search/menu/{query}', [MenuController::class,'search']);
@@ -86,8 +90,18 @@ Route::group(['middleware' => 'jwtauth:api'], function () {
 
     //common route
     Route::get('get-all-portfolio', [CommonController::class,'getAllPortfolio']);
-    //common route
     Route::get('get-all-category', [CommonController::class,'getAllCategory']);
+    Route::get('get-all-banner', [CommonController::class, 'getAllBanner']);
+    Route::get('get-all-brand', [CommonController::class, 'getAllBrand']);
+    Route::get('get-all-user', [CommonController::class, 'getAllUser']);
+    Route::get('get-all-customer', [CommonController::class, 'getAllCustomer']);
+    Route::get('get-all-product', [CommonController::class, 'getAllProduct']);
+    Route::get('get-all-doctor', [CommonController::class, 'getAllDoctor']);
+    Route::get('get-all-menu', [CommonController::class, 'getAllMenu']);
+    Route::get('get-all-role', [CommonController::class, 'getAllRole']);
+
+
+
 
     //get dashboard data route
     Route::get('get-all-dashboard-data', [DashboardController::class,'getDashboardAllDara']);
