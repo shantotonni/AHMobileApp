@@ -286,7 +286,7 @@ export default {
         },
         getAllPortfolio() {
             axios.get('/api/get-all-portfolio').then((response) => {
-                this.portfolios = response.data.portfolios;
+                this.portfolios = response.data.data;
             }).catch((error) => {
 
             })
