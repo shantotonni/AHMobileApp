@@ -45,6 +45,7 @@ import Doctor from '../views/doctor/List.vue'
 import MOInfo from '../views/moinfo/List.vue'
 import Shop from '../views/shop/List.vue'
 import District from '../views/district/List.vue'
+import Thana from '../views/thana/List.vue'
 const routes = [
     {
         path: base_url + '/',
@@ -125,6 +126,10 @@ const routes = [
             //District route
             {
                 path: base_url + '/district-list', name: 'District', component: District
+            },
+            //Thana route
+            {
+                path: base_url + '/thana-list', name: 'Thana', component: Thana
             },
         ],
         beforeEnter(to, from, next) {

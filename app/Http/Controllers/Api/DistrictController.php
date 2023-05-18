@@ -7,7 +7,6 @@ use App\Http\Requests\District\DistrictStoreRequest;
 use App\Http\Requests\District\DistrictUpdateRequest;
 use App\Http\Resources\District\DistrictCollection;
 use App\Models\District;
-use Illuminate\Http\Request;
 
 class DistrictController extends Controller
 {
@@ -43,7 +42,12 @@ class DistrictController extends Controller
         District::where('ID', $id)->delete();
         return response()->json(['message' => 'District Deleted Successfully'], 200);
     }
-
+    public function getAllDistrict(){
+        $districts = District::orderBy('ID','desc')->get();
+        return response()->json([
+            'districts'=>$districts
+        ]);
+    }
     public function search($query)
     {
         return new DistrictCollection(District::where('DistrictName', 'LIKE', "%$query%")->latest()->paginate(20));

@@ -199,7 +199,7 @@ export default {
             this.form.busy = true;
             this.form.put("/api/portfolio/" + this.form.ID).then(response => {
                 $("#portfolioModal").modal("hide");
-                this.getAllPortfolio();
+                //this.getAllPortfolio();
             }).catch(e => {
                 this.isLoading = false;
             });

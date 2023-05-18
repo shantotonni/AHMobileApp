@@ -49,8 +49,8 @@
                                             <td class="text-center">{{ moinfo.Mobile }}</td>
                                             <td class="text-center">{{ moinfo.Email }}</td>
                                             <td class="text-center">{{ moinfo.Address}}</td>
-                                            <td class="text-center">{{ moinfo.District }}</td>
-                                            <td class="text-center">{{ moinfo.Thana }}</td>
+                                            <td class="text-center">{{ moinfo.DistrictName }}</td>
+                                            <td class="text-center">{{ moinfo.ThanaName }}</td>
                                             <td class="text-center">
                                                 <button @click="edit(moinfo)" class="btn btn-success btn-sm"><i
                                                     class="far fa-edit"></i></button>
@@ -135,9 +135,14 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>District</label>
-                                            <input type="text" name="District" v-model="form.District"
-                                                   class="form-control"
-                                                   :class="{ 'is-invalid': form.errors.has('District') }">
+                                            <select name="District" id="District" class="form-control"
+                                                    v-model="form.District"
+                                                    :class="{ 'is-invalid': form.errors.has('District') }">
+                                                <option disabled value="">Select District</option>
+                                                <option :value="district.ID" v-for="(district , index) in districts"
+                                                        :key="index">{{ district.DistrictName }}
+                                                </option>
+                                            </select>
                                             <div class="error" v-if="form.errors.has('District')"
                                                  v-html="form.errors.get('District')"/>
                                         </div>
@@ -145,14 +150,18 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Thana</label>
-                                            <input type="text" name="Thana" v-model="form.Thana"
-                                                   class="form-control"
-                                                   :class="{ 'is-invalid': form.errors.has('Thana') }">
+                                            <select name="Thana" id="Thana" class="form-control"
+                                                    v-model="form.Thana"
+                                                    :class="{ 'is-invalid': form.errors.has('Thana') }">
+                                                <option disabled value="">Select Thana</option>
+                                                <option :value="thana.ID" v-for="(thana , index) in thanas"
+                                                        :key="index">{{ thana.ThanaName }}
+                                                </option>
+                                            </select>
                                             <div class="error" v-if="form.errors.has('Thana')"
                                                  v-html="form.errors.get('Thana')"/>
                                         </div>
                                     </div>
-
 
                                 </div>
                             </div>
@@ -179,6 +188,8 @@ export default {
     data() {
         return {
             moinfos: [],
+            districts: [],
+            thanas:[],
             pagination: {
                 current_page: 1
             },
@@ -241,6 +252,8 @@ export default {
             this.form.reset();
             this.form.clear();
             $("#moinfoModal").modal("show");
+            this.getAllDistrict();
+            this.getAllThana();
         },
         store() {
             this.form.busy = true;
@@ -257,6 +270,8 @@ export default {
             this.form.clear();
             this.form.fill(moinfo);
             $("#moinfoModal").modal("show");
+            this.getAllDistrict();
+            this.getAllThana();
         },
         update() {
             this.form.busy = true;
@@ -266,6 +281,20 @@ export default {
             }).catch(e => {
                 this.isLoading = false;
             });
+        },
+        getAllDistrict() {
+            axios.get('/api/get-all-district').then((response) => {
+                this.districts = response.data.districts;
+            }).catch((error) => {
+
+            })
+        },
+        getAllThana() {
+            axios.get('/api/get-all-thana').then((response) => {
+                this.thanas = response.data.thanas;
+            }).catch((error) => {
+
+            })
         },
         destroy(id) {
             Swal.fire({

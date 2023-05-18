@@ -26,7 +26,10 @@ class DoctorCollection extends ResourceCollection
                     'AddressOne' => $doctor->AddressOne,
                     'AddressTwo' => $doctor->AddressTwo,
                     'District' => $doctor->District,
+                    'DistrictName'=>isset($doctor->district) ? $doctor->district->DistrictName: '',
                     'Thana' => $doctor->Thana,
+                    'ThanaName' => isset($doctor->thana) ? $doctor->thana->ThanaName:'',
+
                 ];
             })
         ];

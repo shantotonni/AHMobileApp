@@ -18,6 +18,7 @@ use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\SettingController;
 use App\Http\Controllers\Api\ShopController;
+use App\Http\Controllers\Api\ThanaController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerAuthController;
@@ -68,6 +69,12 @@ Route::group(['middleware' => 'jwtauth:api'], function () {
     //district route
     Route::apiResource('district', DistrictController::class);
     Route::get('search/district/{query}', [DistrictController::class, 'search']);
+    Route::get('get-all-district', [DistrictController::class, 'getAllDistrict']);
+    //district route
+    Route::apiResource('thana', ThanaController::class);
+    Route::get('search/thana/{query}', [ThanaController::class, 'search']);
+    Route::get('get-all-thana', [ThanaController::class, 'getAllThana']);
+
 
     //menu resource route
     Route::apiResource('menu', MenuController::class);

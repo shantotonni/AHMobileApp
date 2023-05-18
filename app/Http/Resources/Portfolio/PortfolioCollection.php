@@ -15,6 +15,7 @@ class PortfolioCollection extends ResourceCollection
                     'PortfolioName'=>$portfolio->PortfolioName,
                     'Active'=>$portfolio->Active,
                     'PortfolioImage'=>$portfolio->PortfolioImage,
+                    'PortfolioImageMobile'=>url('/').'/images/portfolio/'.$portfolio->PortfolioImage,
                 ];
             })
         ];

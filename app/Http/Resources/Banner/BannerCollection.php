@@ -20,6 +20,7 @@ class BannerCollection extends ResourceCollection
                     'ID'=>$banner->ID,
                     'BannerName'=>$banner->BannerName,
                     'BannerImage'=>$banner->BannerImage,
+                    'BannerImageMobile'=>url('/').'/images/banner/'.$banner->BannerImage,
                 ];
             })
         ];

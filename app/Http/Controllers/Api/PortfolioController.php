@@ -50,7 +50,7 @@ class PortfolioController extends Controller
                     }
                 }
                 $name = uniqid() . time() . '.' . explode('/', explode(':', substr($PortfolioImage, 0, strpos($PortfolioImage, ';')))[1])[1];
-                Image::make($PortfolioImage)->resize(400, 300)->save(public_path('portfolio/') . $name);
+                Image::make($PortfolioImage)->resize(250, 300)->save(public_path('images/portfolio/') . $name);
             } else {
                 $name = $portfolio->PortfolioImage;
             }

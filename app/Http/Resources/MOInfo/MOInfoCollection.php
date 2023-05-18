@@ -17,8 +17,11 @@ class MOInfoCollection extends ResourceCollection
                     'Email'=>$moinfo->Email,
                     'Mobile'=>$moinfo->Mobile,
                     'Address'=>$moinfo->Address,
-                    'District'=>$moinfo->District,
-                    'Thana'=>$moinfo->Thana,
+                    'District' => $moinfo->District,
+                    'DistrictName'=>isset($moinfo->district) ? $moinfo->district->DistrictName: '',
+                    'Thana' => $moinfo->Thana,
+                    'ThanaName' => isset($moinfo->thana) ? $moinfo->thana->ThanaName:'',
+
                 ];
             })
         ];

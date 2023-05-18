@@ -33,17 +33,17 @@
                                         <thead>
                                         <tr>
                                             <th class="text-center">Id</th>
-                                            <th class="text-center">District Code</th>
-                                            <th class="text-center">District Name</th>
-                                            <th class="text-center">District NameBn</th>
+                                            <th class="text-center"> DistrictCode</th>
+                                            <th class="text-center"> DistrictName</th>
+                                            <th class="text-center">DistrictNameBn</th>
                                             <th class="text-center">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr v-for="(district, i) in districts" :key="district.ID" v-if="districts.length">
                                             <td class="text-center" scope="row">{{ ++i }}</td>
-                                            <td class="text-center">{{ district.DistrictCode}}</td>
                                             <td class="text-center">{{ district.DistrictName }}</td>
+                                            <td class="text-center">{{ district.DistrictNameBn }}</td>
                                             <td class="text-center">{{ district.DistrictNameBn }}</td>
                                             <td class="text-center">
                                                 <button @click="edit(district)" class="btn btn-success btn-sm"><i
@@ -91,9 +91,9 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>District Code</label>
-                                            <input type="text" name="code" v-model="form.DistrictCode"
+                                            <input type="number" name="Code" v-model="form.DistrictCode"
                                                    class="form-control"
-                                                   :class="{ 'is-invalid': form.errors.has('DistrictCode') }">
+                                                   :class="{ 'is-invalid': form.errors.has('DistrictCodee') }">
                                             <div class="error" v-if="form.errors.has('DistrictCode')"
                                                  v-html="form.errors.get('DistrictCode')"/>
                                         </div>
@@ -101,7 +101,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>District Name </label>
-                                            <input type="text" name="DistrictName" v-model="form.Designation"
+                                            <input type="text" name="name" v-model="form.DistrictName"
                                                    class="form-control"
                                                    :class="{ 'is-invalid': form.errors.has('DistrictName') }">
                                             <div class="error" v-if="form.errors.has('DistrictName')"
@@ -142,7 +142,7 @@ export default {
     name: "List",
     data() {
         return {
-            districts: [],
+           districts: [],
             pagination: {
                 current_page: 1
             },

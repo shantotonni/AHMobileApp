@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Doctor\DoctorStoreRequest;
 use App\Http\Requests\Doctor\DoctorUpdateRequest;
 use App\Http\Resources\Doctor\DoctorCollection;
+use App\Http\Resources\Doctor\DoctorResource;
 use App\Models\Doctor;
+use App\Models\Thana;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
@@ -33,6 +35,7 @@ class DoctorController extends Controller
         $doctor->save();
         return response()->json(['message' => 'Doctor Created Successfully'], 200);
     }
+
 
     public function update(DoctorUpdateRequest $request, $id)
     {

@@ -18,7 +18,10 @@ class ShopCollection extends ResourceCollection
                     'ShopOwnerMobile'=>$shop->ShopOwnerMobile,
                     'ShopAddress' => $shop->ShopAddress,
                     'District' => $shop->District,
+                    'DistrictName'=>isset($shop->district) ? $shop->district->DistrictName: '',
                     'Thana' => $shop->Thana,
+                    'ThanaName' => isset($shop->thana) ? $shop->thana->ThanaName:'',
+
                 ];
             })
         ];

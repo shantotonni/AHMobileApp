@@ -13,4 +13,11 @@ class Doctor extends Model
     protected $guarded = [];
     const CREATED_AT = 'CreatedDate';
     const UPDATED_AT = 'UpdatedDate';
+
+    public function district(){
+        return $this->belongsTo(District::class,'District','ID');
+    }
+    public function thana(){
+        return $this->belongsTo(Thana::class,'Thana','ID');
+    }
 }

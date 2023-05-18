@@ -54,13 +54,14 @@
                                             <td class="text-center">{{ doctor.Email }}</td>
                                             <td class="text-center">{{ doctor.Details }}</td>
                                             <td class="text-center">{{ doctor.AddressOne }}</td>
-                                            <td class="text-center">{{ doctor.AddressTwo }}</td>
-                                            <td class="text-center">{{ doctor.District }}</td>
-                                            <td class="text-center">{{ doctor.Thana }}</td>
+                                            <td class="text-center" >{{ doctor.AddressTwo }}</td>
+                                            <td class="text-center" scope="row">{{ doctor.DistrictName }}</td>
+                                            <td class="text-center" scope="row">{{ doctor.ThanaName }}</td>
                                             <td class="text-center">
                                                 <button @click="edit(doctor)" class="btn btn-success btn-sm"><i
                                                     class="far fa-edit"></i></button>
-                                                <button hidden="hidden" @click="destroy(doctor.ID)" class="btn btn-danger btn-sm"><i
+                                                <button hidden="hidden" @click="destroy(doctor.ID)"
+                                                        class="btn btn-danger btn-sm"><i
                                                     class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
@@ -128,7 +129,8 @@
                                             <div class="error" v-if="form.errors.has('Mobile')"
                                                  v-html="form.errors.get('Mobile')"/>
                                         </div>
-                                    </div>   <div class="col-md-6">
+                                    </div>
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Email</label>
                                             <input type="email" name="Email" v-model="form.Email"
@@ -171,9 +173,14 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>District</label>
-                                            <input type="text" name="District" v-model="form.District"
-                                                   class="form-control"
-                                                   :class="{ 'is-invalid': form.errors.has('District') }">
+                                            <select name="District" id="District" class="form-control"
+                                                    v-model="form.District"
+                                                    :class="{ 'is-invalid': form.errors.has('District') }">
+                                                <option disabled value="">Select District</option>
+                                                <option :value="district.ID" v-for="(district , index) in districts"
+                                                        :key="index">{{ district.DistrictName }}
+                                                </option>
+                                            </select>
                                             <div class="error" v-if="form.errors.has('District')"
                                                  v-html="form.errors.get('District')"/>
                                         </div>
@@ -181,14 +188,18 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Thana</label>
-                                            <input type="text" name="Thana" v-model="form.Thana"
-                                                   class="form-control"
-                                                   :class="{ 'is-invalid': form.errors.has('Thana') }">
+                                            <select name="Thana" id="Thana" class="form-control"
+                                                    v-model="form.Thana"
+                                                    :class="{ 'is-invalid': form.errors.has('Thana') }">
+                                                <option disabled value="">Select Thana</option>
+                                                <option :value="thana.ID" v-for="(thana , index) in thanas"
+                                                        :key="index">{{ thana.ThanaName }}
+                                                </option>
+                                            </select>
                                             <div class="error" v-if="form.errors.has('Thana')"
                                                  v-html="form.errors.get('Thana')"/>
                                         </div>
                                     </div>
-
 
                                 </div>
                             </div>
@@ -215,6 +226,8 @@ export default {
     data() {
         return {
             doctors: [],
+            districts: [],
+            thanas:[],
             pagination: {
                 current_page: 1
             },
@@ -280,6 +293,8 @@ export default {
             this.form.reset();
             this.form.clear();
             $("#doctorModal").modal("show");
+            this.getAllDistrict();
+            this.getAllThana();
         },
         store() {
             this.form.busy = true;
@@ -295,6 +310,8 @@ export default {
             this.form.reset();
             this.form.clear();
             this.form.fill(doctor);
+            this.getAllDistrict();
+            this.getAllThana();
             $("#doctorModal").modal("show");
         },
         update() {
@@ -305,6 +322,20 @@ export default {
             }).catch(e => {
                 this.isLoading = false;
             });
+        },
+        getAllDistrict() {
+            axios.get('/api/get-all-district').then((response) => {
+                this.districts = response.data.districts;
+            }).catch((error) => {
+
+            })
+        },
+        getAllThana() {
+            axios.get('/api/get-all-thana').then((response) => {
+                this.thanas = response.data.thanas;
+            }).catch((error) => {
+
+            })
         },
         destroy(id) {
             Swal.fire({
