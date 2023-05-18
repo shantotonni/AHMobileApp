@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\BrandController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\DashboardController;
+use App\Http\Controllers\Api\DistrictController;
 use App\Http\Controllers\Api\DoctorController;
 use App\Http\Controllers\Api\MenuController;
 use App\Http\Controllers\Api\MenuPermissionController;
@@ -32,57 +33,66 @@ Route::group(['middleware' => 'jwtauth:api'], function () {
 
     //user api route
     Route::apiResource('user', UserController::class);
-    Route::get('search/user/{query}', [UserController::class,'search']);
+    Route::get('search/user/{query}', [UserController::class, 'search']);
     Route::get('get-all-users/', [UserController::class, 'getAllUser']);
     Route::get('user-by-user-id', [UserController::class, 'getUserByUserId']);
     Route::post('user-profile-update', [UserController::class, 'updateProfile']);
     //Portfolio route
     Route::apiResource('portfolio', PortfolioController::class);
-    Route::get('search/portfolio/{query}', [PortfolioController::class,'search']);
+    Route::get('search/portfolio/{query}', [PortfolioController::class, 'search']);
 
     //Portfolio route
     Route::apiResource('category', CategoryController::class);
-    Route::get('search/category/{query}', [CategoryController::class,'search']);
+    Route::get('search/category/{query}', [CategoryController::class, 'search']);
+
 //banner route
     Route::apiResource('banner', BannerController::class);
-    Route::get('search/banner/{query}', [BannerController::class,'search']);
+    Route::get('search/banner/{query}', [BannerController::class, 'search']);
+
     //product route
     Route::apiResource('product', ProductController::class);
-    Route::get('search/product/{query}', [ProductController::class,'search']);
+    Route::get('search/product/{query}', [ProductController::class, 'search']);
+
     //doctor route
     Route::apiResource('doctor', DoctorController::class);
-    Route::get('search/doctor/{query}', [DoctorController::class,'search']);
+    Route::get('search/doctor/{query}', [DoctorController::class, 'search']);
+
     //moinfo route
     Route::apiResource('moinfo', MOInfoController::class);
-    Route::get('search/moinfo/{query}', [MOInfoController::class,'search']);
+    Route::get('search/moinfo/{query}', [MOInfoController::class, 'search']);
 
     //shop route
     Route::apiResource('shop', ShopController::class);
-    Route::get('search/shop/{query}', [ShopController::class,'search']);
+    Route::get('search/shop/{query}', [ShopController::class, 'search']);
+
+    //district route
+    Route::apiResource('district', DistrictController::class);
+    Route::get('search/district/{query}', [DistrictController::class, 'search']);
+
     //menu resource route
     Route::apiResource('menu', MenuController::class);
-    Route::get('search/menu/{query}', [MenuController::class,'search']);
-    Route::get('get-all-menu', [MenuController::class,'getAllMenu']);
+    Route::get('search/menu/{query}', [MenuController::class, 'search']);
+    Route::get('get-all-menu', [MenuController::class, 'getAllMenu']);
 
     //menu permission route
     Route::get('get-user-menu-details/{UserID}', [MenuPermissionController::class, 'getUserMenuPermission']);
-    Route::get('sidebar-get-all-user-menu', [MenuPermissionController::class,'getSidebarAllUserMenu']);
-    Route::post('save-user-menu-permission', [MenuPermissionController::class,'saveUserMenuPermission']);
+    Route::get('sidebar-get-all-user-menu', [MenuPermissionController::class, 'getSidebarAllUserMenu']);
+    Route::post('save-user-menu-permission', [MenuPermissionController::class, 'saveUserMenuPermission']);
 
     //customer resource route
     Route::apiResource('customer', CustomerController::class);
-    Route::get('search/customer/{query}', [CustomerController::class,'search']);
+    Route::get('search/customer/{query}', [CustomerController::class, 'search']);
 
     //Role resource route
     Route::apiResource('role', RoleController::class);
-    Route::get('search/role/{query}', [RoleController::class,'search']);
+    Route::get('search/role/{query}', [RoleController::class, 'search']);
 
     //Brand resource route
     Route::apiResource('brand', BrandController::class);
-    Route::get('search/brand/{query}', [BrandController::class,'search']);
+    Route::get('search/brand/{query}', [BrandController::class, 'search']);
 
     //change-password
-    Route::post('change-password', [SettingController::class,'changePassword']);
+    Route::post('change-password', [SettingController::class, 'changePassword']);
 
     //common route
     Route::get('get-all-brand', [CommonController::class, 'getAllBrand']);
@@ -91,11 +101,11 @@ Route::group(['middleware' => 'jwtauth:api'], function () {
     Route::get('get-all-role', [CommonController::class, 'getAllRole']);
 
     //get dashboard data route
-    Route::get('get-all-dashboard-data', [DashboardController::class,'getDashboardAllDara']);
-    Route::get('check-expired', [DashboardController::class,'checkExpired']);
+    Route::get('get-all-dashboard-data', [DashboardController::class, 'getDashboardAllDara']);
+    Route::get('check-expired', [DashboardController::class, 'checkExpired']);
 
     //admin dashboard
-    Route::get('get-all-admin-dashboard-data', [AdminDashboardController::class,'getAdminDashboardAllData']);
+    Route::get('get-all-admin-dashboard-data', [AdminDashboardController::class, 'getAdminDashboardAllData']);
 
 });
 
@@ -114,8 +124,8 @@ Route::group(['middleware' => 'CustomerAuth'], function () {
 
 //get data route
 Route::get('get-all-banner', [CommonController::class, 'getAllBanner']);
-Route::get('get-all-portfolio', [CommonController::class,'getAllPortfolio']);
-Route::get('get-all-category', [CommonController::class,'getAllCategory']);
+Route::get('get-all-portfolio', [CommonController::class, 'getAllPortfolio']);
+Route::get('get-all-category', [CommonController::class, 'getAllCategory']);
 Route::get('get-all-product', [CommonController::class, 'getAllProduct']);
 Route::get('get-all-doctor', [CommonController::class, 'getAllDoctor']);
 Route::get('get-all-shop', [CommonController::class, 'getAllShop']);
