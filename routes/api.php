@@ -84,7 +84,6 @@ Route::group(['middleware' => 'jwtauth:api'], function () {
     //change-password
     Route::post('change-password', [SettingController::class,'changePassword']);
 
-
     //common route
     Route::get('get-all-brand', [CommonController::class, 'getAllBrand']);
     Route::get('get-all-user', [CommonController::class, 'getAllUser']);
