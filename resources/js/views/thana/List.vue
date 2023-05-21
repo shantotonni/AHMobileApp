@@ -42,8 +42,8 @@
                                         <tbody>
                                         <tr v-for="(thana, i) in thanas" :key="thana.ID" v-if="thanas.length">
                                             <td class="text-center" scope="row">{{ ++i }}</td>
+                                            <td class="text-center">{{ thana.ThanaCode }}</td>
                                             <td class="text-center">{{ thana.ThanaName }}</td>
-                                            <td class="text-center">{{ thana.ThanaNameBn }}</td>
                                             <td class="text-center">{{ thana.ThanaNameBn }}</td>
                                             <td class="text-center">
                                                 <button @click="edit(thana)" class="btn btn-success btn-sm"><i

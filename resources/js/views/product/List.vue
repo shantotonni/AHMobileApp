@@ -203,6 +203,7 @@ export default {
     mounted() {
         document.title = 'Product List | AHMobileApp';
         this.getAllProduct();
+
     },
     methods: {
         getAllProduct(){
@@ -263,6 +264,7 @@ export default {
             this.form.put("/api/product/" + this.form.ID).then(response => {
                 console.log(response)
                 $("#productModal").modal("hide");
+                this.getAllCategory();
                 this.getAllProduct();
             }).catch(e => {
                 this.isLoading = false;
@@ -293,7 +295,7 @@ export default {
         },
         getAllCategory() {
             axios.get('/api/get-all-category').then((response) => {
-                this.categories = response.data.categories;
+                this.categories = response.data.data;
             }).catch((error) => {
 
             })
