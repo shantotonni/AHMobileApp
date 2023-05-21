@@ -26,6 +26,8 @@ class ProductCollection extends ResourceCollection
                     'PortfolioName'=>isset($product->portfolio) ? $product->portfolio->PortfolioName: '',
                     'CategoryID'=>$product->CategoryID,
                     'CategoryName'=>isset($product->category) ? $product->category->CategoryName: '',
+                    'ProductImageMobile'=>url('/').'/images/product/'.$product->ProductImage,
+
                 ];
             })
         ];

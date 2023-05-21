@@ -276,12 +276,12 @@ export default {
             if (img.length > 100) {
                 return this.form.CategoryImage;
             } else {
-                return window.location.origin + "/AHMobileApp/category/" + this.form.CategoryImage;
+                return window.location.origin + "/AHMobileApp/images/category/" + this.form.CategoryImage;
             }
         },
         getAllPortfolio() {
             axios.get('/api/get-all-portfolio').then((response) => {
-                this.portfolios = response.data.portfolios;
+                this.portfolios = response.data.data;
             }).catch((error) => {
 
             })

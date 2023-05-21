@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Api\Mobile;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Banner\BannerCollection;
+use App\Http\Resources\Category\CategoryCollection;
 use App\Http\Resources\Generator\GeneratorBasicInfoCollection;
 use App\Http\Resources\GeneratorInfo\GeneratorInfoCollection;
 use App\Http\Resources\Portfolio\PortfolioCollection;
 use App\Http\Resources\ProblemSection\ProblemSectionCollection;
+use App\Http\Resources\Product\ProductCollection;
 use App\Http\Resources\Question\QuestionCollection;
 use App\Http\Resources\ServiceType\ServiceTypeCollection;
 use App\Http\Resources\SparePartsCollection;
@@ -51,9 +53,7 @@ class CommonController extends Controller
     public function getAllCategory()
     {
         $categories = Category::orderBy('CreatedDate', 'desc')->get();
-        return response()->json([
-            'categories' => $categories
-        ]);
+       return new CategoryCollection($categories);
     }
 
     public function getAllDoctor()
@@ -67,9 +67,7 @@ class CommonController extends Controller
     public function getAllProduct()
     {
         $products = Product::orderBy('CreatedDate', 'desc')->get();
-        return response()->json([
-            'products' => $products
-        ]);
+        return new ProductCollection($products);
     }
 
     public function getAllBrand()

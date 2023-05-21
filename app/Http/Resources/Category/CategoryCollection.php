@@ -18,6 +18,7 @@ class CategoryCollection extends ResourceCollection
                     'Details'=>$category->Details,
                     'Active'=>$category->Active,
                     'CategoryImage'=>$category->CategoryImage,
+                    'CategoryImageMobile'=>url('/').'/images/category/'.$category->CategoryImage,
                 ];
             })
         ];

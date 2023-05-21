@@ -57,6 +57,8 @@ class CategoryController extends Controller
                     $file_old = $destinationPath . $category->CategoryImage;
                     if (file_exists($file_old)) {
                         unlink($file_old);
+
+
                     }
                 }
                 $name = uniqid() . time() . '.' . explode('/', explode(':', substr($CategoryImage, 0, strpos($CategoryImage, ';')))[1])[1];
