@@ -5,35 +5,23 @@ namespace App\Http\Controllers\Api\Mobile;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Banner\BannerCollection;
 use App\Http\Resources\Category\CategoryCollection;
-use App\Http\Resources\Generator\GeneratorBasicInfoCollection;
-use App\Http\Resources\GeneratorInfo\GeneratorInfoCollection;
 use App\Http\Resources\Portfolio\PortfolioCollection;
-use App\Http\Resources\ProblemSection\ProblemSectionCollection;
 use App\Http\Resources\Product\ProductCollection;
-use App\Http\Resources\Question\QuestionCollection;
-use App\Http\Resources\ServiceType\ServiceTypeCollection;
-use App\Http\Resources\SparePartsCollection;
-use App\Http\Resources\Technician\TechnicianCollection;
 use App\Models\Banner;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Customer;
 use App\Models\District;
 use App\Models\Doctor;
-use App\Models\GeneratorBasicInfo;
-use App\Models\GeneratorInfo;
 use App\Models\Menu;
 use App\Models\MOInfo;
 use App\Models\Portfolio;
-use App\Models\ProblemSection;
 use App\Models\Product;
-use App\Models\Question;
 use App\Models\Role;
-use App\Models\ServiceType;
 use App\Models\Shop;
-use App\Models\SpareParts;
 use App\Models\Thana;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 
 class CommonController extends Controller
@@ -50,10 +38,11 @@ class CommonController extends Controller
         return new PortfolioCollection($portfolios);
     }
 
-    public function getAllCategory()
+    public function getAllCategory(Request $request)
     {
-        $categories = Category::orderBy('CreatedDate', 'desc')->get();
-       return new CategoryCollection($categories);
+        $PortfolioID = $request->PortfolioID;
+        $categories = Category::where('PortfolioID',$PortfolioID)->orderBy('CreatedDate', 'desc')->get();
+        return new CategoryCollection($categories);
     }
 
     public function getAllDoctor()
@@ -64,9 +53,10 @@ class CommonController extends Controller
         ]);
     }
 
-    public function getAllProduct()
+    public function getAllProduct(Request $request)
     {
-        $products = Product::orderBy('CreatedDate', 'desc')->get();
+        $CategoryID = $request->CategoryID;
+        $products = Product::where('CategoryID',$CategoryID)->orderBy('CreatedDate', 'desc')->get();
         return new ProductCollection($products);
     }
 
