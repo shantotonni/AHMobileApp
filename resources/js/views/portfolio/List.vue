@@ -42,7 +42,7 @@
                                             <th class="text-center" scope="row">{{ ++i }}</th>
                                             <td class="text-center">{{ portfolio.PortfolioName }}</td>
                                             <td class="text-center">
-                                                {{ portfolio.PortfolioImage }}
+                                                <img v-if="portfolio.PortfolioImage" height="40" width="40" :src="tableImage(portfolio.PortfolioImage)" alt="">
                                             </td>
                                             <td class="text-center">
                                                 <span class="badge badge-success" v-if="portfolio.Active == 'Y'">Active</span>
@@ -199,7 +199,7 @@ export default {
             this.form.busy = true;
             this.form.put("/api/portfolio/" + this.form.ID).then(response => {
                 $("#portfolioModal").modal("hide");
-                //this.getAllPortfolio();
+                this.getAllPortfolio();
             }).catch(e => {
                 this.isLoading = false;
             });
@@ -219,6 +219,9 @@ export default {
             }else{
                 return window.location.origin + "/AHMobileApp/images/portfolio/" + this.form.PortfolioImage;
             }
+        },
+        tableImage(image){
+            return window.location.origin + "/AHMobileApp/images/portfolio/"+ image;
         },
         destroy(id){
             Swal.fire({

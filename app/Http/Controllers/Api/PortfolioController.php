@@ -39,21 +39,14 @@ class PortfolioController extends Controller
     {
         $portfolio = Portfolio::where('ID', $id)->first();
         $PortfolioImage = $request->PortfolioImage;
-        if ($PortfolioImage != $portfolio->PortfolioImage) {
-            if ($request->has('PortfolioImage')) {
-                //code for remove old file
-                if ($portfolio->PortfolioImage != '' && $portfolio->PortfolioImage != null) {
-                    $destinationPath = 'images/portfolio/';
-                    $file_old = $destinationPath . $portfolio->PortfolioImage;
-                    if (file_exists($file_old)) {
-                        unlink($file_old);
-                    }
-                }
-                $name = uniqid() . time() . '.' . explode('/', explode(':', substr($PortfolioImage, 0, strpos($PortfolioImage, ';')))[1])[1];
-                Image::make($PortfolioImage)->resize(250, 300)->save(public_path('images/portfolio/') . $name);
-            } else {
-                $name = $portfolio->PortfolioImage;
+        if ($PortfolioImage) {
+            $destinationPath = 'images/portfolio/';
+            $file_old = public_path('/').$destinationPath . $portfolio->PortfolioImage;
+            if (file_exists($file_old)) {
+                unlink($file_old);
             }
+            $name = uniqid() . time() . '.' . explode('/', explode(':', substr($PortfolioImage, 0, strpos($PortfolioImage, ';')))[1])[1];
+            Image::make($PortfolioImage)->save(public_path('images/portfolio/') . $name);
         } else {
             $name = $portfolio->PortfolioImage;
         }

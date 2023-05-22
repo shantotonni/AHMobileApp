@@ -51,7 +51,7 @@
                                                 {{ product.ProductAttribute }}
                                             </td>
                                             <td class="text-center">
-                                                {{ product.ProductImage }}
+                                                <img v-if="product.ProductImage" height="40" width="40" :src="tableImage(product.ProductImage)" alt="">
                                             </td>
                                             <td class="text-center">
                                                 {{ product.Details }}
@@ -254,6 +254,7 @@ export default {
             this.editMode = true;
             this.form.reset();
             this.form.clear();
+            this.form.ProductImage = '';
             this.form.fill(product);
             this.getAllPortfolio();
             this.getAllCategory();
@@ -262,7 +263,6 @@ export default {
         update(){
             this.form.busy = true;
             this.form.put("/api/product/" + this.form.ID).then(response => {
-                console.log(response)
                 $("#productModal").modal("hide");
                 this.getAllCategory();
                 this.getAllProduct();
@@ -299,6 +299,9 @@ export default {
             }).catch((error) => {
 
             })
+        },
+        tableImage(image){
+            return window.location.origin + "/AHMobileApp/images/product/"+ image;
         },
         destroy(id){
             Swal.fire({

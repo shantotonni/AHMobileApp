@@ -54,7 +54,7 @@ class ProductController extends Controller
                 //code for remove old file
                 if ($product->ProductImage != '' && $product->ProductImage != null) {
                     $destinationPath = 'images/product/';
-                    $file_old = $destinationPath . $product->ProductImage;
+                    $file_old = public_path('/').$destinationPath . $product->ProductImage;
                     if (file_exists($file_old)) {
                         unlink($file_old);
                     }

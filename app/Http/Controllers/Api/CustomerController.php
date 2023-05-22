@@ -51,7 +51,7 @@ class CustomerController extends Controller
             //code for remove old file
             if ($customer->image != '' && $customer->image != null) {
                 $destinationPath = 'images/customer/';
-                $file_old = $destinationPath . $customer->image;
+                $file_old = public_path('/').$destinationPath . $customer->image;
                 if (file_exists($file_old)) {
                     unlink($file_old);
                 }

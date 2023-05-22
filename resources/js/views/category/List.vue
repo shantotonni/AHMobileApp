@@ -45,14 +45,11 @@
                                         <tbody>
                                         <tr v-for="(category, i) in categories" :key="category.ID" v-if="categories.length">
                                             <td class="text-center" scope="row">{{ ++i }}</td>
-
                                             <td class="text-center">{{ category.CategoryName }}</td>
-
                                             <td class="text-center">
-                                                {{ category.CategoryImage }}
+                                                <img v-if="category.CategoryImage" height="40" width="40" :src="tableImage(category.CategoryImage)" alt="">
                                             </td>
                                             <td class="text-center">{{ category.Details }}</td>
-
                                             <td class="text-center">
                                                 <span class="badge badge-success"
                                                       v-if="category.Active == 'Y'">Active</span>
@@ -285,6 +282,9 @@ export default {
             }).catch((error) => {
 
             })
+        },
+        tableImage(image){
+            return window.location.origin + "/AHMobileApp/images/category/"+ image;
         },
         destroy(id) {
             Swal.fire({
