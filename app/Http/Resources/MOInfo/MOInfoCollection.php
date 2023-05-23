@@ -19,8 +19,8 @@ class MOInfoCollection extends ResourceCollection
                     'Address'=>$moinfo->Address,
                     'District' => $moinfo->District,
                     'DistrictName'=>isset($moinfo->district) ? $moinfo->district->DistrictName: '',
-                    'Thana' => $moinfo->Thana,
-                    'ThanaName' => isset($moinfo->thana) ? $moinfo->thana->ThanaName:'',
+                    'Upazila' => $moinfo->Upazila,
+                    'UpazilaName' => isset($moinfo->upazila) ? $moinfo->upazila->UpazilaName:'',
 
                 ];
             })

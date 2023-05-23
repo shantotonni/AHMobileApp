@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Api\Mobile;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Banner\BannerCollection;
 use App\Http\Resources\Category\CategoryCollection;
+use App\Http\Resources\District\DistrictCollection;
 use App\Http\Resources\Portfolio\PortfolioCollection;
 use App\Http\Resources\Product\ProductCollection;
+use App\Http\Resources\Upazila\UpazilaCollection;
 use App\Models\Banner;
 use App\Models\Brand;
 use App\Models\Category;
@@ -20,6 +22,7 @@ use App\Models\Product;
 use App\Models\Role;
 use App\Models\Shop;
 use App\Models\Thana;
+use App\Models\Upazila;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -40,9 +43,11 @@ class CommonController extends Controller
 
     public function getAllCategory(Request $request)
     {
-        $PortfolioID = $request->PortfolioID;
-        $categories = Category::where('PortfolioID',$PortfolioID)->orderBy('CreatedDate', 'desc')->get();
+        $categories = Category::orderBy('CreatedDate', 'desc')->get();
         return new CategoryCollection($categories);
+//        $PortfolioID = $request->PortfolioID;
+//        $categories = Category::where('PortfolioID',$PortfolioID)->orderBy('CreatedDate', 'desc')->get();
+//        return new CategoryCollection($categories);
     }
 
     public function getAllDoctor()
@@ -55,8 +60,7 @@ class CommonController extends Controller
 
     public function getAllProduct(Request $request)
     {
-        $CategoryID = $request->CategoryID;
-        $products = Product::where('CategoryID',$CategoryID)->orderBy('CreatedDate', 'desc')->get();
+        $products = Product::orderBy('CreatedDate', 'desc')->get();
         return new ProductCollection($products);
     }
 
@@ -119,17 +123,13 @@ class CommonController extends Controller
     public function getAllDistrict()
     {
         $districts = District::orderBy('CreatedDate', 'desc')->get();
-        return response()->json([
-            'districts' => $districts
-        ]);
+        return new DistrictCollection($districts);
     }
 
-    public function getAllThana()
+    public function getAllUpazila()
     {
-        $thanas = Thana::orderBy('CreatedDate', 'desc')->get();
-        return response()->json([
-            'thanas' => $thanas
-        ]);
+        $upazilas = Upazila::orderBy('CreatedDate', 'desc')->get();
+        return new UpazilaCollection($upazilas);
     }
 
 }

@@ -3,7 +3,6 @@
 use App\Http\Controllers\Api\AdminDashboardController;
 use App\Http\Controllers\Api\BannerController;
 use App\Http\Controllers\Api\BrandController;
-
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\DashboardController;
@@ -18,7 +17,7 @@ use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\SettingController;
 use App\Http\Controllers\Api\ShopController;
-use App\Http\Controllers\Api\ThanaController;
+use App\Http\Controllers\Api\UpazilaController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerAuthController;
@@ -71,9 +70,9 @@ Route::group(['middleware' => 'jwtauth:api'], function () {
     Route::get('search/district/{query}', [DistrictController::class, 'search']);
     Route::get('get-all-district', [DistrictController::class, 'getAllDistrict']);
     //district route
-    Route::apiResource('thana', ThanaController::class);
-    Route::get('search/thana/{query}', [ThanaController::class, 'search']);
-    Route::get('get-all-thana', [ThanaController::class, 'getAllThana']);
+    Route::apiResource('upazila', UpazilaController::class);
+    Route::get('search/upazila/{query}', [UpazilaController::class, 'search']);
+    Route::get('get-all-upazila', [UpazilaController::class, 'getAllUpazila']);
 
 
     //menu resource route
@@ -106,6 +105,8 @@ Route::group(['middleware' => 'jwtauth:api'], function () {
     Route::get('get-all-user', [CommonController::class, 'getAllUser']);
     Route::get('get-all-customer', [CommonController::class, 'getAllCustomer']);
     Route::get('get-all-role', [CommonController::class, 'getAllRole']);
+    Route::get('get-all-district', [CommonController::class, 'getAllDistrict']);
+    Route::get('get-all-upazila', [CommonController::class, 'getAllUpazila']);
 
     //get dashboard data route
     Route::get('get-all-dashboard-data', [DashboardController::class, 'getDashboardAllDara']);

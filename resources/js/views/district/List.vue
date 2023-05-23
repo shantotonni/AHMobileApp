@@ -33,7 +33,6 @@
                                         <thead>
                                         <tr>
                                             <th class="text-center">Id</th>
-                                            <th class="text-center"> DistrictCode</th>
                                             <th class="text-center"> DistrictName</th>
                                             <th class="text-center">DistrictNameBn</th>
                                             <th class="text-center">Action</th>
@@ -43,7 +42,6 @@
                                         <tr v-for="(district, i) in districts" :key="district.ID" v-if="districts.length">
                                             <td class="text-center" scope="row">{{ ++i }}</td>
                                             <td class="text-center">{{ district.DistrictName }}</td>
-                                            <td class="text-center">{{ district.DistrictNameBn }}</td>
                                             <td class="text-center">{{ district.DistrictNameBn }}</td>
                                             <td class="text-center">
                                                 <button @click="edit(district)" class="btn btn-success btn-sm"><i
@@ -151,7 +149,6 @@ export default {
             isLoading: false,
             form: new Form({
                 ID: '',
-                DistrictCode: '',
                 DistrictName: '',
                 DistrictNameBn: ''
             }),

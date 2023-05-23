@@ -18,7 +18,6 @@ class DistrictCollection extends ResourceCollection
             'data' => $this->collection->transform(function ($district) {
                 return [
                     'ID' => $district->ID,
-                    'DistrictCode' => $district->DistrictCode,
                     'DistrictName' => $district->DistrictName,
                     'DistrictNameBn' => $district->DistrictNameBn
                 ];

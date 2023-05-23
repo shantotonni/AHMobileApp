@@ -38,7 +38,7 @@
                                             <th class="text-center">ShopOwner Mobile No</th>
                                             <th class="text-center">Shop Address</th>
                                             <th class="text-center">District</th>
-                                            <th class="text-center">Thana</th>
+                                            <th class="text-center">Upazila</th>
                                             <th class="text-center">Action</th>
                                         </tr>
                                         </thead>
@@ -50,7 +50,7 @@
                                             <td class="text-center">{{ shop.ShopOwnerMobile }}</td>
                                             <td class="text-center">{{ shop.ShopAddress}}</td>
                                             <td class="text-center">{{ shop.DistrictName }}</td>
-                                            <td class="text-center">{{ shop.ThanaName }}</td>
+                                            <td class="text-center">{{ shop.UpazilaName }}</td>
                                             <td class="text-center">
                                                 <button @click="edit(shop)" class="btn btn-success btn-sm"><i
                                                     class="far fa-edit"></i></button>

@@ -102,7 +102,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Portfolio</label>
-                                            <select name="PortfolioID" id="PortfolioID" class="form-control"
+                                            <select name="Portfolio" id="PortfolioID" class="form-control"
                                                     v-model="form.PortfolioID"
                                                     :class="{ 'is-invalid': form.errors.has('PortfolioID') }">
                                                 <option disabled value="">Select Portfolio</option>

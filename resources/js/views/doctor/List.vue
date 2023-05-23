@@ -41,7 +41,7 @@
                                             <th class="text-center">Address one</th>
                                             <th class="text-center">Address two</th>
                                             <th class="text-center">District</th>
-                                            <th class="text-center">Thana</th>
+                                            <th class="text-center">Upazila</th>
                                             <th class="text-center">Action</th>
                                         </tr>
                                         </thead>
@@ -56,7 +56,7 @@
                                             <td class="text-center">{{ doctor.AddressOne }}</td>
                                             <td class="text-center" >{{ doctor.AddressTwo }}</td>
                                             <td class="text-center" scope="row">{{ doctor.DistrictName }}</td>
-                                            <td class="text-center" scope="row">{{ doctor.ThanaName }}</td>
+                                            <td class="text-center" scope="row">{{ doctor.UpazilaName }}</td>
                                             <td class="text-center">
                                                 <button @click="edit(doctor)" class="btn btn-success btn-sm"><i
                                                     class="far fa-edit"></i></button>
@@ -187,17 +187,17 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Thana</label>
-                                            <select name="Thana" id="Thana" class="form-control"
-                                                    v-model="form.Thana"
-                                                    :class="{ 'is-invalid': form.errors.has('Thana') }">
-                                                <option disabled value="">Select Thana</option>
-                                                <option :value="thana.ID" v-for="(thana , index) in thanas"
-                                                        :key="index">{{ thana.ThanaName }}
+                                            <label>Upazila</label>
+                                            <select name="text" id="upazila" class="form-control"
+                                                    v-model="form.Upazila"
+                                                    :class="{ 'is-invalid': form.errors.has('Upazila') }">
+                                                <option disabled value="">Select Upazila</option>
+                                                <option :value="upazila.ID" v-for="(upazila , index) in upazilas"
+                                                        :key="index">{{ upazila.UpazilaName }}
                                                 </option>
                                             </select>
-                                            <div class="error" v-if="form.errors.has('Thana')"
-                                                 v-html="form.errors.get('Thana')"/>
+                                            <div class="error" v-if="form.errors.has('Upazila')"
+                                                 v-html="form.errors.get('Upazila')"/>
                                         </div>
                                     </div>
 
@@ -227,7 +227,7 @@ export default {
         return {
             doctors: [],
             districts: [],
-            thanas:[],
+            upazilas:[],
             pagination: {
                 current_page: 1
             },
@@ -244,7 +244,7 @@ export default {
                 AddressOne: '',
                 AddressTwo: '',
                 District: '',
-                Thana: '',
+                Upazila: '',
             }),
         }
     },
@@ -294,7 +294,7 @@ export default {
             this.form.clear();
             $("#doctorModal").modal("show");
             this.getAllDistrict();
-            this.getAllThana();
+            this.getAllUpazila();
         },
         store() {
             this.form.busy = true;
@@ -311,7 +311,7 @@ export default {
             this.form.clear();
             this.form.fill(doctor);
             this.getAllDistrict();
-            this.getAllThana();
+            this.getAllUpazila();
             $("#doctorModal").modal("show");
         },
         update() {
@@ -330,9 +330,9 @@ export default {
 
             })
         },
-        getAllThana() {
-            axios.get('/api/get-all-thana').then((response) => {
-                this.thanas = response.data.thanas;
+        getAllUpazila() {
+            axios.get('/api/get-all-upazila').then((response) => {
+                this.upazilas = response.data.upazilas;
             }).catch((error) => {
 
             })

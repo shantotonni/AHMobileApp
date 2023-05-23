@@ -20,7 +20,6 @@ class DistrictController extends Controller
     public function store(DistrictStoreRequest $request)
     {
         $district = new District();
-        $district->DistrictCode = $request->DistrictCode;
         $district->DistrictName = $request->DistrictName;
         $district->DistrictNameBn = $request->DistrictNameBn;
         $district->save();
@@ -30,7 +29,6 @@ class DistrictController extends Controller
     public function update(DistrictUpdateRequest $request, $id)
     {
         $district = District::where('ID', $id)->first();
-        $district->DistrictCode = $request->DistrictCode;
         $district->DistrictName = $request->DistrictName;
         $district->DistrictNameBn = $request->DistrictNameBn;
         $district->save();
