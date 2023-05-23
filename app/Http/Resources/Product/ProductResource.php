@@ -6,14 +6,19 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProductResource extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
-     */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'ID' => $this->ID,
+            'ProductName' => $this->ProductName,
+            'ProductAttribute' => $this->ProductAttribute,
+            'Details' => $this->Details,
+            'ProductImage' => $this->ProductImage,
+            'PortfolioID'=>$this->PortfolioID,
+            'PortfolioName'=>isset($this->portfolio) ? $this->portfolio->PortfolioName: '',
+            'CategoryID'=>$this->CategoryID,
+            'CategoryName'=>isset($this->category) ? $this->category->CategoryName: '',
+            'ProductImageMobile'=>url('/').'/images/product/'.$this->ProductImage,
+        ];
     }
 }
