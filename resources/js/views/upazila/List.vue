@@ -33,8 +33,8 @@
                                         <thead>
                                         <tr>
                                             <th class="text-center">Id</th>
-                                            <th class="text-center"> District Name</th>
-                                            <th class="text-center"> Upazila Name</th>
+                                            <th class="text-center">District Id</th>
+                                            <th class="text-center">Upazila Name</th>
                                             <th class="text-center">Upazila NameBn</th>
                                             <th class="text-center">Code</th>
                                             <th class="text-center">Action</th>
@@ -43,7 +43,7 @@
                                         <tbody>
                                         <tr v-for="(upazila, i) in upazilas" :key="upazila.ID" v-if="upazilas.length">
                                             <td class="text-center" scope="row">{{ ++i }}</td>
-                                            <td class="text-center">{{ upazila.DistrictName}}</td>
+                                            <td class="text-center">{{ upazila.DistrictId}}</td>
                                             <td class="text-center">{{ upazila.UpazilaName }}</td>
                                             <td class="text-center">{{ upazila.UpazilaNameBn }}</td>
                                             <td class="text-center">{{ upazila.Code }}</td>
@@ -92,17 +92,12 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>District</label>
-                                            <select name="District" id="District" class="form-control"
-                                                    v-model="form.District"
-                                                    :class="{ 'is-invalid': form.errors.has('District') }">
-                                                <option disabled value="">Select District</option>
-                                                <option :value="district.ID" v-for="(district , index) in districts"
-                                                        :key="index">{{ district.DistrictName }}
-                                                </option>
-                                            </select>
-                                            <div class="error" v-if="form.errors.has('District')"
-                                                 v-html="form.errors.get('District')"/>
+                                            <label>District ID </label>
+                                            <input type="text" name="number" v-model="form.DistrictId"
+                                                   class="form-control"
+                                                   :class="{ 'is-invalid': form.errors.has('DistrictId') }">
+                                            <div class="error" v-if="form.errors.has('DistrictId')"
+                                                 v-html="form.errors.get('DistrictId')"/>
                                         </div>
                                     </div>
                                     <div class="col-md-6">

@@ -23,6 +23,8 @@ class DoctorCollection extends ResourceCollection
                     'Mobile'=>$doctor->Mobile,
                     'Email'=>$doctor->Email,
                     'Details' => $doctor->Details,
+                    'DoctorImage'=>$doctor->DoctorImage,
+                    'DoctorImageMobile'=>url('/').'/images/doctor/'.$doctor->DoctorImage,
                     'AddressOne' => $doctor->AddressOne,
                     'AddressTwo' => $doctor->AddressTwo,
                     'District' => $doctor->District,

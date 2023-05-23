@@ -60,6 +60,10 @@ class CommonController extends Controller
 
     public function getAllProduct(Request $request)
     {
+//        $CategoryID = $request->CategoryID;
+//        $products = Product::where('CategoryID',$CategoryID)->orderBy('CreatedDate', 'desc')->get();
+//        return new ProductCollection($products);
+
         $products = Product::orderBy('CreatedDate', 'desc')->get();
         return new ProductCollection($products);
     }

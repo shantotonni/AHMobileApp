@@ -150,17 +150,17 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Thana</label>
-                                            <select name="Thana" id="Thana" class="form-control"
-                                                    v-model="form.Thana"
-                                                    :class="{ 'is-invalid': form.errors.has('Thana') }">
-                                                <option disabled value="">Select Thana</option>
-                                                <option :value="thana.ID" v-for="(thana , index) in thanas"
-                                                        :key="index">{{ thana.ThanaName }}
+                                            <label>Upazila</label>
+                                            <select name="Upazila" id="Upazila" class="form-control"
+                                                    v-model="form.Upazila"
+                                                    :class="{ 'is-invalid': form.errors.has('Upazila') }">
+                                                <option disabled value="">Select Upazila</option>
+                                                <option :value="upazila.ID" v-for="(upazila , index) in upazilas"
+                                                        :key="index">{{ upazila.UpazilaName }}
                                                 </option>
                                             </select>
-                                            <div class="error" v-if="form.errors.has('Thana')"
-                                                 v-html="form.errors.get('Thana')"/>
+                                            <div class="error" v-if="form.errors.has('Upazila')"
+                                                 v-html="form.errors.get('Upazila')"/>
                                         </div>
                                     </div>
                                 </div>
@@ -196,12 +196,12 @@ export default {
             isLoading: false,
             form: new Form({
                 ID: '',
-               ShopName: '',
-               ShopOwnerName: '',
+                ShopName: '',
+                ShopOwnerName: '',
                 ShopOwnerMobile: '',
                 ShopAddress: '',
                 District: '',
-                Thana: '',
+                upazila: '',
             }),
         }
     },
@@ -251,7 +251,7 @@ export default {
             this.form.clear();
             $("#shopModal").modal("show");
             this.getAllDistrict();
-            this.getAllThana();
+            this.getAllUpazila();
         },
         store() {
             this.form.busy = true;
@@ -269,7 +269,7 @@ export default {
             this.form.fill(shop);
             $("#shopModal").modal("show");
             this.getAllDistrict();
-            this.getAllThana();
+            this.getAllUpazila();
         },
         update() {
             this.form.busy = true;
@@ -287,9 +287,9 @@ export default {
 
             })
         },
-        getAllThana() {
-            axios.get('/api/get-all-thana').then((response) => {
-                this.thanas = response.data.thanas;
+        getAllUpazila() {
+            axios.get('/api/get-all-upazila').then((response) => {
+                this.upazilas = response.data.upazilas;
             }).catch((error) => {
 
             })

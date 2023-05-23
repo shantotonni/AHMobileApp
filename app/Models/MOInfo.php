@@ -17,7 +17,7 @@ class MOInfo extends Model
     public function district(){
         return $this->belongsTo(District::class,'District','ID');
     }
-    public function thana(){
-        return $this->belongsTo(Thana::class,'Thana','ID');
+    public function upazila(){
+        return $this->belongsTo(Upazila::class,'UpazilaId','ID');
     }
 }

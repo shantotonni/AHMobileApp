@@ -18,6 +18,6 @@ class Shop extends Model
         return $this->belongsTo(District::class,'District','ID');
     }
     public function upazila(){
-        return $this->belongsTo(Upazila::class,'Upazila','ID');
+        return $this->belongsTo(Upazila::class,'UpazilaId','ID');
     }
 }

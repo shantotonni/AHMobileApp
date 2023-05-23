@@ -38,6 +38,7 @@
                                             <th class="text-center">Mobile No</th>
                                             <th class="text-center">Email</th>
                                             <th class="text-center">Details</th>
+                                            <th class="text-center">Image</th>
                                             <th class="text-center">Address one</th>
                                             <th class="text-center">Address two</th>
                                             <th class="text-center">District</th>
@@ -53,6 +54,9 @@
                                             <td class="text-center">{{ doctor.Mobile }}</td>
                                             <td class="text-center">{{ doctor.Email }}</td>
                                             <td class="text-center">{{ doctor.Details }}</td>
+                                            <td class="text-center">
+                                                <img v-if="doctor.DoctorImage" height="40" width="40" :src="tableImage(Doctor.DoctorImage)" alt="">
+                                            </td>
                                             <td class="text-center">{{ doctor.AddressOne }}</td>
                                             <td class="text-center" >{{ doctor.AddressTwo }}</td>
                                             <td class="text-center" scope="row">{{ doctor.DistrictName }}</td>
@@ -100,108 +104,122 @@
                         <div class="modal-body">
                             <div class="col-md-12">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Doctor Name</label>
-                                            <input type="text" name="Name" v-model="form.DoctorName"
-                                                   class="form-control"
-                                                   :class="{ 'is-invalid': form.errors.has('DoctorName') }">
-                                            <div class="error" v-if="form.errors.has('DoctorName')"
-                                                 v-html="form.errors.get('DoctorName')"/>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Designation</label>
-                                            <input type="text" name="Designation" v-model="form.Designation"
-                                                   class="form-control"
-                                                   :class="{ 'is-invalid': form.errors.has('Designation') }">
-                                            <div class="error" v-if="form.errors.has('Designation')"
-                                                 v-html="form.errors.get('Designation')"/>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Mobile</label>
-                                            <input type="number" name="Mobile" v-model="form.Mobile"
-                                                   class="form-control"
-                                                   :class="{ 'is-invalid': form.errors.has('Mobile') }">
-                                            <div class="error" v-if="form.errors.has('Mobile')"
-                                                 v-html="form.errors.get('Mobile')"/>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Email</label>
-                                            <input type="email" name="Email" v-model="form.Email"
-                                                   class="form-control"
-                                                   :class="{ 'is-invalid': form.errors.has('Email') }">
-                                            <div class="error" v-if="form.errors.has('Email')"
-                                                 v-html="form.errors.get('Email')"/>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
+                                       <div class="col-md-6">
+                                           <div class="form-group">
+                                               <label>Doctor Name</label>
+                                               <input type="text" name="Name" v-model="form.DoctorName"
+                                                      class="form-control"
+                                                      :class="{ 'is-invalid': form.errors.has('DoctorName') }">
+                                               <div class="error" v-if="form.errors.has('DoctorName')"
+                                                    v-html="form.errors.get('DoctorName')"/>
+                                           </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                           <div class="form-group">
+                                               <label>Designation</label>
+                                               <input type="text" name="Designation" v-model="form.Designation"
+                                                      class="form-control"
+                                                      :class="{ 'is-invalid': form.errors.has('Designation') }">
+                                               <div class="error" v-if="form.errors.has('Designation')"
+                                                    v-html="form.errors.get('Designation')"/>
+                                           </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                           <div class="form-group">
+                                               <label>Mobile</label>
+                                               <input type="number" name="Mobile" v-model="form.Mobile"
+                                                      class="form-control"
+                                                      :class="{ 'is-invalid': form.errors.has('Mobile') }">
+                                               <div class="error" v-if="form.errors.has('Mobile')"
+                                                    v-html="form.errors.get('Mobile')"/>
+                                           </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                           <div class="form-group">
+                                               <label>Email</label>
+                                               <input type="email" name="Email" v-model="form.Email"
+                                                      class="form-control"
+                                                      :class="{ 'is-invalid': form.errors.has('Email') }">
+                                               <div class="error" v-if="form.errors.has('Email')"
+                                                    v-html="form.errors.get('Email')"/>
+                                           </div>
+                                       </div>
+
+                                       <div class="col-md-6">
+                                           <div class="form-group">
+                                               <label>Image</label>
+                                               <input @change="changeImage($event)" type="file" name="DoctorImage" class="form-control" :class="{ 'is-invalid': form.errors.has('DoctorImage') }">
+                                               <div class="error" v-if="form.errors.has('DoctorImage')" v-html="form.errors.get('DoctorImage')" />
+                                               <img v-if="form.DoctorImage" :src="showImage(form.DoctorImage)" alt="" height="40px" width="40px">
+                                           </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                           <div class="form-group">
+                                               <label>Address One</label>
+                                               <input type="text" name="Name" v-model="form.AddressOne"
+                                                      class="form-control"
+                                                      :class="{ 'is-invalid': form.errors.has('AddressOne') }">
+                                               <div class="error" v-if="form.errors.has('AddressOne')"
+                                                    v-html="form.errors.get('AddressOne')"/>
+                                           </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                           <div class="form-group">
+                                               <label>Address Two</label>
+                                               <input type="text" name="AddressTwo" v-model="form.AddressTwo"
+                                                      class="form-control"
+                                                      :class="{ 'is-invalid': form.errors.has('AddressTwo') }">
+                                               <div class="error" v-if="form.errors.has('AddressTwo')"
+                                                    v-html="form.errors.get('AddressTwo')"/>
+                                           </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                           <div class="form-group">
+                                               <label>District</label>
+                                               <select name="District" id="District" class="form-control"
+                                                       v-model="form.District"
+                                                       :class="{ 'is-invalid': form.errors.has('District') }">
+                                                   <option disabled value="">Select District</option>
+                                                   <option :value="district.ID" v-for="(district , index) in districts"
+                                                           :key="index">{{ district.DistrictName }}
+                                                   </option>
+                                               </select>
+                                               <div class="error" v-if="form.errors.has('District')"
+                                                    v-html="form.errors.get('District')"/>
+                                           </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                           <div class="form-group">
+                                               <label>Upazila</label>
+                                               <select name="text" id="upazila" class="form-control"
+                                                       v-model="form.Upazila"
+                                                       :class="{ 'is-invalid': form.errors.has('Upazila') }">
+                                                   <option disabled value="">Select Upazila</option>
+                                                   <option :value="upazila.ID" v-for="(upazila , index) in upazilas"
+                                                           :key="index">{{ upazila.UpazilaName }}
+                                                   </option>
+                                               </select>
+                                               <div class="error" v-if="form.errors.has('Upazila')"
+                                                    v-html="form.errors.get('Upazila')"/>
+                                           </div>
+                                       </div>
+
+
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Details</label>
-                                            <input type="text" name="Details" v-model="form.Details"
-                                                   class="form-control"
-                                                   :class="{ 'is-invalid': form.errors.has('Details') }">
+                                            <vue-editor  name="Details" v-model="form.Details"
+                                                         :class="{ 'is-invalid': form.errors.has('Details') }"></vue-editor>
+
                                             <div class="error" v-if="form.errors.has('Details')"
                                                  v-html="form.errors.get('Details')"/>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Address One</label>
-                                            <input type="text" name="Name" v-model="form.AddressOne"
-                                                   class="form-control"
-                                                   :class="{ 'is-invalid': form.errors.has('AddressOne') }">
-                                            <div class="error" v-if="form.errors.has('AddressOne')"
-                                                 v-html="form.errors.get('AddressOne')"/>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Address Two</label>
-                                            <input type="text" name="AddressTwo" v-model="form.AddressTwo"
-                                                   class="form-control"
-                                                   :class="{ 'is-invalid': form.errors.has('AddressTwo') }">
-                                            <div class="error" v-if="form.errors.has('AddressTwo')"
-                                                 v-html="form.errors.get('AddressTwo')"/>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>District</label>
-                                            <select name="District" id="District" class="form-control"
-                                                    v-model="form.District"
-                                                    :class="{ 'is-invalid': form.errors.has('District') }">
-                                                <option disabled value="">Select District</option>
-                                                <option :value="district.ID" v-for="(district , index) in districts"
-                                                        :key="index">{{ district.DistrictName }}
-                                                </option>
-                                            </select>
-                                            <div class="error" v-if="form.errors.has('District')"
-                                                 v-html="form.errors.get('District')"/>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Upazila</label>
-                                            <select name="text" id="upazila" class="form-control"
-                                                    v-model="form.Upazila"
-                                                    :class="{ 'is-invalid': form.errors.has('Upazila') }">
-                                                <option disabled value="">Select Upazila</option>
-                                                <option :value="upazila.ID" v-for="(upazila , index) in upazilas"
-                                                        :key="index">{{ upazila.UpazilaName }}
-                                                </option>
-                                            </select>
-                                            <div class="error" v-if="form.errors.has('Upazila')"
-                                                 v-html="form.errors.get('Upazila')"/>
-                                        </div>
-                                    </div>
-
                                 </div>
+
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -220,8 +238,12 @@
 </template>
 
 <script>
+import {VueEditor} from "vue2-editor";
 
 export default {
+    components: {
+        VueEditor
+    },
     name: "List",
     data() {
         return {
@@ -241,6 +263,7 @@ export default {
                 Mobile: '',
                 Email: '',
                 Details: '',
+                DoctorImage:'',
                 AddressOne: '',
                 AddressTwo: '',
                 District: '',
@@ -322,6 +345,25 @@ export default {
             }).catch(e => {
                 this.isLoading = false;
             });
+        },
+        changeImage(event){
+            let file = event.target.files[0];
+            let reader = new FileReader();
+            reader.onload = event => {
+                this.form.DoctorImage = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        },
+        showImage(){
+            let img = this.form.DoctorImage;
+            if (img.length > 100){
+                return this.form.DoctorImage;
+            }else{
+                return window.location.origin + "/AHMobileApp/images/doctor/" + this.form.DoctorImage;
+            }
+        },
+        tableImage(image){
+            return window.location.origin + "/AHMobileApp/images/doctor/"+ image;
         },
         getAllDistrict() {
             axios.get('/api/get-all-district').then((response) => {

@@ -150,12 +150,12 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Upazila</label>
-                                            <select name="text" id="Upazila" class="form-control"
+                                            <select name="Upazila" id="Upazila" class="form-control"
                                                     v-model="form.Upazila"
                                                     :class="{ 'is-invalid': form.errors.has('Upazila') }">
                                                 <option disabled value="">Select Upazila</option>
                                                 <option :value="upazila.ID" v-for="(upazila , index) in upazilas"
-                                                        :key="index">{{ thana.UpazilaName }}
+                                                        :key="index">{{ upazila.UpazilaName }}
                                                 </option>
                                             </select>
                                             <div class="error" v-if="form.errors.has('Upazila')"
@@ -253,7 +253,7 @@ export default {
             this.form.clear();
             $("#moinfoModal").modal("show");
             this.getAllDistrict();
-            this.getAllUpazila() ;
+            this.getAllUpazila();
         },
         store() {
             this.form.busy = true;
@@ -271,7 +271,7 @@ export default {
             this.form.fill(moinfo);
             $("#moinfoModal").modal("show");
             this.getAllDistrict();
-            this.getAllUpazila() ;
+            this.getAllUpazila();
         },
         update() {
             this.form.busy = true;
@@ -291,7 +291,7 @@ export default {
         },
         getAllUpazila() {
             axios.get('/api/get-all-upazila').then((response) => {
-                this.thanas = response.data.upazilas;
+                this.upazilas = response.data.upazilas;
             }).catch((error) => {
 
             })
