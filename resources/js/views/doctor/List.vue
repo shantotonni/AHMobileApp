@@ -173,7 +173,7 @@
                                        <div class="col-md-6">
                                            <div class="form-group">
                                                <label>District</label>
-                                               <select name="DistrictID" id="DistrictID" class="form-control" v-model="form.DistrictID" :class="{ 'is-invalid': form.errors.has('DistrictID') }" @change="getAllUpazila">
+                                               <select name="DistrictID" id="DistrictID" class="form-control" v-model="form.DistrictID" :class="{ 'is-invalid': form.errors.has('DistrictID') }" @change="getAllUpazilaByDistrict">
                                                    <option disabled value="">Select District</option>
                                                    <option :value="district.ID" v-for="(district , index) in districts" :key="index">{{ district.DistrictName }}
                                                    </option>
@@ -310,15 +310,12 @@ export default {
             this.form.clear();
             $("#doctorModal").modal("show");
             this.getAllDistrict();
-            this.getAllUpazila();
+          //  this.getAllUpazila();
         },
         store() {
             this.form.busy = true;
             this.form.post("/api/doctor").then(response => {
                 $("#doctorModal").modal("hide");
-                this.getAllDoctor();
-                this.getAllDistrict();
-                this.getAllUpazila();
             }).catch(e => {
                 this.isLoading = false;
             });
@@ -329,7 +326,7 @@ export default {
             this.form.clear();
             this.form.fill(doctor);
             this.getAllDistrict();
-            this.getAllUpazila();
+           // this.getAllUpazila();
             $("#doctorModal").modal("show");
         },
         update() {
@@ -369,15 +366,13 @@ export default {
 
             })
         },
-        getAllUpazila() {
-            axios.get('/api/get-all-upazila').then((response) => {
-                this.upazilas = response.data.upazilas;
+        getAllUpazilaByDistrict() {
+            axios.get('/api/district-wise-upazila').then((response) => {
+                console.log(response)
+               // this.districts = response.data.districts;
             }).catch((error) => {
 
             })
-        },
-        created: function(){
-            this.getAllDistricts();
         },
         destroy(id) {
             Swal.fire({

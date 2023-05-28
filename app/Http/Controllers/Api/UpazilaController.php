@@ -55,4 +55,6 @@ class UpazilaController extends Controller
     {
         return new UpazilaCollection(Upazila::where('UpazilaName', 'LIKE', "%$query%")->latest()->paginate(20));
     }
+
+
 }

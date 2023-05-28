@@ -138,4 +138,5 @@ Route::get('get-all-product', [CommonController::class, 'getAllProduct']);
 Route::get('get-all-doctor', [CommonController::class, 'getAllDoctor']);
 Route::get('get-all-shop', [CommonController::class, 'getAllShop']);
 Route::get('get-all-moinfo', [CommonController::class, 'getAllMOInfo']);
+Route::get('district-wise-upazila', [CommonController::class, 'getAllUpazilaByDistrict']);
 Route::post('product-details', [\App\Http\Controllers\Api\Mobile\ProductController::class, 'productDetails']);
