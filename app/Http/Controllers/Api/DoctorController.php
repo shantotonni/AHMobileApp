@@ -18,7 +18,7 @@ class DoctorController extends Controller
 {
     public function index()
     {
-        $doctors = Doctor::orderBy('ID', 'desc')->paginate(15);
+        $doctors = Doctor::with('district','upazila')->orderBy('ID', 'desc')->paginate(15);
         return new DoctorCollection($doctors);
     }
 

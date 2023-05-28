@@ -24,15 +24,15 @@ class DoctorStoreRequest extends FormRequest
     public function rules()
     {
         return [
-      'DoctorName'=>'required|min:3',
-      'Designation'=>'required|min:3',
-      'Mobile'=>'required|min:10',
-      'Email'=>'required|min:3',
-      'Details'=>'required|min:3',
-      'DoctorImage'=>'required',
-      'AddressOne'=>'required|min:3',
-      'DistrictID'=>'required',
-      'UpazilaID'=>'required',
+          'DoctorName'=>'required|min:3',
+          'Designation'=>'required|min:3',
+          'Mobile'=>'required|min:10',
+          'Email'=>'required|min:3',
+          'Details'=>'required|min:3',
+          'DoctorImage'=>'required',
+          'AddressOne'=>'required|min:3',
+          'DistrictID'=>'required',
+          'UpazilaID'=>'required',
         ];
     }
 }
