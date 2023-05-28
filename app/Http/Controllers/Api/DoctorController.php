@@ -41,8 +41,8 @@ class DoctorController extends Controller
         $doctor->Details = $request->Details;
         $doctor->AddressOne = $request->AddressOne;
         $doctor->AddressTwo = $request->AddressTwo;
-        $doctor->DistrictId = $request->DistrictId;
-        $doctor->UpazilaId = $request->UpazilaId;
+        $doctor->DistrictID = $request->DistrictID;
+        $doctor->UpazilaID = $request->UpazilaID;
         $doctor->save();
         return response()->json(['message' => 'Doctor Created Successfully'], 200);
     }
@@ -71,8 +71,8 @@ class DoctorController extends Controller
         $doctor->Details = $request->Details;
         $doctor->AddressOne = $request->AddressOne;
         $doctor->AddressTwo = $request->AddressTwo;
-        $doctor->DistrictId = $request->DistrictId;
-        $doctor->UpazilaId = $request->UpazilaId;
+        $doctor->DistrictID = $request->DistrictID;
+        $doctor->UpazilaID = $request->UpazilaID;
         $doctor->save();
         return response()->json(['message' => 'Doctor Updated Successfully'], 200);
     }

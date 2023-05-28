@@ -25,7 +25,6 @@ class DoctorCollection extends ResourceCollection
                     'DistrictName'=>isset($doctor->district) ? $doctor->district->DistrictName: '',
                     'UpazilaID' => $doctor->UpazilaID,
                     'UpazilaName' => isset($doctor->upazila) ? $doctor->upazila->UpazilaName:'',
-
                 ];
             })
         ];

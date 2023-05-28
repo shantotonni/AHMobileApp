@@ -136,11 +136,4 @@ class CommonController extends Controller
         return new UpazilaCollection($upazilas);
     }
 
-    public function getAllUpazilaByDistrict(){
-        //$upazila = Upazila::where('ID',$DistrictID)->get();
-        return response()->json([
-            'upazilas'=>'ok'
-        ]);
-    }
-
 }

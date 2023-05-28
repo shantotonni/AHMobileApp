@@ -25,6 +25,7 @@ class MOInfoStoreRequest extends FormRequest
     {
         return [
            'Name'=>'required|min:3'
+
         ];
     }
 }

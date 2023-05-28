@@ -23,8 +23,8 @@ class ShopController extends Controller
         $shop->ShopOwnerName = $request->ShopOwnerName;
         $shop->ShopOwnerMobile = $request->ShopOwnerMobile;
         $shop->ShopAddress = $request->ShopAddress;
-        $shop->District = $request->District;
-        $shop->Upazila = $request->Upazila;
+        $shop->DistrictID = $request->DistrictID;
+        $shop->UpazilaID = $request->UpazilaID;
         $shop->save();
         return response()->json(['message' => 'Shop Created Successfully'], 200);
     }
@@ -36,8 +36,8 @@ class ShopController extends Controller
         $shop->ShopName = $request->ShopName;
         $shop->ShopOwnerMobile = $request->ShopOwnerMobile;
         $shop->ShopAddress = $request->ShopAddress;
-        $shop->District = $request->District;
-        $shop->Upazila = $request->Upazila;
+        $shop->DistrictID = $request->DistrictID;
+        $shop->UpazilaID = $request->UpazilaID;
         $shop->save();
         return response()->json(['message' => 'Shop Updated Successfully'], 200);
     }

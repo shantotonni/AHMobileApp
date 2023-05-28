@@ -68,11 +68,11 @@ Route::group(['middleware' => 'jwtauth:api'], function () {
     //district route
     Route::apiResource('district', DistrictController::class);
     Route::get('search/district/{query}', [DistrictController::class, 'search']);
-    Route::get('get-all-district', [DistrictController::class, 'getAllDistrict']);
     //district route
     Route::apiResource('upazila', UpazilaController::class);
     Route::get('search/upazila/{query}', [UpazilaController::class, 'search']);
     Route::get('get-all-upazila', [UpazilaController::class, 'getAllUpazila']);
+    Route::get('district-wise-upazila/{ID}', [UpazilaController::class, 'getAllUpazilaByDistrict']);
 
 
     //menu resource route
@@ -138,5 +138,4 @@ Route::get('get-all-product', [CommonController::class, 'getAllProduct']);
 Route::get('get-all-doctor', [CommonController::class, 'getAllDoctor']);
 Route::get('get-all-shop', [CommonController::class, 'getAllShop']);
 Route::get('get-all-moinfo', [CommonController::class, 'getAllMOInfo']);
-Route::get('district-wise-upazila', [CommonController::class, 'getAllUpazilaByDistrict']);
 Route::post('product-details', [\App\Http\Controllers\Api\Mobile\ProductController::class, 'productDetails']);

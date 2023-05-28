@@ -17,9 +17,9 @@ class ShopCollection extends ResourceCollection
                     'ShopOwnerName' => $shop->ShopOwnerName,
                     'ShopOwnerMobile'=>$shop->ShopOwnerMobile,
                     'ShopAddress' => $shop->ShopAddress,
-                    'District' => $shop->District,
+                    'DistrictID' => $shop->DistrictID,
                     'DistrictName'=>isset($shop->district) ? $shop->district->DistrictName: '',
-                    'Upazila' => $shop->Upazila,
+                    'UpazilaID' => $shop->UpazilaID,
                     'UpazilaName' => isset($shop->upazila) ? $shop->upazila->UpazilaName:'',
 
                 ];

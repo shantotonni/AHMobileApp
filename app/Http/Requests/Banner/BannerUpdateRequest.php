@@ -24,7 +24,7 @@ class BannerUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'BannerImage'=>'required|min:3'
+            'BannerName'=>'required|min:3'
         ];
     }
 }

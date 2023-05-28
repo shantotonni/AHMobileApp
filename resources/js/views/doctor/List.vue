@@ -178,8 +178,7 @@
                                                    <option :value="district.ID" v-for="(district , index) in districts" :key="index">{{ district.DistrictName }}
                                                    </option>
                                                </select>
-                                               <div class="error" v-if="form.errors.has('DistrictID')"
-                                                    v-html="form.errors.get('DistrictID')"/>
+                                               <div class="error" v-if="form.errors.has('DistrictID')" v-html="form.errors.get('DistrictID')"/>
                                            </div>
                                        </div>
                                        <div class="col-md-6">
@@ -193,9 +192,6 @@
                                                <div class="error" v-if="form.errors.has('upazilaID')" v-html="form.errors.get('upazilaID')"/>
                                            </div>
                                        </div>
-
-
-
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -274,7 +270,6 @@ export default {
     mounted() {
         document.title = 'Doctor List | AHMobileApp';
         this.getAllDoctor();
-
     },
     methods: {
         getAllDoctor() {
@@ -334,8 +329,6 @@ export default {
             this.form.put("/api/doctor/" + this.form.ID).then(response => {
                 $("#doctorModal").modal("hide");
                 this.getAllDoctor();
-                this.getAllDistrict();
-                this.getAllUpazila();
             }).catch(e => {
                 this.isLoading = false;
             });
@@ -361,15 +354,17 @@ export default {
         },
         getAllDistrict() {
             axios.get('/api/get-all-district').then((response) => {
-                this.districts = response.data.districts;
+                console.log(response)
+                this.districts = response.data.data;
             }).catch((error) => {
 
             })
         },
         getAllUpazilaByDistrict() {
-            axios.get('/api/district-wise-upazila').then((response) => {
-                console.log(response)
-               // this.districts = response.data.districts;
+            console.log(this.form.DistrictID)
+            axios.get( '/api/district-wise-upazila/' + this.form.DistrictID).then((response) => {
+                //console.log(response)
+                this.upazilas = response.data.data;
             }).catch((error) => {
 
             })
