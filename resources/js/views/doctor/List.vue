@@ -173,51 +173,25 @@
                                        <div class="col-md-6">
                                            <div class="form-group">
                                                <label>District</label>
-<<<<<<< HEAD
-                                               <select name="District" id="District" class="form-control"
-                                                       v-model="form.District"
-                                                       :class="{ 'is-invalid': form.errors.has('District') }">
-=======
                                                <select name="DistrictID" id="DistrictID" class="form-control" v-model="form.DistrictID" :class="{ 'is-invalid': form.errors.has('DistrictID') }" @change="getAllUpazila">
->>>>>>> e28deb56a76d9dbdc60f5e163f83b2fafb46b983
                                                    <option disabled value="">Select District</option>
                                                    <option :value="district.ID" v-for="(district , index) in districts" :key="index">{{ district.DistrictName }}
                                                    </option>
                                                </select>
-<<<<<<< HEAD
-                                               <div class="error" v-if="form.errors.has('District')"
-                                                    v-html="form.errors.get('District')"/>
-=======
-                                               <div class="error" v-if="form.errors.has('DistrictID')"
-                                                    v-html="form.errors.get('DistrictID')"/>
->>>>>>> e28deb56a76d9dbdc60f5e163f83b2fafb46b983
+                                               <div class="error" v-if="form.errors.has('DistrictID')" v-html="form.errors.get('DistrictID')"/>
                                            </div>
                                        </div>
                                        <div class="col-md-6">
                                            <div class="form-group">
                                                <label>Upazila</label>
-<<<<<<< HEAD
-                                               <select name="text" id="upazila" class="form-control"
-                                                       v-model="form.Upazila"
-                                                       :class="{ 'is-invalid': form.errors.has('Upazila') }">
-=======
                                                <select name="text" id="upazilaID" class="form-control" v-model="form.upazilaID" :class="{ 'is-invalid': form.errors.has('upazilaID') }">
->>>>>>> e28deb56a76d9dbdc60f5e163f83b2fafb46b983
                                                    <option disabled value="">Select Upazila</option>
                                                    <option :value="upazila.ID" v-for="(upazila , index) in upazilas" :key="index">{{ upazila.UpazilaName }}
                                                    </option>
                                                </select>
-<<<<<<< HEAD
-                                               <div class="error" v-if="form.errors.has('Upazila')"
-                                                    v-html="form.errors.get('Upazila')"/>
-=======
                                                <div class="error" v-if="form.errors.has('upazilaID')" v-html="form.errors.get('upazilaID')"/>
->>>>>>> e28deb56a76d9dbdc60f5e163f83b2fafb46b983
                                            </div>
                                        </div>
-
-
-
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -279,13 +253,8 @@ export default {
                 DoctorImage:'',
                 AddressOne: '',
                 AddressTwo: '',
-<<<<<<< HEAD
-                District: '',
-                Upazila: '',
-=======
                 DistrictID: '',
                 UpazilaID: '',
->>>>>>> e28deb56a76d9dbdc60f5e163f83b2fafb46b983
             }),
         }
     },
