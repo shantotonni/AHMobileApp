@@ -135,31 +135,31 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>District</label>
-                                            <select name="District" id="District" class="form-control"
-                                                    v-model="form.District"
-                                                    :class="{ 'is-invalid': form.errors.has('District') }">
+                                            <select name="DistrictID" id="DistrictID" class="form-control"
+                                                    v-model="form.DistrictID"
+                                                    :class="{ 'is-invalid': form.errors.has('DistrictID') }">
                                                 <option disabled value="">Select District</option>
                                                 <option :value="district.ID" v-for="(district , index) in districts"
                                                         :key="index">{{ district.DistrictName }}
                                                 </option>
                                             </select>
-                                            <div class="error" v-if="form.errors.has('District')"
-                                                 v-html="form.errors.get('District')"/>
+                                            <div class="error" v-if="form.errors.has('DistrictID')"
+                                                 v-html="form.errors.get('DistrictID')"/>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Upazila</label>
-                                            <select name="Upazila" id="Upazila" class="form-control"
-                                                    v-model="form.Upazila"
-                                                    :class="{ 'is-invalid': form.errors.has('Upazila') }">
+                                            <select name="UpazilaID" id="UpazilaID" class="form-control"
+                                                    v-model="form.UpazilaID"
+                                                    :class="{ 'is-invalid': form.errors.has('UpazilaID') }">
                                                 <option disabled value="">Select Upazila</option>
                                                 <option :value="upazila.ID" v-for="(upazila , index) in upazilas"
                                                         :key="index">{{ upazila.UpazilaName }}
                                                 </option>
                                             </select>
-                                            <div class="error" v-if="form.errors.has('Upazila')"
-                                                 v-html="form.errors.get('Upazila')"/>
+                                            <div class="error" v-if="form.errors.has('UpazilaID')"
+                                                 v-html="form.errors.get('UpazilaID')"/>
                                         </div>
                                     </div>
 
@@ -202,8 +202,8 @@ export default {
                 Mobile: '',
                 Email: '',
                 Address: '',
-                District: '',
-                Upazila: '',
+                DistrictID: '',
+                UpazilaID: '',
             }),
         }
     },
@@ -219,6 +219,8 @@ export default {
     mounted() {
         document.title = 'MOInfo List | AHMobileApp';
         this.getAllMOInfo();
+        this.getAllDistrict();
+        this.getAllUpazila();
     },
     methods: {
         getAllMOInfo() {

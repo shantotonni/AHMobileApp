@@ -24,7 +24,7 @@ class DoctorUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'DoctorName'=>'required|min:3'
+            'DoctorName'=>'required|min:3',
         ];
     }
 }

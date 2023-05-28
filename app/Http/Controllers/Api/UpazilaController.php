@@ -14,7 +14,7 @@ class UpazilaController extends Controller
     public function index()
 
     {
-        $upazilas = Upazila::orderBy('DistrictId', 'asc')->paginate(15);
+        $upazilas = Upazila::with('districts')->orderBy('DistrictId', 'asc')->paginate(15);
         return new UpazilaCollection($upazilas);
     }
 
@@ -45,8 +45,8 @@ class UpazilaController extends Controller
         Upazila::where('ID', $id)->delete();
         return response()->json(['message' => 'Upazila Deleted Successfully'], 200);
     }
-    public function getAllUpazila(){
-        $upazilas = Upazila::orderBy('ID','desc')->get();
+    public function getAllUpazila(Request $request){
+        $upazilas = Upazila::OrderBy('ID', 'ASC')->get();
         return response()->json([
             'upazilas'=>$upazilas
         ]);

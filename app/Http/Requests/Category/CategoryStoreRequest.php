@@ -25,7 +25,9 @@ class CategoryStoreRequest extends FormRequest
     {
         return [
            'CategoryName'=>'required|min:3',
-            'Details'=>'required|min:3',
+            'Details'=>'required',
+            'PortfolioName'=>'required',
+            'CategoryImage'=>'required',
         ];
     }
 }

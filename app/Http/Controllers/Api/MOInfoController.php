@@ -24,8 +24,8 @@ class MOInfoController extends Controller
         $moinfo->Email = $request->Email;
         $moinfo->Mobile = $request->Mobile;
         $moinfo->Address = $request->Address;
-        $moinfo->District = $request->District;
-        $moinfo->Upazila = $request->Upazila;
+        $moinfo->DistrictID = $request->DistrictID;
+        $moinfo->UpazilaID = $request->UpazilaID;
         $moinfo->save();
         return response()->json(['message' => 'MOInfo Created Successfully'], 200);
     }
@@ -37,8 +37,8 @@ class MOInfoController extends Controller
         $moinfo->Email = $request->Email;
         $moinfo->Mobile = $request->Mobile;
         $moinfo->Address = $request->Address;
-        $moinfo->District = $request->District;
-        $moinfo->Upazila = $request->Upazila;
+        $moinfo->DistrictID = $request->DistrictID;
+        $moinfo->UpazilaID = $request->UpazilaID;
         $moinfo->save();
         return response()->json(['message' => 'MOInfo Updated Successfully'], 200);
     }
