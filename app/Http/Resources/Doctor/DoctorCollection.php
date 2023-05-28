@@ -6,12 +6,6 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class DoctorCollection extends ResourceCollection
 {
-    /**
-     * Transform the resource collection into an array.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
-     */
     public function toArray($request)
     {
         return [
@@ -27,9 +21,9 @@ class DoctorCollection extends ResourceCollection
                     'DoctorImageMobile'=>url('/').'/images/doctor/'.$doctor->DoctorImage,
                     'AddressOne' => $doctor->AddressOne,
                     'AddressTwo' => $doctor->AddressTwo,
-                    'DistrictId' => $doctor->DistrictId,
+                    'DistrictID' => $doctor->DistrictID,
                     'DistrictName'=>isset($doctor->district) ? $doctor->district->DistrictName: '',
-                    'UpazilaId' => $doctor->UpazilaId,
+                    'UpazilaID' => $doctor->UpazilaID,
                     'UpazilaName' => isset($doctor->upazila) ? $doctor->upazila->UpazilaName:'',
 
                 ];

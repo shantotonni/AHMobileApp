@@ -48,25 +48,22 @@
                                         </thead>
                                         <tbody>
                                         <tr v-for="(doctor, i) in doctors" :key="doctor.ID" v-if="doctors.length">
-                                            <td class="text-center" scope="row">{{ ++i }}</td>
+                                            <td class="text-center">{{ ++i }}</td>
                                             <td class="text-center">{{ doctor.DoctorName }}</td>
                                             <td class="text-center">{{ doctor.Designation }}</td>
                                             <td class="text-center">{{ doctor.Mobile }}</td>
                                             <td class="text-center">{{ doctor.Email }}</td>
                                             <td class="text-center">{{ doctor.Details }}</td>
                                             <td class="text-center">
-                                                <img v-if="doctor.DoctorImage" height="40" width="40" :src="tableImage(Doctor.DoctorImage)" alt="">
+                                                <img v-if="doctor.DoctorImage" height="40" width="40" :src="tableImage(doctor.DoctorImage)" alt="">
                                             </td>
                                             <td class="text-center">{{ doctor.AddressOne }}</td>
                                             <td class="text-center" >{{ doctor.AddressTwo }}</td>
-                                            <td class="text-center" scope="row">{{ doctor.DistrictName }}</td>
-                                            <td class="text-center" scope="row">{{ doctor.UpazilaName }}</td>
+                                            <td class="text-center">{{ doctor.DistrictName }}</td>
+                                            <td class="text-center">{{ doctor.UpazilaName }}</td>
                                             <td class="text-center">
-                                                <button @click="edit(doctor)" class="btn btn-success btn-sm"><i
-                                                    class="far fa-edit"></i></button>
-                                                <button hidden="hidden" @click="destroy(doctor.ID)"
-                                                        class="btn btn-danger btn-sm"><i
-                                                    class="fas fa-trash"></i></button>
+                                                <button @click="edit(doctor)" class="btn btn-success btn-sm"><i class="far fa-edit"></i></button>
+                                                <button hidden="hidden" @click="destroy(doctor.ID)" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
                                         </tbody>
@@ -176,31 +173,24 @@
                                        <div class="col-md-6">
                                            <div class="form-group">
                                                <label>District</label>
-                                               <select name="DistrictId" id="DistrictId" class="form-control"
-                                                       v-model="form.DistrictId"
-                                                       :class="{ 'is-invalid': form.errors.has('DistrictId') }" @change="getAllUpazila">
+                                               <select name="DistrictID" id="DistrictID" class="form-control" v-model="form.DistrictID" :class="{ 'is-invalid': form.errors.has('DistrictID') }" @change="getAllUpazila">
                                                    <option disabled value="">Select District</option>
-                                                   <option :value="district.ID" v-for="(district , index) in districts"
-                                                           :key="index">{{ district.DistrictName }}
+                                                   <option :value="district.ID" v-for="(district , index) in districts" :key="index">{{ district.DistrictName }}
                                                    </option>
                                                </select>
-                                               <div class="error" v-if="form.errors.has('DistrictId')"
-                                                    v-html="form.errors.get('DistrictId')"/>
+                                               <div class="error" v-if="form.errors.has('DistrictID')"
+                                                    v-html="form.errors.get('DistrictID')"/>
                                            </div>
                                        </div>
                                        <div class="col-md-6">
                                            <div class="form-group">
                                                <label>Upazila</label>
-                                               <select name="text" id="upazilaId" class="form-control"
-                                                       v-model="form.UpazilaId"
-                                                       :class="{ 'is-invalid': form.errors.has('UpazilaId') }">
+                                               <select name="text" id="upazilaID" class="form-control" v-model="form.upazilaID" :class="{ 'is-invalid': form.errors.has('upazilaID') }">
                                                    <option disabled value="">Select Upazila</option>
-                                                   <option :value="upazila.ID" v-for="(upazila , index) in upazilas"
-                                                           :key="index">{{ upazila.UpazilaName }}
+                                                   <option :value="upazila.ID" v-for="(upazila , index) in upazilas" :key="index">{{ upazila.UpazilaName }}
                                                    </option>
                                                </select>
-                                               <div class="error" v-if="form.errors.has('UpazilaId')"
-                                                    v-html="form.errors.get('UpazilaId')"/>
+                                               <div class="error" v-if="form.errors.has('upazilaID')" v-html="form.errors.get('upazilaID')"/>
                                            </div>
                                        </div>
 
@@ -239,6 +229,7 @@
 
 <script>
 import {VueEditor} from "vue2-editor";
+import {baseurl} from '../../base_url'
 
 export default {
     components: {
@@ -266,8 +257,8 @@ export default {
                 DoctorImage:'',
                 AddressOne: '',
                 AddressTwo: '',
-                DistrictId: '',
-                UpazilaId: '',
+                DistrictID: '',
+                UpazilaID: '',
             }),
         }
     },
@@ -289,6 +280,7 @@ export default {
         getAllDoctor() {
             this.isLoading = true;
             axios.get('/api/doctor?page=' + this.pagination.current_page).then((response) => {
+                console.log(response)
                 this.doctors = response.data.data;
                 this.pagination = response.data.meta;
                 this.isLoading = false;
