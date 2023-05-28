@@ -27,9 +27,9 @@ class DoctorCollection extends ResourceCollection
                     'DoctorImageMobile'=>url('/').'/images/doctor/'.$doctor->DoctorImage,
                     'AddressOne' => $doctor->AddressOne,
                     'AddressTwo' => $doctor->AddressTwo,
-                    'District' => $doctor->District,
+                    'DistrictId' => $doctor->DistrictId,
                     'DistrictName'=>isset($doctor->district) ? $doctor->district->DistrictName: '',
-                    'Upazila' => $doctor->Upazila,
+                    'UpazilaId' => $doctor->UpazilaId,
                     'UpazilaName' => isset($doctor->upazila) ? $doctor->upazila->UpazilaName:'',
 
                 ];

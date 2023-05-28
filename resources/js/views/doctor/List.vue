@@ -176,31 +176,31 @@
                                        <div class="col-md-6">
                                            <div class="form-group">
                                                <label>District</label>
-                                               <select name="District" id="District" class="form-control"
-                                                       v-model="form.District"
-                                                       :class="{ 'is-invalid': form.errors.has('District') }">
+                                               <select name="DistrictId" id="DistrictId" class="form-control"
+                                                       v-model="form.DistrictId"
+                                                       :class="{ 'is-invalid': form.errors.has('DistrictId') }" @change="getAllUpazila">
                                                    <option disabled value="">Select District</option>
                                                    <option :value="district.ID" v-for="(district , index) in districts"
                                                            :key="index">{{ district.DistrictName }}
                                                    </option>
                                                </select>
-                                               <div class="error" v-if="form.errors.has('District')"
-                                                    v-html="form.errors.get('District')"/>
+                                               <div class="error" v-if="form.errors.has('DistrictId')"
+                                                    v-html="form.errors.get('DistrictId')"/>
                                            </div>
                                        </div>
                                        <div class="col-md-6">
                                            <div class="form-group">
                                                <label>Upazila</label>
-                                               <select name="text" id="upazila" class="form-control"
-                                                       v-model="form.Upazila"
-                                                       :class="{ 'is-invalid': form.errors.has('Upazila') }">
+                                               <select name="text" id="upazilaId" class="form-control"
+                                                       v-model="form.UpazilaId"
+                                                       :class="{ 'is-invalid': form.errors.has('UpazilaId') }">
                                                    <option disabled value="">Select Upazila</option>
                                                    <option :value="upazila.ID" v-for="(upazila , index) in upazilas"
                                                            :key="index">{{ upazila.UpazilaName }}
                                                    </option>
                                                </select>
-                                               <div class="error" v-if="form.errors.has('Upazila')"
-                                                    v-html="form.errors.get('Upazila')"/>
+                                               <div class="error" v-if="form.errors.has('UpazilaId')"
+                                                    v-html="form.errors.get('UpazilaId')"/>
                                            </div>
                                        </div>
 
@@ -266,8 +266,8 @@ export default {
                 DoctorImage:'',
                 AddressOne: '',
                 AddressTwo: '',
-                District: '',
-                Upazila: '',
+                DistrictId: '',
+                UpazilaId: '',
             }),
         }
     },
@@ -283,6 +283,7 @@ export default {
     mounted() {
         document.title = 'Doctor List | AHMobileApp';
         this.getAllDoctor();
+
     },
     methods: {
         getAllDoctor() {
@@ -324,6 +325,8 @@ export default {
             this.form.post("/api/doctor").then(response => {
                 $("#doctorModal").modal("hide");
                 this.getAllDoctor();
+                this.getAllDistrict();
+                this.getAllUpazila();
             }).catch(e => {
                 this.isLoading = false;
             });
@@ -342,6 +345,8 @@ export default {
             this.form.put("/api/doctor/" + this.form.ID).then(response => {
                 $("#doctorModal").modal("hide");
                 this.getAllDoctor();
+                this.getAllDistrict();
+                this.getAllUpazila();
             }).catch(e => {
                 this.isLoading = false;
             });
@@ -378,6 +383,9 @@ export default {
             }).catch((error) => {
 
             })
+        },
+        created: function(){
+            this.getAllDistricts();
         },
         destroy(id) {
             Swal.fire({

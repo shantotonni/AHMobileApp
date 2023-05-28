@@ -14,6 +14,6 @@ class District extends Model
     const CREATED_AT = 'CreatedDate';
     const UPDATED_AT = 'UpdatedDate';
     public function district(){
-        return $this->hasMany(District::class,'District','ID');
+        return $this->hasMany(District::class,'DistrictId','ID');
     }
 }

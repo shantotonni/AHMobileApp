@@ -19,6 +19,7 @@ class UpazilaCollection extends ResourceCollection
                 return [
                     'ID' => $upazila->ID,
                     'DistrictId' => $upazila->DistrictId,
+                    'DistrictName'=>isset($doctor->district) ? $doctor->district->DistrictName: '',
                     'Code' => $upazila->Code,
                     'UpazilaName' => $upazila->UpazilaName,
                     'UpazilaNameBn' => $upazila->UpazilaNameBn

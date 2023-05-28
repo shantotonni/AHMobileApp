@@ -14,7 +14,7 @@ class UpazilaController extends Controller
     public function index()
 
     {
-        $upazilas = Upazila::orderBy('ID', 'asc')->paginate(15);
+        $upazilas = Upazila::orderBy('DistrictId', 'asc')->paginate(15);
         return new UpazilaCollection($upazilas);
     }
 

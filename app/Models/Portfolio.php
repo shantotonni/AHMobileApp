@@ -14,6 +14,6 @@ class Portfolio  extends Model
     const CREATED_AT = 'CreatedDate';
     const UPDATED_AT = 'UpdatedDate';
     public function Portfolio(){
-        return $this->hasMany(Portfolio::class,'ID','PortfolioID');
+        return $this->hasMany(Portfolio::class,'PortfolioID','ID');
     }
 }

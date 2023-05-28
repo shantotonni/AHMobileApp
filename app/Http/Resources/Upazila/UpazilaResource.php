@@ -13,7 +13,13 @@ class UpazilaResource extends JsonResource
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
     public function toArray($request)
-    {
-        return parent::toArray($request);
+    {    return [
+        'ID' => $upazila->ID,
+        'DistrictId' => $upazila->DistrictId,
+        'DistrictName'=>isset($doctor->district) ? $doctor->district->DistrictName: '',
+        'Code' => $upazila->Code,
+        'UpazilaName' => $upazila->UpazilaName,
+        'UpazilaNameBn' => $upazila->UpazilaNameBn
+    ];
     }
 }

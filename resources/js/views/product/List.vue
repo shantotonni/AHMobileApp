@@ -329,6 +329,7 @@ export default {
                 return window.location.origin + "/AHMobileApp/images/product/" + this.form.ProductImage;
             }
         },
+
         getAllPortfolio() {
             axios.get('/api/get-all-portfolio').then((response) => {
                 this.portfolios = response.data.data;

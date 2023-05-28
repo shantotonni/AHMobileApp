@@ -15,7 +15,7 @@ class Doctor extends Model
     const UPDATED_AT = 'UpdatedDate';
 
     public function district(){
-        return $this->belongsTo(District::class,'District','ID');
+        return $this->belongsTo(District::class,'DistrictId','ID');
     }
     public function upazila(){
         return $this->belongsTo(Upazila::class,'UpazilaId','ID');
