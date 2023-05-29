@@ -43,20 +43,17 @@ class BannerController extends Controller
         $BannerImage = $request->BannerImage;
         if ($BannerImage != $banner->BannerImage) {
             if ($request->has('BannerImage')) {
-                //code for remove old file
-                if ($banner->BannerImage != '' && $banner->BannerImage != null) {
-                    $destinationPath = 'images/product/';
-                    $file_old = public_path('/').$destinationPath . $banner->BannerImage;
-                    if (file_exists($file_old)) {
-                        unlink($file_old);
-                    }
+                $destinationPath = 'images/banner/';
+                $file_old = public_path('/') . $destinationPath . $banner->BannerImage;
+                if (file_exists($file_old)) {
+                    unlink($file_old);
                 }
                 $name = uniqid() . time() . '.' . explode('/', explode(':', substr($BannerImage, 0, strpos($BannerImage, ';')))[1])[1];
                 Image::make($BannerImage)->save(public_path('images/banner/') . $name);
-            } else {
+            }else {
                 $name = $banner->BannerImage;
             }
-        } else {
+        }else {
             $name = $banner->BannerImage;
         }
 

@@ -16,7 +16,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::orderby('ID', 'desc')->with('category')->paginate(15);
+        $products = Product::with('category','portfolio')->orderby('ID', 'desc')->with('category')->paginate(15);
         return new ProductCollection($products);
     }
 

@@ -15,7 +15,7 @@ class CategoryCollection extends ResourceCollection
                     'CategoryName'=>$category->CategoryName,
                     'PortfolioID'=>$category->PortfolioID,
                     'PortfolioName'=>isset($category->portfolio) ? $category->portfolio->PortfolioName: '',
-                    'Details'=>$category->Details,
+                    'Details'=>strip_tags($category->Details),
                     'Active'=>$category->Active,
                     'CategoryImage'=>$category->CategoryImage,
                     'CategoryImageMobile'=>url('/').'/images/category/'.$category->CategoryImage,

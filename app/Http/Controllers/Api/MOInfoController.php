@@ -13,7 +13,7 @@ class MOInfoController extends Controller
 {
     public function index()
     {
-        $moinfos = MOInfo::orderBy('ID', 'desc')->paginate(15);
+        $moinfos = MOInfo::with('district','upazila')->orderBy('ID', 'desc')->paginate(15);
         return new MOInfoCollection($moinfos);
     }
 

@@ -136,31 +136,23 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>District</label>
-                                            <select name="DistrictID" id="DistrictID" class="form-control"
-                                                    v-model="form.DistrictID"
-                                                    :class="{ 'is-invalid': form.errors.has('DistrictID') }">
+                                            <select name="DistrictID" id="DistrictID" class="form-control" v-model="form.DistrictID" :class="{ 'is-invalid': form.errors.has('DistrictID') }" @change="getAllUpazilaByDistrict">
                                                 <option disabled value="">Select District</option>
-                                                <option :value="district.ID" v-for="(district , index) in districts"
-                                                        :key="index">{{ district.DistrictName }}
+                                                <option :value="district.ID" v-for="(district , index) in districts" :key="index">{{ district.DistrictName }}
                                                 </option>
                                             </select>
-                                            <div class="error" v-if="form.errors.has('DistrictID')"
-                                                 v-html="form.errors.get('DistrictID')"/>
+                                            <div class="error" v-if="form.errors.has('DistrictID')" v-html="form.errors.get('DistrictID')"/>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Upazila</label>
-                                            <select name="UpazilaID" id="UpazilaID" class="form-control"
-                                                    v-model="form.UpazilaID"
-                                                    :class="{ 'is-invalid': form.errors.has('UpazilaID') }">
+                                            <select name="text" id="upazilaID" class="form-control" v-model="form.upazilaID" :class="{ 'is-invalid': form.errors.has('upazilaID') }">
                                                 <option disabled value="">Select Upazila</option>
-                                                <option :value="upazila.ID" v-for="(upazila , index) in upazilas"
-                                                        :key="index">{{ upazila.UpazilaName }}
+                                                <option :value="upazila.ID" v-for="(upazila , index) in upazilas" :key="index">{{ upazila.UpazilaName }}
                                                 </option>
                                             </select>
-                                            <div class="error" v-if="form.errors.has('UpazilaID')"
-                                                 v-html="form.errors.get('UpazilaID')"/>
+                                            <div class="error" v-if="form.errors.has('upazilaID')" v-html="form.errors.get('upazilaID')"/>
                                         </div>
                                     </div>
                                 </div>
@@ -220,7 +212,6 @@ export default {
         document.title = 'Shop List | AHMobileApp';
         this.getAllShop();
         this.getAllDistrict();
-        this.getAllUpazila();
     },
     methods: {
         getAllShop(){
@@ -286,14 +277,17 @@ export default {
         },
         getAllDistrict() {
             axios.get('/api/get-all-district').then((response) => {
-                this.districts = response.data.districts;
+                console.log(response)
+                this.districts = response.data.data;
             }).catch((error) => {
 
             })
         },
-        getAllUpazila() {
-            axios.get('/api/get-all-upazila').then((response) => {
-                this.upazilas = response.data.upazilas;
+        getAllUpazilaByDistrict() {
+            console.log(this.form.DistrictID)
+            axios.get( '/api/district-wise-upazila/' + this.form.DistrictID).then((response) => {
+                // console.log(response)
+                this.upazilas = response.data.data;
             }).catch((error) => {
 
             })

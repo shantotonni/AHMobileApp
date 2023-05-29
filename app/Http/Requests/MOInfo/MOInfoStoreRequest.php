@@ -24,7 +24,10 @@ class MOInfoStoreRequest extends FormRequest
     public function rules()
     {
         return [
-           'Name'=>'required|min:3'
+           'Name'=>'required|min:3',
+           'Email'=>'required|min:3',
+           'Mobile'=>'required|min:3',
+           'Address'=>'required|min:3',
 
         ];
     }
