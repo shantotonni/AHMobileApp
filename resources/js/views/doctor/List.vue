@@ -53,7 +53,7 @@
                                             <td class="text-center">{{ doctor.Designation }}</td>
                                             <td class="text-center">{{ doctor.Mobile }}</td>
                                             <td class="text-center">{{ doctor.Email }}</td>
-                                            <td class="text-center">{{ doctor.Details }}</td>
+                                            <td class="text-center" v-html="doctor.Details"></td>
                                             <td class="text-center">
                                                 <img v-if="doctor.DoctorImage" height="40" width="40" :src="tableImage(doctor.DoctorImage)" alt="">
                                             </td>

@@ -16,7 +16,7 @@ class DoctorCollection extends ResourceCollection
                     'Designation' => $doctor->Designation,
                     'Mobile'=>$doctor->Mobile,
                     'Email'=>$doctor->Email,
-                    'Details' => $doctor->Details,
+                    'Details' => strip_tags($doctor->Details),
                     'DoctorImage'=>$doctor->DoctorImage,
                     'DoctorImageMobile'=>url('/').'/images/doctor/'.$doctor->DoctorImage,
                     'AddressOne' => $doctor->AddressOne,

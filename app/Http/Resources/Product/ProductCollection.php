@@ -14,7 +14,7 @@ class ProductCollection extends ResourceCollection
                     'ID' => $product->ID,
                     'ProductName' => $product->ProductName,
                     'ProductAttribute' => $product->ProductAttribute,
-                    'Details' => $product->Details,
+                    'Details' => strip_tags($product->Details),
                     'ProductImage' => $product->ProductImage,
                     'PortfolioID'=>$product->PortfolioID,
                     'PortfolioName'=>isset($product->portfolio) ? $product->portfolio->PortfolioName: '',

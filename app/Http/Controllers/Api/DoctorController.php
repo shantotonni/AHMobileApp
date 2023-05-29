@@ -52,17 +52,23 @@ class DoctorController extends Controller
     {
         $doctor = Doctor::where('ID', $id)->first();
         $DoctorImage = $request->DoctorImage;
-        if ($DoctorImage) {
-            $destinationPath = 'images/doctor/';
-            $file_old = public_path('/') . $destinationPath . $doctor->DoctorImage;
-            if (file_exists($file_old)) {
-                unlink($file_old);
+
+        if ($DoctorImage != $doctor->DoctorImage) {
+            if ($request->has('DoctorImage')) {
+                $destinationPath = 'images/doctor/';
+                $file_old = public_path('/') . $destinationPath . $doctor->DoctorImage;
+                if (file_exists($file_old)) {
+                    unlink($file_old);
+                }
+                $name = uniqid() . time() . '.' . explode('/', explode(':', substr($DoctorImage, 0, strpos($DoctorImage, ';')))[1])[1];
+                Image::make($DoctorImage)->save(public_path('images/doctor/') . $name);
+            }else {
+                $name = $doctor->DoctorImage;
             }
-            $name = uniqid() . time() . '.' . explode('/', explode(':', substr($DoctorImage, 0, strpos($DoctorImage, ';')))[1])[1];
-            Image::make($DoctorImage)->save(public_path('images/doctor/') . $name);
-        } else {
+        }else {
             $name = $doctor->DoctorImage;
         }
+
         $doctor->DoctorName = $request->DoctorName;
         $doctor->DoctorImage = $name;
         $doctor->Designation = $request->Designation;
