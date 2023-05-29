@@ -246,7 +246,7 @@ export default {
             this.form.clear();
             $("#shopModal").modal("show");
             this.getAllDistrict();
-            this.getAllUpazila();
+            this.getAllUpazilaByDistrict();
         },
         store() {
             this.form.busy = true;
@@ -264,7 +264,7 @@ export default {
             this.form.fill(shop);
             $("#shopModal").modal("show");
             this.getAllDistrict();
-            this.getAllUpazila();
+            this.getAllUpazilaByDistrict();
         },
         update() {
             this.form.busy = true;
