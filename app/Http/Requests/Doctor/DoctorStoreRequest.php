@@ -31,8 +31,6 @@ class DoctorStoreRequest extends FormRequest
           'Details'=>'required|min:3',
           'DoctorImage'=>'required',
           'AddressOne'=>'required|min:3',
-          'DistrictID'=>'required',
-          'UpazilaID'=>'required',
         ];
     }
 }
