@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Banner\BannerCollection;
 use App\Http\Resources\Category\CategoryCollection;
 use App\Http\Resources\District\DistrictCollection;
+use App\Http\Resources\Doctor\DoctorCollection;
 use App\Http\Resources\Portfolio\PortfolioCollection;
 use App\Http\Resources\Product\ProductCollection;
 use App\Http\Resources\Upazila\UpazilaCollection;
@@ -53,9 +54,7 @@ class CommonController extends Controller
     public function getAllDoctor()
     {
         $doctors = Doctor::orderBy('CreatedDate', 'desc')->get();
-        return response()->json([
-            'doctors' => $doctors
-        ]);
+        return new DoctorCollection($doctors);
     }
 
     public function getAllProduct(Request $request)
