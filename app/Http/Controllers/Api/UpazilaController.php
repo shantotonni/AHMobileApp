@@ -57,6 +57,7 @@ class UpazilaController extends Controller
     }
 
     public function getAllUpazilaByDistrict($ID){
+
         return new UpazilaCollection(Upazila::where('DistrictId', $ID)->paginate(20));
     }
 

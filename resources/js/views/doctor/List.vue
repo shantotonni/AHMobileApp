@@ -184,12 +184,12 @@
                                        <div class="col-md-6">
                                            <div class="form-group">
                                                <label>Upazila</label>
-                                               <select name="text" id="upazilaID" class="form-control" v-model="form.upazilaID" :class="{ 'is-invalid': form.errors.has('upazilaID') }">
+                                               <select name="text" id="UpazilaID" class="form-control" v-model="form.UpazilaID" :class="{ 'is-invalid': form.errors.has('UpazilaID') }">
                                                    <option disabled value="">Select Upazila</option>
                                                    <option :value="upazila.ID" v-for="(upazila , index) in upazilas" :key="index">{{ upazila.UpazilaName }}
                                                    </option>
                                                </select>
-                                               <div class="error" v-if="form.errors.has('upazilaID')" v-html="form.errors.get('upazilaID')"/>
+                                               <div class="error" v-if="form.errors.has('UpazilaID')" v-html="form.errors.get('UpazilaID')"/>
                                            </div>
                                        </div>
                                 </div>
@@ -305,7 +305,7 @@ export default {
             this.form.clear();
             $("#doctorModal").modal("show");
             this.getAllDistrict();
-          //  this.getAllUpazila();
+         this.getAllUpazilaByDistrict();
         },
         store() {
             this.form.busy = true;
@@ -321,7 +321,7 @@ export default {
             this.form.clear();
             this.form.fill(doctor);
             this.getAllDistrict();
-           // this.getAllUpazila();
+          this.getAllUpazilaByDistrict();
             $("#doctorModal").modal("show");
         },
         update() {
