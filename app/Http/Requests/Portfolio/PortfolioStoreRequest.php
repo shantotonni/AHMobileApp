@@ -25,6 +25,8 @@ class PortfolioStoreRequest extends FormRequest
     {
         return [
             'PortfolioName'=>'required|min:3',
+            'PortfolioImage'=>'required',
+
         ];
     }
 }

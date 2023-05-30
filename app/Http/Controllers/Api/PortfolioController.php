@@ -38,24 +38,23 @@ class PortfolioController extends Controller
     public function update(PortfolioUpdateRequest $request, $id)
     {
         $portfolio = Portfolio::where('ID', $id)->first();
-        $PortfolioImage = $request->DoctorImage;
+        $PortfolioImage = $request->PortfolioImage;
 
         if ($PortfolioImage != $portfolio->PortfolioImage) {
-            if ($request->has('$PortfolioImage')) {
+            if ($request->has('PortfolioImage')) {
                 $destinationPath = 'images/portfolio/';
-                $file_old = public_path('/') . $destinationPath . $portfolio->$PortfolioImage;
+                $file_old = public_path('/') . $destinationPath . $portfolio->PortfolioImage;
                 if (file_exists($file_old)) {
                     unlink($file_old);
                 }
                 $name = uniqid() . time() . '.' . explode('/', explode(':', substr($PortfolioImage, 0, strpos($PortfolioImage, ';')))[1])[1];
-                Image::make($PortfolioImage)->save(public_path('images/doctor/') . $name);
+                Image::make($PortfolioImage)->save(public_path('images/portfolio/') . $name);
             }else {
                 $name = $portfolio->PortfolioImage;
             }
         }else {
             $name = $portfolio->PortfolioImage;
         }
-
 
         $portfolio->PortfolioName = $request->PortfolioName;
         $portfolio->PortfolioImage = $name;
