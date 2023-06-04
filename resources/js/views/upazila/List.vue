@@ -32,22 +32,22 @@
                                         class="table table-bordered table-striped dt-responsive nowrap dataTable no-footer dtr-inline table-sm small">
                                         <thead>
                                         <tr>
-                                            <th class="text-center">Id</th>
-                                            <th class="text-center">District Id</th>
-                                            <th class="text-center">Upazila Name</th>
-                                            <th class="text-center">Upazila NameBn</th>
-                                            <th class="text-center">Code</th>
-                                            <th class="text-center">Action</th>
+                                            <th class="text-left">Id</th>
+                                            <th class="text-left">District Id</th>
+                                            <th class="text-left">Upazila Name</th>
+                                            <th class="text-left">Upazila NameBn</th>
+                                            <th class="text-left">Code</th>
+                                            <th class="text-left">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr v-for="(upazila, i) in upazilas" :key="upazila.ID" v-if="upazilas.length">
-                                            <td class="text-center" scope="row">{{ ++i }}</td>
-                                            <td class="text-center">{{ upazila.DistrictId}}</td>
-                                            <td class="text-center">{{ upazila.UpazilaName }}</td>
-                                            <td class="text-center">{{ upazila.UpazilaNameBn }}</td>
-                                            <td class="text-center">{{ upazila.Code }}</td>
-                                            <td class="text-center">
+                                            <td class="text-left" scope="row">{{ ++i }}</td>
+                                            <td class="text-left">{{ upazila.DistrictId}}</td>
+                                            <td class="text-left">{{ upazila.UpazilaName }}</td>
+                                            <td class="text-left">{{ upazila.UpazilaNameBn }}</td>
+                                            <td class="text-left">{{ upazila.Code }}</td>
+                                            <td class="text-left">
                                                 <button @click="edit(upazila)" class="btn btn-success btn-sm"><i
                                                     class="far fa-edit"></i></button>
                                                 <button hidden="hidden" @click="destroy(upazila.ID)"

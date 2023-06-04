@@ -30,31 +30,31 @@
                                     <table class="table table-bordered table-striped dt-responsive nowrap dataTable no-footer dtr-inline table-sm small">
                                         <thead>
                                         <tr>
-                                            <th class="text-center">SN</th>
-                                            <th class="text-center">Name</th>
-                                            <th class="text-center">User ID</th>
-                                            <th class="text-center">Role</th>
-                                            <th class="text-center">Designation</th>
-                                            <th class="text-center">Mobile</th>
-                                            <th class="text-center">Email</th>
-                                            <th class="text-center">Status</th>
-                                            <th class="text-center">Action</th>
+                                            <th class="text-left">SN</th>
+                                            <th class="text-left">Name</th>
+                                            <th class="text-left">User ID</th>
+                                            <th class="text-left">Role</th>
+                                            <th class="text-left">Designation</th>
+                                            <th class="text-left">Mobile</th>
+                                            <th class="text-left">Email</th>
+                                            <th class="text-left">Status</th>
+                                            <th class="text-left">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr v-for="(user, i) in users" :key="user.ID" v-if="users.length">
-                                            <th class="text-center" scope="row">{{ ++i }}</th>
-                                            <td class="text-center">{{ user.Name }}</td>
-                                            <td class="text-center">{{ user.UserID }}</td>
-                                            <td class="text-center">{{ user.role_name }}</td>
-                                            <td class="text-center">{{ user.Designation }}</td>
-                                            <td class="text-center">{{ user.Mobile }}</td>
-                                            <td class="text-center">{{ user.Email }}</td>
-                                            <td class="text-center">
+                                            <th class="text-left" scope="row">{{ ++i }}</th>
+                                            <td class="text-left">{{ user.Name }}</td>
+                                            <td class="text-left">{{ user.UserID }}</td>
+                                            <td class="text-left">{{ user.role_name }}</td>
+                                            <td class="text-left">{{ user.Designation }}</td>
+                                            <td class="text-left">{{ user.Mobile }}</td>
+                                            <td class="text-left">{{ user.Email }}</td>
+                                            <td class="text-left">
                                                 <span class="badge badge-success" v-if="user.Active == 1">Active</span>
                                                 <span class="badge badge-success" v-else>InActive</span>
                                             </td>
-                                            <td class="text-center">
+                                            <td class="text-left">
                                                 <button @click="edit(user)" class="btn btn-success btn-sm"><i class="far fa-edit"></i></button>
                                                 <button @click="destroy(user.ID)" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                                             </td>

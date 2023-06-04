@@ -30,18 +30,18 @@
                                     <table class="table table-bordered table-striped dt-responsive nowrap dataTable no-footer dtr-inline table-sm small">
                                         <thead>
                                             <tr>
-                                                <th class="text-center">SN</th>
-                                                <th class="text-center">Brand Name</th>
-                                                <th class="text-center">Created At</th>
-                                                <th class="text-center">Action</th>
+                                                <th class="text-left">SN</th>
+                                                <th class="text-left">Brand Name</th>
+                                                <th class="text-left">Created At</th>
+                                                <th class="text-left">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr v-for="(brand, i) in brands" :key="brand.id" v-if="brands.length">
-                                                <th class="text-center" scope="row">{{ ++i }}</th>
-                                                <td class="text-center">{{ brand.name }}</td>
-                                                <td class="text-center">{{ brand.created_at }}</td>
-                                                <td class="text-center">
+                                                <th class="text-left" scope="row">{{ ++i }}</th>
+                                                <td class="text-left">{{ brand.name }}</td>
+                                                <td class="text-left">{{ brand.created_at }}</td>
+                                                <td class="text-left">
                                                     <button @click="edit(brand)" class="btn btn-success btn-sm"><i class="far fa-edit"></i></button>
                                                     <button @click="destroy(brand.id)" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                                                 </td>

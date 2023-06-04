@@ -32,31 +32,31 @@
                                         class="table table-bordered table-striped dt-responsive nowrap dataTable no-footer dtr-inline table-sm small">
                                         <thead>
                                         <tr>
-                                            <th class="text-center">Id</th>
+                                            <th class="text-left">Id</th>
 
-                                            <th class="text-center">Category Name</th>
-                                            <th class="text-center">Category Image</th>
-                                            <th class="text-center">Details</th>
-                                            <th class="text-center">Status</th>
-                                            <th class="text-center">Portfolio Name</th>
-                                            <th class="text-center">Action</th>
+                                            <th class="text-left">Category Name</th>
+                                            <th class="text-left">Category Image</th>
+                                            <th class="text-left">Details</th>
+                                            <th class="text-left">Status</th>
+                                            <th class="text-left">Portfolio Name</th>
+                                            <th class="text-left">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr v-for="(category, i) in categories" :key="category.ID" v-if="categories.length">
-                                            <td class="text-center" scope="row">{{ ++i }}</td>
-                                            <td class="text-center">{{ category.CategoryName }}</td>
-                                            <td class="text-center">
+                                            <td class="text-left" scope="row">{{ ++i }}</td>
+                                            <td class="text-left">{{ category.CategoryName }}</td>
+                                            <td class="text-left">
                                                 <img v-if="category.CategoryImage" height="40" width="40" :src="tableImage(category.CategoryImage)" alt="">
                                             </td>
-                                            <td class="text-center">{{ category.Details }}</td>
-                                            <td class="text-center">
+                                            <td class="text-left">{{ category.Details }}</td>
+                                            <td class="text-left">
                                                 <span class="badge badge-success"
                                                       v-if="category.Active == 'Y'">Active</span>
                                                 <span class="badge badge-success" v-else>InActive</span>
                                             </td>
-                                            <td class="text-center" scope="row">{{category.PortfolioName}}</td>
-                                            <td class="text-center">
+                                            <td class="text-left" scope="row">{{category.PortfolioName}}</td>
+                                            <td class="text-left">
                                                 <button @click="edit(category)" class="btn btn-success btn-sm"><i
                                                     class="far fa-edit"></i></button>
                                                 <button hidden="hidden" @click="destroy(category.ID)" class="btn btn-danger btn-sm"><i

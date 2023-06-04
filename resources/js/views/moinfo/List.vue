@@ -32,26 +32,26 @@
                                         class="table table-bordered table-striped dt-responsive nowrap dataTable no-footer dtr-inline table-sm small">
                                         <thead>
                                         <tr>
-                                            <th class="text-center">Id</th>
-                                            <th class="text-center">Name</th>
-                                            <th class="text-center">Mobile No</th>
-                                            <th class="text-center">Email</th>
-                                            <th class="text-center">Address</th>
-                                            <th class="text-center">District</th>
-                                            <th class="text-center">Upazila</th>
-                                            <th class="text-center">Action</th>
+                                            <th class="text-left">Id</th>
+                                            <th class="text-left">Name</th>
+                                            <th class="text-left">Mobile No</th>
+                                            <th class="text-left">Email</th>
+                                            <th class="text-left">Address</th>
+                                            <th class="text-left">District</th>
+                                            <th class="text-left">Upazila</th>
+                                            <th class="text-left">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr v-for="(moinfo, i) in moinfos" :key="moinfo.ID" v-if="moinfos.length">
-                                            <td class="text-center" scope="row">{{ ++i }}</td>
-                                            <td class="text-center">{{ moinfo.Name }}</td>
-                                            <td class="text-center">{{ moinfo.Mobile }}</td>
-                                            <td class="text-center">{{ moinfo.Email }}</td>
-                                            <td class="text-center">{{ moinfo.Address}}</td>
-                                            <td class="text-center">{{ moinfo.DistrictName }}</td>
-                                            <td class="text-center">{{ moinfo.UpazilaName }}</td>
-                                            <td class="text-center">
+                                            <td class="text-left" scope="row">{{ ++i }}</td>
+                                            <td class="text-left">{{ moinfo.Name }}</td>
+                                            <td class="text-left">{{ moinfo.Mobile }}</td>
+                                            <td class="text-left">{{ moinfo.Email }}</td>
+                                            <td class="text-left">{{ moinfo.Address}}</td>
+                                            <td class="text-left">{{ moinfo.DistrictName }}</td>
+                                            <td class="text-left">{{ moinfo.UpazilaName }}</td>
+                                            <td class="text-left">
                                                 <button @click="edit(moinfo)" class="btn btn-success btn-sm"><i
                                                     class="far fa-edit"></i></button>
                                                 <button hidden="hidden" @click="destroy(moinfo.ID)" class="btn btn-danger btn-sm"><i

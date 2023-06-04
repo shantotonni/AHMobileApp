@@ -31,20 +31,20 @@
                                         <thead>
                                         <tr>
 
-                                            <th class="text-center">ID</th>
-                                            <th class="text-center">Banner Name</th>
-                                            <th class="text-center">Banner Image</th>
-                                            <th class="text-center">Action</th>
+                                            <th class="text-left">ID</th>
+                                            <th class="text-left">Banner Name</th>
+                                            <th class="text-left">Banner Image</th>
+                                            <th class="text-left">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr v-for="(banner, i) in banners" :key="banner.ID" v-if="banners.length">
-                                            <th class="text-center" scope="row">{{ ++i }}</th>
-                                            <td class="text-center">{{ banner.BannerName }}</td>
-                                            <td class="text-center">
+                                            <th class="text-left" scope="row">{{ ++i }}</th>
+                                            <td class="text-left">{{ banner.BannerName }}</td>
+                                            <td class="text-left">
                                                 <img v-if="banner.BannerImage" height="40" width="40" :src="tableImage(banner.BannerImage)" alt="">
                                             </td>
-                                            <td class="text-center">
+                                            <td class="text-left">
                                                 <button @click="edit(banner)" class="btn btn-success btn-sm"><i class="far fa-edit"></i></button>
                                                 <button hidden="hidden" @click="destroy(banner.ID)" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                                             </td>

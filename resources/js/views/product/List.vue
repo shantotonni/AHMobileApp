@@ -32,34 +32,34 @@
                                         class="table table-bordered table-striped dt-responsive nowrap dataTable no-footer dtr-inline table-sm small">
                                         <thead>
                                         <tr>
-                                            <th class="text-center">Id</th>
-                                            <th class="text-center">Product Name</th>
-                                            <th class="text-center">Portfolio Name</th>
-                                            <th class="text-center">Category Name</th>
-                                            <th class="text-center">Product Attribute</th>
-                                            <th class="text-center">Product Image</th>
-                                            <th class="text-center">Details</th>
-                                            <th class="text-center">Action</th>
+                                            <th class="text-left">Id</th>
+                                            <th class="text-left">Product Name</th>
+                                            <th class="text-left">Portfolio Name</th>
+                                            <th class="text-left">Category Name</th>
+                                            <th class="text-left">Product Attribute</th>
+                                            <th class="text-left">Product Image</th>
+                                            <th class="text-left">Details</th>
+                                            <th class="text-left">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr v-for="(product, i) in products" :key="product.ID" v-if="products.length">
-                                            <td class="text-center" scope="row">{{ ++i }}</td>
-                                            <td class="text-center">{{ product.ProductName }}</td>
-                                            <td class="text-center" scope="row">{{ product.PortfolioName }}</td>
-                                            <td class="text-center" scope="row">{{ product.CategoryName }}</td>
+                                            <td class="text-left" scope="row">{{ ++i }}</td>
+                                            <td class="text-left">{{ product.ProductName }}</td>
+                                            <td class="text-left" scope="row">{{ product.PortfolioName }}</td>
+                                            <td class="text-left" scope="row">{{ product.CategoryName }}</td>
 
-                                            <td class="text-center">
+                                            <td class="text-left">
                                                 {{ product.ProductAttribute }}
                                             </td>
-                                            <td class="text-center">
+                                            <td class="text-left">
                                                 <img v-if="product.ProductImage" height="40" width="40"
                                                      :src="tableImage(product.ProductImage)" alt="">
                                             </td>
-                                            <td class="text-center">
+                                            <td class="text-left">
                                                 {{ product.Details }}
                                             </td>
-                                            <td class="text-center">
+                                            <td class="text-left">
                                                 <button @click="edit(product)" class="btn btn-success btn-sm"><i
                                                     class="far fa-edit"></i></button>
                                                 <button hidden="hidden" @click="destroy(product.ID)"

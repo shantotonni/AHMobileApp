@@ -31,26 +31,26 @@
                                         class="table table-bordered table-striped dt-responsive nowrap dataTable no-footer dtr-inline table-sm small">
                                         <thead>
                                             <tr>
-                                                <th class="text-center">SN</th>
-                                                <th class="text-center">Menu Item</th>
-                                                <th class="text-center">Icon</th>
-                                                <th class="text-center">Status</th>
-                                                <th class="text-center">Link</th>
-                                                <th class="text-center">Order</th>
-                                                <th class="text-center">Menu Name</th>
-                                                <th class="text-center">Action</th>
+                                                <th class="text-left">SN</th>
+                                                <th class="text-left">Menu Item</th>
+                                                <th class="text-left">Icon</th>
+                                                <th class="text-left">Status</th>
+                                                <th class="text-left">Link</th>
+                                                <th class="text-left">Order</th>
+                                                <th class="text-left">Menu Name</th>
+                                                <th class="text-left">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                         <tr v-for="(menu_item, i) in menu_items" :key="menu_item.Id" v-if="menu_items.length">
-                                            <th class="text-center" scope="row">{{ ++i }}</th>
-                                            <td class="text-center">{{ menu_item.Name }}</td>
-                                            <td class="text-center">{{ menu_item.Icon }}</td>
-                                            <td class="text-center">{{ menu_item.Status }}</td>
-                                            <td class="text-center">{{ menu_item.Link }}</td>
-                                            <td class="text-center">{{ menu_item.Order }}</td>
-                                            <td class="text-center">{{ menu_item.MenuName }}</td>
-                                            <td class="text-center">
+                                            <th class="text-left" scope="row">{{ ++i }}</th>
+                                            <td class="text-left">{{ menu_item.Name }}</td>
+                                            <td class="text-left">{{ menu_item.Icon }}</td>
+                                            <td class="text-left">{{ menu_item.Status }}</td>
+                                            <td class="text-left">{{ menu_item.Link }}</td>
+                                            <td class="text-left">{{ menu_item.Order }}</td>
+                                            <td class="text-left">{{ menu_item.MenuName }}</td>
+                                            <td class="text-left">
                                                 <button @click="edit(menu_item)" class="btn btn-success btn-sm"><i class="far fa-edit"></i></button>
 <!--                                                <button @click="destroy(menu_item.Id)" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>-->
                                             </td>

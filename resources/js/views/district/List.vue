@@ -32,18 +32,18 @@
                                         class="table table-bordered table-striped dt-responsive nowrap dataTable no-footer dtr-inline table-sm small">
                                         <thead>
                                         <tr>
-                                            <th class="text-center">Id</th>
-                                            <th class="text-center"> DistrictName</th>
-                                            <th class="text-center">DistrictNameBn</th>
-                                            <th class="text-center">Action</th>
+                                            <th class="text-left">Id</th>
+                                            <th class="text-left"> DistrictName</th>
+                                            <th class="text-left">DistrictNameBn</th>
+                                            <th class="text-left">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr v-for="(district, i) in districts" :key="district.ID" v-if="districts.length">
-                                            <td class="text-center" scope="row">{{ ++i }}</td>
-                                            <td class="text-center">{{ district.DistrictName }}</td>
-                                            <td class="text-center">{{ district.DistrictNameBn }}</td>
-                                            <td class="text-center">
+                                            <td class="text-left" scope="row">{{ ++i }}</td>
+                                            <td class="text-left">{{ district.DistrictName }}</td>
+                                            <td class="text-left">{{ district.DistrictNameBn }}</td>
+                                            <td class="text-left">
                                                 <button @click="edit(district)" class="btn btn-success btn-sm"><i
                                                     class="far fa-edit"></i></button>
                                                 <button hidden="hidden" @click="destroy(district.ID)"

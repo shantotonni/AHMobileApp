@@ -30,25 +30,25 @@
                                     <table class="table table-bordered table-striped dt-responsive nowrap dataTable no-footer dtr-inline table-sm small">
                                         <thead>
                                         <tr>
-                                            <th class="text-center">Id</th>
-                                            <th class="text-center">Name</th>
-                                            <th class="text-center">Image</th>
-                                            <th class="text-center">Status</th>
-                                            <th class="text-center">Action</th>
+                                            <th class="text-left">Id</th>
+                                            <th class="text-left">Name</th>
+                                            <th class="text-left">Image</th>
+                                            <th class="text-left">Status</th>
+                                            <th class="text-left">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr v-for="(portfolio, i) in portfolios" :key="portfolio.ID" v-if="portfolios.length">
-                                            <th class="text-center" scope="row">{{ ++i }}</th>
-                                            <td class="text-center">{{ portfolio.PortfolioName }}</td>
-                                            <td class="text-center">
+                                            <th class="text-left" scope="row">{{ ++i }}</th>
+                                            <td class="text-left">{{ portfolio.PortfolioName }}</td>
+                                            <td class="text-left">
                                                 <img v-if="portfolio.PortfolioImage" height="40" width="40" :src="tableImage(portfolio.PortfolioImage)" alt="">
                                             </td>
-                                            <td class="text-center">
+                                            <td class="text-left">
                                                 <span class="badge badge-success" v-if="portfolio.Active == 'Y'">Active</span>
                                                 <span class="badge badge-success" v-else>InActive</span>
                                             </td>
-                                            <td class="text-center">
+                                            <td class="text-left">
                                                 <button @click="edit(portfolio)" class="btn btn-success btn-sm"><i class="far fa-edit"></i></button>
                                                 <button hidden="hidden" @click="destroy(portfolio.ID)" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                                             </td>

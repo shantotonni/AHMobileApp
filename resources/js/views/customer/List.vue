@@ -30,27 +30,27 @@
                                     <table class="table table-bordered table-striped dt-responsive nowrap dataTable no-footer dtr-inline table-sm small">
                                         <thead>
                                             <tr>
-                                                <th class="text-center">SN</th>
-                                                <th class="text-center">Customer Name</th>
-                                                <th class="text-center">Customer Address</th>
-                                                <th class="text-center">Generator Purchase Date</th>
-                                                <th class="text-center">Image</th>
-                                                <th class="text-center">Status</th>
-                                                <th class="text-center">Action</th>
+                                                <th class="text-left">SN</th>
+                                                <th class="text-left">Customer Name</th>
+                                                <th class="text-left">Customer Address</th>
+                                                <th class="text-left">Generator Purchase Date</th>
+                                                <th class="text-left">Image</th>
+                                                <th class="text-left">Status</th>
+                                                <th class="text-left">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr v-for="(customer, i) in customers" :key="customer.CustomerID" v-if="customers.length">
-                                                <th class="text-center" scope="row">{{ ++i }}</th>
-                                                <td class="text-center">{{ customer.name }}</td>
-                                                <td class="text-center">{{ customer.mobile }}</td>
-                                                <td class="text-center">{{ customer.date_of_purchase }}</td>
-                                                <td class="text-center">{{ customer.image }}</td>
-                                                <td class="text-center">
+                                                <th class="text-left" scope="row">{{ ++i }}</th>
+                                                <td class="text-left">{{ customer.name }}</td>
+                                                <td class="text-left">{{ customer.mobile }}</td>
+                                                <td class="text-left">{{ customer.date_of_purchase }}</td>
+                                                <td class="text-left">{{ customer.image }}</td>
+                                                <td class="text-left">
                                                     <span class="badge badge-success" v-if="customer.status =='Y'">Active</span>
                                                     <span class="badge badge-danger" v-else></span>
                                                 </td>
-                                                <td class="text-center">
+                                                <td class="text-left">
                                                     <button @click="edit(customer)" class="btn btn-success btn-sm"><i class="far fa-edit"></i></button>
 <!--                                                    <button @click="show(company)" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button>-->
 <!--                                                    <button @click="destroy(customer)" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>-->

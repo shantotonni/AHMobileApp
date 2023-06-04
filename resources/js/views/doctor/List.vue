@@ -32,36 +32,36 @@
                                         class="table table-bordered table-striped dt-responsive nowrap dataTable no-footer dtr-inline table-sm small">
                                         <thead>
                                         <tr>
-                                            <th class="text-center">Id</th>
-                                            <th class="text-center">Doctor Name</th>
-                                            <th class="text-center">Designation</th>
-                                            <th class="text-center">Mobile No</th>
-                                            <th class="text-center">Email</th>
-                                            <th class="text-center">Details</th>
-                                            <th class="text-center">Image</th>
-                                            <th class="text-center">Address one</th>
-                                            <th class="text-center">Address two</th>
-                                            <th class="text-center">District</th>
-                                            <th class="text-center">Upazila</th>
-                                            <th class="text-center">Action</th>
+                                            <th class="text-left">Id</th>
+                                            <th class="text-left">Doctor Name</th>
+                                            <th class="text-left">Designation</th>
+                                            <th class="text-left">Mobile No</th>
+                                            <th class="text-left">Email</th>
+                                            <th class="text-left">Details</th>
+                                            <th class="text-left">Image</th>
+                                            <th class="text-left">Address one</th>
+                                            <th class="text-left">Address two</th>
+                                            <th class="text-left">District</th>
+                                            <th class="text-left">Upazila</th>
+                                            <th class="text-left">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr v-for="(doctor, i) in doctors" :key="doctor.ID" v-if="doctors.length">
-                                            <td class="text-center">{{ ++i }}</td>
-                                            <td class="text-center">{{ doctor.DoctorName }}</td>
-                                            <td class="text-center">{{ doctor.Designation }}</td>
-                                            <td class="text-center">{{ doctor.Mobile }}</td>
-                                            <td class="text-center">{{ doctor.Email }}</td>
-                                            <td class="text-center" v-html="doctor.Details"></td>
-                                            <td class="text-center">
+                                            <td class="text-left">{{ ++i }}</td>
+                                            <td class="text-left">{{ doctor.DoctorName }}</td>
+                                            <td class="text-left">{{ doctor.Designation }}</td>
+                                            <td class="text-left">{{ doctor.Mobile }}</td>
+                                            <td class="text-left">{{ doctor.Email }}</td>
+                                            <td class="text-left" v-html="doctor.Details"></td>
+                                            <td class="text-left">
                                                 <img v-if="doctor.DoctorImage" height="40" width="40" :src="tableImage(doctor.DoctorImage)" alt="">
                                             </td>
-                                            <td class="text-center">{{ doctor.AddressOne }}</td>
-                                            <td class="text-center" >{{ doctor.AddressTwo }}</td>
-                                            <td class="text-center">{{ doctor.DistrictName }}</td>
-                                            <td class="text-center">{{ doctor.UpazilaName }}</td>
-                                            <td class="text-center">
+                                            <td class="text-left">{{ doctor.AddressOne }}</td>
+                                            <td class="text-left" >{{ doctor.AddressTwo }}</td>
+                                            <td class="text-left">{{ doctor.DistrictName }}</td>
+                                            <td class="text-left">{{ doctor.UpazilaName }}</td>
+                                            <td class="text-left">
                                                 <button @click="edit(doctor)" class="btn btn-success btn-sm"><i class="far fa-edit"></i></button>
                                                 <button hidden="hidden" @click="destroy(doctor.ID)" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                                             </td>

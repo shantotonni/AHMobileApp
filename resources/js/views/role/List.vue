@@ -30,18 +30,18 @@
                                     <table class="table table-bordered table-striped dt-responsive nowrap dataTable no-footer dtr-inline table-sm small">
                                         <thead>
                                             <tr>
-                                                <th class="text-center">SN</th>
-                                                <th class="text-center">Role Name</th>
-                                                <th class="text-center">Created At</th>
-                                                <th class="text-center">Action</th>
+                                                <th class="text-left">SN</th>
+                                                <th class="text-left">Role Name</th>
+                                                <th class="text-left">Created At</th>
+                                                <th class="text-left">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr v-for="(role, i) in roles" :key="role.ID" v-if="roles.length">
-                                                <th class="text-center" scope="row">{{ ++i }}</th>
-                                                <td class="text-center">{{ role.Name }}</td>
-                                                <td class="text-center">{{ role.CreatedAt }}</td>
-                                                <td class="text-center">
+                                                <th class="text-left" scope="row">{{ ++i }}</th>
+                                                <td class="text-left">{{ role.Name }}</td>
+                                                <td class="text-left">{{ role.CreatedAt }}</td>
+                                                <td class="text-left">
                                                     <button @click="edit(role)" class="btn btn-success btn-sm"><i class="far fa-edit"></i></button>
                                                     <button @click="destroy(role.ID)" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                                                 </td>

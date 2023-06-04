@@ -32,26 +32,26 @@
                                         class="table table-bordered table-striped dt-responsive nowrap dataTable no-footer dtr-inline table-sm small">
                                         <thead>
                                         <tr>
-                                            <th class="text-center">Id</th>
-                                            <th class="text-center">Shop Name</th>
-                                            <th class="text-center">ShopOwner Name</th>
-                                            <th class="text-center">ShopOwner Mobile No</th>
-                                            <th class="text-center">Shop Address</th>
-                                            <th class="text-center">District</th>
-                                            <th class="text-center">Upazila</th>
-                                            <th class="text-center">Action</th>
+                                            <th class="text-left">Id</th>
+                                            <th class="text-left">Shop Name</th>
+                                            <th class="text-left">ShopOwner Name</th>
+                                            <th class="text-left">ShopOwner Mobile No</th>
+                                            <th class="text-left">Shop Address</th>
+                                            <th class="text-left">District</th>
+                                            <th class="text-left">Upazila</th>
+                                            <th class="text-left">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr v-for="(shop, i) in shops" :key="shop.ID" v-if="shops.length">
-                                            <td class="text-center" scope="row">{{ ++i }}</td>
-                                            <td class="text-center">{{ shop.ShopName }}</td>
-                                            <td class="text-center">{{ shop.ShopOwnerName }}</td>
-                                            <td class="text-center">{{ shop.ShopOwnerMobile }}</td>
-                                            <td class="text-center">{{ shop.ShopAddress}}</td>
-                                            <td class="text-center">{{ shop.DistrictName }}</td>
-                                            <td class="text-center">{{ shop.UpazilaName }}</td>
-                                            <td class="text-center">
+                                            <td class="text-left" scope="row">{{ ++i }}</td>
+                                            <td class="text-left">{{ shop.ShopName }}</td>
+                                            <td class="text-left">{{ shop.ShopOwnerName }}</td>
+                                            <td class="text-left">{{ shop.ShopOwnerMobile }}</td>
+                                            <td class="text-left">{{ shop.ShopAddress}}</td>
+                                            <td class="text-left">{{ shop.DistrictName }}</td>
+                                            <td class="text-left">{{ shop.UpazilaName }}</td>
+                                            <td class="text-left">
                                                 <button @click="edit(shop)" class="btn btn-success btn-sm"><i
                                                     class="far fa-edit"></i></button>
                                                 <button hidden="hidden" @click="destroy(shop.ID)" class="btn btn-danger btn-sm"><i
