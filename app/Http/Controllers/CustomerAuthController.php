@@ -112,7 +112,7 @@ class CustomerAuthController extends Controller
             $exist_customer = Customer::where('Mobile',$request->Mobile)->exists();
             if ($exist_customer){
                 return response()->json([
-                    'status'=>200,
+                    'status'=>401,
                     'message' => 'Mobile number Already Exists'
                 ],200);
             }
