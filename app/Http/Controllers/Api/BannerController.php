@@ -73,6 +73,6 @@ class BannerController extends Controller
 
     public function search($query)
     {
-        return new BannerCollection(Banner::where('BannerName', 'LIKE', "%$query%")->orWhere('BannerID', 'like', '%' . $query . '%')->latest()->paginate(20));
+        return new BannerCollection(Banner::where('BannerName', 'LIKE', "%$query%")->latest()->paginate(20));
     }
 }

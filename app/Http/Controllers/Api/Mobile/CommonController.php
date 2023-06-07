@@ -7,6 +7,7 @@ use App\Http\Resources\Banner\BannerCollection;
 use App\Http\Resources\Category\CategoryCollection;
 use App\Http\Resources\District\DistrictCollection;
 use App\Http\Resources\Doctor\DoctorCollection;
+use App\Http\Resources\Doctor\DoctorResource;
 use App\Http\Resources\Portfolio\PortfolioCollection;
 use App\Http\Resources\Product\ProductCollection;
 use App\Http\Resources\Upazila\UpazilaCollection;
@@ -22,11 +23,10 @@ use App\Models\Portfolio;
 use App\Models\Product;
 use App\Models\Role;
 use App\Models\Shop;
-use App\Models\Thana;
 use App\Models\Upazila;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 
 class CommonController extends Controller
 {
@@ -135,4 +135,81 @@ class CommonController extends Controller
         return new UpazilaCollection($upazilas);
     }
 
-}
+    public function getDistrictWiseDoctor(Request $request)
+    {
+        $DistrictID = $request->DistrictID;
+        if ($DistrictID){
+            try {
+                $doctors = Doctor::select('DoctorName')
+                    ->where('DistrictID', $DistrictID)
+                    ->get();
+                return response()->json([
+                    'data' => $doctors
+                ]);
+            } catch (\Exception $exception) {
+                return response()->json([
+                    'status' => 'error',
+                    'data' => [],
+                    'message' => 'Something went wrong!'
+                ],500);
+            }
+        }else{
+            return response()->json([
+                'message' =>'Enter district',
+            ]);
+        }
+
+
+    }
+    public function getDistrictWiseMoinfo(Request $request)
+    {
+        $DistrictID = $request->DistrictID;
+        if ($DistrictID){
+            try {
+                $moinfos = MOInfo::select('Name')
+                    ->where('DistrictID', $DistrictID)
+                    ->get();
+                return response()->json([
+                    'data' => $moinfos
+                ]);
+            } catch (\Exception $exception) {
+                return response()->json([
+                    'status' => 'error',
+                    'data' => [],
+                    'message' => 'Something went wrong!'
+                ],500);
+            }
+        }else{
+            return response()->json([
+                'message' =>'Enter district',
+            ]);
+        }
+
+
+    }
+    public function getDistrictWiseShop(Request $request)
+    {
+        $DistrictID = $request->DistrictID;
+        if ($DistrictID){
+            try {
+                $shops = Shop::select('ShopName')
+                    ->where('DistrictID', $DistrictID)
+                    ->get();
+                return response()->json([
+                    'data' => $shops
+                ]);
+            } catch (\Exception $exception) {
+                return response()->json([
+                    'status' => 'error',
+                    'data' => [],
+                    'message' => 'Something went wrong!'
+                ],500);
+            }
+        }else{
+            return response()->json([
+                'message' =>'Enter district',
+            ]);
+        }
+
+
+    }}
