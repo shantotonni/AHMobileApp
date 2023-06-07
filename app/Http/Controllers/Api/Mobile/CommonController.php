@@ -8,8 +8,10 @@ use App\Http\Resources\Category\CategoryCollection;
 use App\Http\Resources\District\DistrictCollection;
 use App\Http\Resources\Doctor\DoctorCollection;
 use App\Http\Resources\Doctor\DoctorResource;
+use App\Http\Resources\MOInfo\MOInfoCollection;
 use App\Http\Resources\Portfolio\PortfolioCollection;
 use App\Http\Resources\Product\ProductCollection;
+use App\Http\Resources\Shop\ShopCollection;
 use App\Http\Resources\Upazila\UpazilaCollection;
 use App\Models\Banner;
 use App\Models\Brand;
@@ -137,15 +139,11 @@ class CommonController extends Controller
 
     public function getDistrictWiseDoctor(Request $request)
     {
-        $DistrictID = $request->DistrictID;
+        $DistrictID = $request->DistricID;
         if ($DistrictID){
             try {
-                $doctors = Doctor::select('DoctorName')
-                    ->where('DistrictID', $DistrictID)
-                    ->get();
-                return response()->json([
-                    'data' => $doctors
-                ]);
+                $doctors = Doctor::where('DistrictID', $DistrictID)->get();
+                return new DoctorCollection($doctors);
             } catch (\Exception $exception) {
                 return response()->json([
                     'status' => 'error',
@@ -166,12 +164,8 @@ class CommonController extends Controller
         $DistrictID = $request->DistrictID;
         if ($DistrictID){
             try {
-                $moinfos = MOInfo::select('Name')
-                    ->where('DistrictID', $DistrictID)
-                    ->get();
-                return response()->json([
-                    'data' => $moinfos
-                ]);
+                $moinfos = MOInfo::where('DistrictID', $DistrictID)->get();
+                return new MOInfoCollection($moinfos);
             } catch (\Exception $exception) {
                 return response()->json([
                     'status' => 'error',
@@ -192,12 +186,8 @@ class CommonController extends Controller
         $DistrictID = $request->DistrictID;
         if ($DistrictID){
             try {
-                $shops = Shop::select('ShopName')
-                    ->where('DistrictID', $DistrictID)
-                    ->get();
-                return response()->json([
-                    'data' => $shops
-                ]);
+                $shops = Shop::where('DistrictID', $DistrictID)->get();
+                return new ShopCollection($shops);
             } catch (\Exception $exception) {
                 return response()->json([
                     'status' => 'error',
