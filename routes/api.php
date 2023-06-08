@@ -141,4 +141,4 @@ Route::get('get-all-moinfo', [CommonController::class, 'getAllMOInfo']);
 Route::post('doctors/district-wise', [CommonController::class, 'getDistrictWiseDoctor']);
 Route::post('moinfos/district-wise', [CommonController::class, 'getDistrictWiseMoinfo']);
 Route::post('shops/district-wise', [CommonController::class, 'getDistrictWiseShop']);
-Route::post('product-details', [\App\Http\Controllers\Api\Mobile\ProductController::class, 'productDetails']);
+Route::post('product-details', [ProductController::class, 'productDetails']);
