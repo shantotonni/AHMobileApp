@@ -271,6 +271,8 @@ export default {
             this.form.put("/api/shop/" + this.form.ID).then(response => {
                 $("#shopModal").modal("hide");
                 this.getAllShop();
+                this.getAllDistrict();
+                this.getAllUpazilaByDistrict();
             }).catch(e => {
                 this.isLoading = false;
             });

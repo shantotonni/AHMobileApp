@@ -211,6 +211,8 @@ export default {
     mounted() {
         document.title = 'MOInfo List | AHMobileApp';
         this.getAllMOInfo();
+        this.getAllDistrict();
+        this.getAllUpazila();
     },
     methods: {
         getAllMOInfo() {
@@ -270,6 +272,8 @@ export default {
             this.form.put("/api/moinfo/" + this.form.ID).then(response => {
                 $("#moinfoModal").modal("hide");
                 this.getAllMOInfo();
+                this.getAllDistrict();
+                this.getAllUpazila();
             }).catch(e => {
                 this.isLoading = false;
             });
