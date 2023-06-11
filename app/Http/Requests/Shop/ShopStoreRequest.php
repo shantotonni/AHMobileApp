@@ -25,7 +25,8 @@ class ShopStoreRequest extends FormRequest
     {
         return [
           'ShopOwnerName'=>'required|min:3',
-          'ShopName'=>'required|min:3'
+          'ShopName'=>'required|min:3',
+          'ShopImage'=>'required'
         ];
     }
 }
