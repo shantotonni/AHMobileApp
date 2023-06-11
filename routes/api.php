@@ -105,8 +105,7 @@ Route::group(['middleware' => 'jwtauth:api'], function () {
     Route::get('get-all-user', [CommonController::class, 'getAllUser']);
     Route::get('get-all-customer', [CommonController::class, 'getAllCustomer']);
     Route::get('get-all-role', [CommonController::class, 'getAllRole']);
-    Route::get('get-all-district', [CommonController::class, 'getAllDistrict']);
-    Route::get('get-all-upazila', [CommonController::class, 'getAllUpazila']);
+
 
     //get dashboard data route
     Route::get('get-all-dashboard-data', [DashboardController::class, 'getDashboardAllDara']);
@@ -142,3 +141,5 @@ Route::post('doctors/district-wise', [CommonController::class, 'getDistrictWiseD
 Route::post('moinfos/district-wise', [CommonController::class, 'getDistrictWiseMoinfo']);
 Route::post('shops/district-wise', [CommonController::class, 'getDistrictWiseShop']);
 Route::post('product-details', [ProductController::class, 'productDetails']);
+Route::get('get-all-district', [CommonController::class, 'getAllDistrict']);
+Route::get('get-all-upazila', [CommonController::class, 'getAllUpazila']);
