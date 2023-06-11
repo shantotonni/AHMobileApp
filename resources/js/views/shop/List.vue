@@ -37,6 +37,7 @@
                                             <th class="text-left">ShopOwner Name</th>
                                             <th class="text-left">ShopOwner Mobile No</th>
                                             <th class="text-left">Shop Address</th>
+                                            <th class="text-left">Image</th>
                                             <th class="text-left">District</th>
                                             <th class="text-left">Upazila</th>
                                             <th class="text-left">Action</th>
@@ -49,6 +50,9 @@
                                             <td class="text-left">{{ shop.ShopOwnerName }}</td>
                                             <td class="text-left">{{ shop.ShopOwnerMobile }}</td>
                                             <td class="text-left">{{ shop.ShopAddress}}</td>
+                                            <td class="text-left">
+                                                <img v-if="shop.ShopImage" height="40" width="40" :src="tableImage(shop.ShopImage)" alt="">
+                                            </td>
                                             <td class="text-left">{{ shop.DistrictName }}</td>
                                             <td class="text-left">{{ shop.UpazilaName }}</td>
                                             <td class="text-left">
@@ -135,6 +139,14 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <label>Image</label>
+                                            <input @change="changeImage($event)" type="file" name="ShopImage" class="form-control" :class="{ 'is-invalid': form.errors.has('ShopImage') }">
+                                            <div class="error" v-if="form.errors.has('ShopImage')" v-html="form.errors.get('ShopImage')" />
+                                            <img v-if="form.ShopImage" :src="showImage(form.ShopImage)" alt="" height="40px" width="40px">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
                                             <label>District</label>
                                             <select name="DistrictID" id="DistrictID" class="form-control" v-model="form.DistrictID" :class="{ 'is-invalid': form.errors.has('DistrictID') }" @change="getAllUpazilaByDistrict">
                                                 <option disabled value="">Select District</option>
@@ -194,6 +206,7 @@ export default {
                 ShopOwnerName: '',
                 ShopOwnerMobile: '',
                 ShopAddress: '',
+                ShopImage: '',
                 DistrictID: '',
                 UpazilaID: '',
             }),
@@ -212,6 +225,7 @@ export default {
         document.title = 'Shop List | AHMobileApp';
         this.getAllShop();
         this.getAllDistrict();
+        this.getAllUpazilaByDistrict();
     },
     methods: {
         getAllShop(){
@@ -276,6 +290,25 @@ export default {
             }).catch(e => {
                 this.isLoading = false;
             });
+        },
+        changeImage(event){
+            let file = event.target.files[0];
+            let reader = new FileReader();
+            reader.onload = event => {
+                this.form.ShopImage = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        },
+        showImage(){
+            let img = this.form.ShopImage;
+            if (img.length > 100){
+                return this.form.ShopImage;
+            }else{
+                return window.location.origin + "/AHMobileApp/images/shop/" + this.form.ShopImage;
+            }
+        },
+        tableImage(image){
+            return window.location.origin + "/AHMobileApp/images/shop/"+ image;
         },
         getAllDistrict() {
             axios.get('/api/get-all-district').then((response) => {

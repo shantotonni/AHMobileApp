@@ -225,7 +225,7 @@ export default {
         document.title = 'MOInfo List | AHMobileApp';
         this.getAllMOInfo();
         this.getAllDistrict();
-        this.getAllUpazila();
+        this. getAllUpazilaByDistrict();
     },
     methods: {
         getAllMOInfo() {

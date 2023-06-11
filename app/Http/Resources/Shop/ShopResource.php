@@ -14,6 +14,18 @@ class ShopResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'ID' => $this->ID,
+            'ShopName' => $this->ShopName,
+            'ShopOwnerName' => $this->ShopOwnerName,
+            'ShopOwnerMobile'=>$this->ShopOwnerMobile,
+            'ShopAddress' => $this->ShopAddress,
+            'DistrictID' => $this->DistrictID,
+            'ShopImage'=>$this->ShopImage,
+            'ShopImageMobile'=>url('/').'/images/shop/'.$this->ShopImage,
+            'DistrictName'=>isset($this->district) ? $this->district->DistrictName: '',
+            'UpazilaID' => $this->UpazilaID,
+            'UpazilaName' => isset($this->upazila) ? $this->upazila->UpazilaName:'',
+        ];
     }
 }
