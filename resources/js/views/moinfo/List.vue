@@ -37,6 +37,7 @@
                                             <th class="text-left">Mobile No</th>
                                             <th class="text-left">Email</th>
                                             <th class="text-left">Address</th>
+                                            <th class="text-left">Image</th>
                                             <th class="text-left">District</th>
                                             <th class="text-left">Upazila</th>
                                             <th class="text-left">Action</th>
@@ -49,6 +50,9 @@
                                             <td class="text-left">{{ moinfo.Mobile }}</td>
                                             <td class="text-left">{{ moinfo.Email }}</td>
                                             <td class="text-left">{{ moinfo.Address}}</td>
+                                            <td class="text-left">
+                                                <img v-if="moinfo.MOImage" height="40" width="40" :src="tableImage(moinfo.MOImage)" alt="">
+                                            </td>
                                             <td class="text-left">{{ moinfo.DistrictName }}</td>
                                             <td class="text-left">{{ moinfo.UpazilaName }}</td>
                                             <td class="text-left">
@@ -134,6 +138,14 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <label>Image</label>
+                                            <input @change="changeImage($event)" type="file" name="MOImage" class="form-control" :class="{ 'is-invalid': form.errors.has('MOImage') }">
+                                            <div class="error" v-if="form.errors.has('MOrImage')" v-html="form.errors.get('MOImage')" />
+                                            <img v-if="form.MOImage" :src="showImage(form.MOImage)" alt="" height="40px" width="40px">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
                                             <label>District</label>
                                             <select name="DistrictID" id="DistrictID" class="form-control" v-model="form.DistrictID" :class="{ 'is-invalid': form.errors.has('DistrictID') }" @change="getAllUpazilaByDistrict">
                                                 <option disabled value="">Select District</option>
@@ -194,6 +206,7 @@ export default {
                 Mobile: '',
                 Email: '',
                 Address: '',
+                MOImage:'',
                 DistrictID: '',
                 UpazilaID: '',
             }),
@@ -277,6 +290,25 @@ export default {
             }).catch(e => {
                 this.isLoading = false;
             });
+        },
+        changeImage(event){
+            let file = event.target.files[0];
+            let reader = new FileReader();
+            reader.onload = event => {
+                this.form.MOImage = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        },
+        showImage(){
+            let img = this.form.MOImage;
+            if (img.length > 100){
+                return this.form.MOImage;
+            }else{
+                return window.location.origin + "/AHMobileApp/images/MOinfo/" + this.form.MOImage;
+            }
+        },
+        tableImage(image){
+            return window.location.origin + "/AHMobileApp/images/MOinfo/"+ image;
         },
         getAllDistrict() {
             axios.get('/api/get-all-district').then((response) => {

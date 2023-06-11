@@ -14,6 +14,18 @@ class MOInfoResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'ID'=>$this->ID,
+            'Name'=>$this->Name,
+            'Email'=>$this->Email,
+            'Mobile'=>$this->Mobile,
+            'Address'=>$this->Address,
+            'MOImage'=>$this->MOImage,
+            'MOImageMobile'=>url('/').'/images/MOinfo/'.$this->MOImage,
+            'DistrictID' => $this->DistrictID,
+            'DistrictName'=>isset($this->district) ? $this->district->DistrictName: '',
+            'UpazilaID' => $this->UpazilaID,
+            'UpazilaName' => isset($this->upazila) ? $this->upazila->UpazilaName:'',
+        ];
     }
 }

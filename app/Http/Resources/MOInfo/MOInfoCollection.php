@@ -17,6 +17,8 @@ class MOInfoCollection extends ResourceCollection
                     'Email'=>$moinfo->Email,
                     'Mobile'=>$moinfo->Mobile,
                     'Address'=>$moinfo->Address,
+                    'MOImage'=>$moinfo->MOImage,
+                    'MOImageMobile'=>url('/').'/images/MOinfo/'.$moinfo->MOImage,
                     'DistrictID' => $moinfo->DistrictID,
                     'DistrictName'=>isset($moinfo->district) ? $moinfo->district->DistrictName: '',
                     'UpazilaID' => $moinfo->UpazilaID,

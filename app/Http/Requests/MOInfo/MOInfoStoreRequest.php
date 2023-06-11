@@ -28,6 +28,7 @@ class MOInfoStoreRequest extends FormRequest
            'Email'=>'required|min:3',
            'Mobile'=>'required|min:3',
            'Address'=>'required|min:3',
+           'MOImage'=>'required',
 
         ];
     }
