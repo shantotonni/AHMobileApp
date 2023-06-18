@@ -57,7 +57,7 @@ class CustomerController extends Controller
                 }
             }
             $name = uniqid() . time() . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
-            Image::make($image)->resize(200,250)->save(public_path('images/customer/') . $name);
+            Image::make($image)->save(public_path('images/customer/') . $name);
         } else {
             $name = $customer->image;
         }
