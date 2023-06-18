@@ -11,8 +11,7 @@
                                     <div class="flex-grow-1">
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <input v-model="query" type="text" class="form-control"
-                                                       placeholder="Search">
+                                                <input v-model="query" type="text" class="form-control" placeholder="Search">
                                             </div>
                                         </div>
                                     </div>
@@ -28,8 +27,7 @@
                                     </div>
                                 </div>
                                 <div class="table-responsive">
-                                    <table
-                                        class="table table-bordered table-striped dt-responsive nowrap dataTable no-footer dtr-inline table-sm small">
+                                    <table class="table table-bordered table-striped dt-responsive nowrap dataTable no-footer dtr-inline table-sm small">
                                         <thead>
                                         <tr>
                                             <th class="text-left">Id</th>
