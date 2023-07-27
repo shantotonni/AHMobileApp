@@ -140,7 +140,7 @@ export default {
         }
     },
     mounted() {
-        document.title = 'Banner List | Diesel Engine';
+        document.title = 'Banner List | AHMobileApp';
         this.getAllBanner();
     },
     methods: {

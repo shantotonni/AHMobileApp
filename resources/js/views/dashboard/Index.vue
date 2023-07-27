@@ -182,7 +182,7 @@ export default {
         }
     },
     mounted() {
-        document.title = 'Dashboard | Diesel Engine';
+        document.title = 'Dashboard | AHMobileApp';
         this.getAllDashboardData();
     },
     methods: {

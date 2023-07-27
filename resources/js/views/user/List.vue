@@ -200,7 +200,7 @@ export default {
         }
     },
     mounted() {
-        document.title = 'User List | Diesel Engine';
+        document.title = 'User List | AHMobileApp';
         this.getAllUser();
     },
     methods: {
@@ -284,7 +284,7 @@ export default {
             if (img.length > 100){
                 return this.form.Image;
             }else{
-                return window.location.origin + "/DEGS/images/user/" + this.form.Image;
+                return window.location.origin + "/AHMobileApp/images/user/" + this.form.Image;
             }
         },
         destroy(id){

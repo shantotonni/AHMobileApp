@@ -130,7 +130,7 @@ export default {
         }
     },
     mounted() {
-        document.title = 'Brand List | Diesel Engine';
+        document.title = 'Brand List | AHMobileApp';
         this.getAllBrand();
     },
     methods: {

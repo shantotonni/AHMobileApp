@@ -39,7 +39,7 @@
     </div>
 </template>
 <script>
-document.title = 'Change Password | Diesel Engine';
+document.title = 'Change Password | AHMobileApp';
 export default {
     name: "Change Password",
     data() {
@@ -52,7 +52,7 @@ export default {
         }
     },
     mounted() {
-        document.title = 'Change Password | Diesel Engine';
+        document.title = 'Change Password | AHMobileApp';
     },
     methods: {
         changePassword(){

@@ -39,7 +39,7 @@
 </template>
 
 <script>
-document.title = 'User Menu Permission | Diesel Engine';
+document.title = 'User Menu Permission | AHMobileApp';
 export default {
     name: "Create",
     data() {

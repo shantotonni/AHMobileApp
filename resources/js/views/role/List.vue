@@ -130,7 +130,7 @@ export default {
         }
     },
     mounted() {
-        document.title = 'Role List | Diesel Engine';
+        document.title = 'Role List | AHMobileApp';
         this.getAllRole();
     },
     methods: {

@@ -140,7 +140,7 @@
 </template>
 
 <script>
-document.title = 'Menu Item List | Diesel Engine';
+document.title = 'Menu Item List | AHMobileApp';
 export default {
     name: "List",
     data() {

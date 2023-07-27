@@ -67,7 +67,7 @@
 </template>
 
 <script>
-document.title = 'Menu Edit | Diesel Engine';
+document.title = 'Menu Edit | AHMobileApp';
 export default {
     name: "Edit",
     data() {

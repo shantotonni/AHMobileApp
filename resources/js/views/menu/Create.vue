@@ -69,7 +69,7 @@
 </template>
 
 <script>
-document.title = 'Menu Create | Diesel Engine';
+document.title = 'Menu Create | AHMobileApp';
 export default {
     name: "Create",
     data() {
