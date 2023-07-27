@@ -20,7 +20,7 @@ class DoctorResource extends JsonResource
             'Designation' => $this->Designation,
             'Mobile'=>$this->Mobile,
             'Email'=>$this->Email,
-            'Details' => $this->Details,
+            'Details' => strip_tags($this->Details),
             'DoctorImage'=>$this->DoctorImage,
             'DoctorImageMobile'=>url('/').'/images/doctor/'.$this->DoctorImage,
             'AddressOne' => $this->AddressOne,

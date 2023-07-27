@@ -12,7 +12,6 @@ use Intervention\Image\Facades\Image;
 
 class BannerController extends Controller
 {
-
     public function index()
     {
         $banners = Banner::orderBy('ID', 'desc')->paginate(15);

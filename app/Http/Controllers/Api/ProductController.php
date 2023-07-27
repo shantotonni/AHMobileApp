@@ -60,7 +60,7 @@ class ProductController extends Controller
                     }
                 }
                 $name = uniqid() . time() . '.' . explode('/', explode(':', substr($ProductImage, 0, strpos($ProductImage, ';')))[1])[1];
-                Image::make($ProductImage)->resize(400, 300)->save(public_path('images/product/') . $name);
+                Image::make($ProductImage)->save(public_path('images/product/') . $name);
             } else {
                 $name = $product->ProductImage;
             }

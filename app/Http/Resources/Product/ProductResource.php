@@ -12,7 +12,7 @@ class ProductResource extends JsonResource
             'ID' => $this->ID,
             'ProductName' => $this->ProductName,
             'ProductAttribute' => $this->ProductAttribute,
-            'Details' => $this->Details,
+            'Details' => strip_tags($this->Details),
             'ProductImage' => $this->ProductImage,
             'PortfolioID'=>$this->PortfolioID,
             'PortfolioName'=>isset($this->portfolio) ? $this->portfolio->PortfolioName: '',
