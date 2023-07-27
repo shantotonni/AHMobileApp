@@ -4,8 +4,8 @@
             <div class="card overflow-hidden account-card mx-3">
                 <div class="bg-primary p-4 text-white text-center position-relative">
                     <h4 class="font-20 m-b-5">Welcome Back !</h4>
-                    <p class="text-white-50 mb-4">Sign in to continue to DEGS.</p>
-                    <div class="logo logo-admin" style="height: 80px;width:100px"><img :src="`${mainOrigin}assets/images/logo.jpeg`" height="40" alt="logo"></div>
+                    <p class="text-white-50 mb-4">Sign in to continue to Animal Health Mobile App.</p>
+<!--                    <div class="logo logo-admin" style="height: 80px;width:100px"><img :src="`${mainOrigin}assets/images/logo.jpeg`" height="40" alt="logo"></div>-->
                 </div>
                 <div class="account-card-content">
                     <form class="form-horizontal m-t-30" @submit.prevent="login" @keydown="form.onKeydown($event)">

@@ -16,8 +16,8 @@
                     <div class="card mini-stat bg-primary text-white">
                         <div class="card-body" style="padding: 10px">
                             <div class="mb-4">
-                                <div class="float-left mini-stat-img mr-4"><img :src="`${mainOrigin}assets/images/services-icon/01.png`" alt=""/></div>
-                                <h5 class="font-12 text-uppercase mt-0 text-white-50">Portfolios</h5>
+
+                                <h2 class="font-12 text-uppercase mt-0 text-white-50">Portfolios</h2>
                                 <h4 class="font-500">{{ allData.Portfolio}} <i class="mdi mdi-arrow-up text-success ml-2"></i></h4>
                             </div>
                             <div class="pt-2">
@@ -33,7 +33,6 @@
                     <div class="card mini-stat bg-primary text-white">
                         <div class="card-body" style="padding: 10px">
                             <div class="mb-4">
-                                <div class="float-left mini-stat-img mr-4"><img :src="`${mainOrigin}assets/images/services-icon/02.png`" alt=""/></div>
                                 <h5 class="font-12 text-uppercase mt-0 text-white-50">Categories</h5>
                                 <h4 class="font-500">{{ allData.Category }} <i class="mdi mdi-arrow-down text-danger ml-2"></i>
                                 </h4>
@@ -51,7 +50,6 @@
                     <div class="card mini-stat bg-primary text-white">
                         <div class="card-body" style="padding: 10px">
                             <div class="mb-4">
-                                <div class="float-left mini-stat-img mr-4"><img :src="`${mainOrigin}assets/images/services-icon/03.png`" alt=""/></div>
                                 <h5 class="font-12 text-uppercase mt-0 text-white-50">Banners</h5>
                                 <h4 class="font-500">{{ allData.Banner }} <i class="mdi mdi-arrow-up text-success ml-2"></i>
                                 </h4>
@@ -69,7 +67,6 @@
                     <div class="card mini-stat bg-primary text-white">
                         <div class="card-body" style="padding: 10px">
                             <div class="mb-4">
-                                <div class="float-left mini-stat-img mr-4"><img :src="`${mainOrigin}assets/images/services-icon/04.png`" alt=""/></div>
                                 <h5 class="font-12 text-uppercase mt-0 text-white-50">Doctors</h5>
                                 <h4 class="font-500">{{ allData.Doctor }} <i class="mdi mdi-arrow-up text-success ml-2"></i>
                                 </h4>
@@ -87,7 +84,6 @@
                     <div class="card mini-stat bg-primary text-white">
                         <div class="card-body" style="padding: 10px">
                             <div class="mb-4">
-                                <div class="float-left mini-stat-img mr-4"><img :src="`${mainOrigin}assets/images/services-icon/01.png`" alt=""/></div>
                                 <h5 class="font-12 text-uppercase mt-0 text-white-50">MOInfos</h5>
                                 <h4 class="font-500">{{ allData.MOInfo }} <i class="mdi mdi-arrow-up text-success ml-2"></i>
                                 </h4>
@@ -105,7 +101,6 @@
                     <div class="card mini-stat bg-primary text-white">
                         <div class="card-body" style="padding: 10px">
                             <div class="mb-4">
-                                <div class="float-left mini-stat-img mr-4"><img :src="`${mainOrigin}assets/images/services-icon/02.png`" alt=""/></div>
                                 <h5 class="font-12 text-uppercase mt-0 text-white-50">Shops</h5>
                                 <h4 class="font-500">{{ allData.Shop }} <i class="mdi mdi-arrow-up text-success ml-2"></i>
                                 </h4>
@@ -123,7 +118,6 @@
                     <div class="card mini-stat bg-primary text-white">
                         <div class="card-body" style="padding: 10px">
                             <div class="mb-4">
-                                <div class="float-left mini-stat-img mr-4"><img :src="`${mainOrigin}assets/images/services-icon/03.png`" alt=""/></div>
                                 <h5 class="font-12 text-uppercase mt-0 text-white-50">Districts</h5>
                                 <h4 class="font-500">{{ allData.District }} <i class="mdi mdi-arrow-up text-success ml-2"></i>
                                 </h4>
@@ -141,7 +135,6 @@
                     <div class="card mini-stat bg-primary text-white">
                         <div class="card-body" style="padding: 10px">
                             <div class="mb-4">
-                                <div class="float-left mini-stat-img mr-4"><img :src="`${mainOrigin}assets/images/services-icon/04.png`" alt=""/></div>
                                 <h5 class="font-12 text-uppercase mt-0 text-white-50">Upazila</h5>
                                 <h4 class="font-500">{{ allData.Upazila }} <i class="mdi mdi-arrow-up text-success ml-2"></i>
                                 </h4>
