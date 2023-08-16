@@ -18,8 +18,8 @@ class UpazilaCollection extends ResourceCollection
             'data' => $this->collection->transform(function ($upazila) {
                 return [
                     'ID' => $upazila->ID,
-                    'DistrictId' => $upazila->DistrictId,
-                    'DistrictName'=>isset($doctor->district) ? $doctor->district->DistrictName: '',
+                    'DistrictID' => $upazila->DistrictId,
+                    'DistrictName'=>isset($upazila->district) ? $upazila->district->DistrictName: '',
                     'Code' => $upazila->Code,
                     'UpazilaName' => $upazila->UpazilaName,
                     'UpazilaNameBn' => $upazila->UpazilaNameBn

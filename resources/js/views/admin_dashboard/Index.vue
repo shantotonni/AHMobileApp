@@ -146,7 +146,7 @@ export default {
         }
     },
     mounted() {
-        document.title = 'Admin Dashboard | Diesel Engine';
+        document.title = 'Admin Dashboard | Animal Health';
         this.getAllDashboardData();
     },
     methods: {

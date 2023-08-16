@@ -45,20 +45,20 @@
                                         </thead>
                                         <tbody>
                                         <tr v-for="(shop, i) in shops" :key="shop.ID" v-if="shops.length">
-                                            <td class="text-left" scope="row">{{ ++i }}</td>
+                                            <td class="text-center" scope="row">{{ ++i }}</td>
                                             <td class="text-left">{{ shop.ShopName }}</td>
                                             <td class="text-left">{{ shop.ShopOwnerName }}</td>
-                                            <td class="text-left">{{ shop.ShopOwnerMobile }}</td>
+                                            <td class="text-right">{{ shop.ShopOwnerMobile }}</td>
                                             <td class="text-left">{{ shop.ShopAddress}}</td>
                                             <td class="text-left">
                                                 <img v-if="shop.ShopImage" height="40" width="40" :src="tableImage(shop.ShopImage)" alt="">
                                             </td>
                                             <td class="text-left">{{ shop.DistrictName }}</td>
                                             <td class="text-left">{{ shop.UpazilaName }}</td>
-                                            <td class="text-left">
+                                            <td class="text-center">
                                                 <button @click="edit(shop)" class="btn btn-success btn-sm"><i
                                                     class="far fa-edit"></i></button>
-                                                <button hidden="hidden" @click="destroy(shop.ID)" class="btn btn-danger btn-sm"><i
+                                                <button @click="destroy(shop.ID)" class="btn btn-danger btn-sm"><i
                                                     class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>

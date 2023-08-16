@@ -13,7 +13,4 @@ class District extends Model
     protected $guarded = [];
     const CREATED_AT = 'CreatedDate';
     const UPDATED_AT = 'UpdatedDate';
-    public function district(){
-        return $this->hasMany(District::class,'DistrictID','ID');
-    }
 }

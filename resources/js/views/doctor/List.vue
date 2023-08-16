@@ -46,22 +46,22 @@
                                         </thead>
                                         <tbody>
                                         <tr v-for="(doctor, i) in doctors" :key="doctor.ID" v-if="doctors.length">
-                                            <td class="text-left">{{ ++i }}</td>
+                                            <td class="text-center">{{ ++i }}</td>
                                             <td class="text-left">{{ doctor.DoctorName }}</td>
                                             <td class="text-left">{{ doctor.Designation }}</td>
-                                            <td class="text-left">{{ doctor.Mobile }}</td>
+                                            <td class="text-right">{{ doctor.Mobile }}</td>
                                             <td class="text-left">{{ doctor.Email }}</td>
                                             <td class="text-left" v-html="doctor.Details"></td>
-                                            <td class="text-left">
+                                            <td class="text-center">
                                                 <img v-if="doctor.DoctorImage" height="40" width="40" :src="tableImage(doctor.DoctorImage)" alt="">
                                             </td>
                                             <td class="text-left">{{ doctor.AddressOne }}</td>
                                             <td class="text-left" >{{ doctor.AddressTwo }}</td>
                                             <td class="text-left">{{ doctor.DistrictName }}</td>
                                             <td class="text-left">{{ doctor.UpazilaName }}</td>
-                                            <td class="text-left">
+                                            <td class="text-center">
                                                 <button @click="edit(doctor)" class="btn btn-success btn-sm"><i class="far fa-edit"></i></button>
-                                                <button hidden="hidden" @click="destroy(doctor.ID)" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                                <button  @click="destroy(doctor.ID)" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
                                         </tbody>

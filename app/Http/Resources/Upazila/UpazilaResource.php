@@ -14,12 +14,12 @@ class UpazilaResource extends JsonResource
      */
     public function toArray($request)
     {    return [
-        'ID' => $upazila->ID,
-        'DistrictId' => $upazila->DistrictId,
-        'DistrictName'=>isset($doctor->district) ? $doctor->district->DistrictName: '',
-        'Code' => $upazila->Code,
-        'UpazilaName' => $upazila->UpazilaName,
-        'UpazilaNameBn' => $upazila->UpazilaNameBn
+        'ID' => $this->ID,
+        'DistrictID' => $this->DistrictId,
+        'DistrictName'=>isset($this->district) ? $this->district->DistrictName: '',
+        'Code' => $this->Code,
+        'UpazilaName' => $this->UpazilaName,
+        'UpazilaNameBn' => $this->UpazilaNameBn
     ];
     }
 }

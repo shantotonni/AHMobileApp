@@ -15,36 +15,10 @@ class UpazilaController extends Controller
 
     {
         $upazilas = Upazila::with('district')->orderBy('DistrictID', 'asc')->paginate(15);
+
         return new UpazilaCollection($upazilas);
     }
 
-    public function store(UpazilaStoreRequest $request)
-    {
-        $upazila = new Upazila();
-        $upazila->DistrictId= $request->DistrictId;
-        $upazila->UpazilaName = $request->UpazilaName;
-        $upazila->UpazilaNameBn = $request->UpazilaNameBn;
-        $upazila->Code = $request->Code;
-        $upazila->save();
-        return response()->json(['message' => 'Upazila Created Successfully'], 200);
-    }
-
-    public function update(UpazilaUpdateRequest $request, $id)
-    {
-        $upazila = Upazila::where('ID', $id)->first();
-        $upazila->DistrictId = $request->DistrictId;
-        $upazila->UpazilaName = $request->UpazilaName;
-        $upazila->UpazilaNameBn = $request->UpazilaNameBn;
-        $upazila->Code = $request->Code;
-        $upazila->save();
-        return response()->json(['message' => 'Upazila Updated Successfully'], 200);
-    }
-
-    public function destroy($id)
-    {
-        Upazila::where('ID', $id)->delete();
-        return response()->json(['message' => 'Upazila Deleted Successfully'], 200);
-    }
     public function getAllUpazila(Request $request){
         $upazilas = Upazila::OrderBy('ID', 'ASC')->get();
         return response()->json([
@@ -58,7 +32,7 @@ class UpazilaController extends Controller
 
     public function getAllUpazilaByDistrict($ID){
 
-        return new UpazilaCollection(Upazila::where('DistrictId', $ID)->paginate(20));
+        return new UpazilaCollection(Upazila::where('DistrictID', $ID)->paginate(20));
     }
 
 }

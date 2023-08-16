@@ -45,9 +45,9 @@
                                         </thead>
                                         <tbody>
                                         <tr v-for="(moinfo, i) in moinfos" :key="moinfo.ID" v-if="moinfos.length">
-                                            <td class="text-left" scope="row">{{ ++i }}</td>
+                                            <td class="text-center" scope="row">{{ ++i }}</td>
                                             <td class="text-left">{{ moinfo.Name }}</td>
-                                            <td class="text-left">{{ moinfo.Mobile }}</td>
+                                            <td class="text-right">{{ moinfo.Mobile }}</td>
                                             <td class="text-left">{{ moinfo.Email }}</td>
                                             <td class="text-left">{{ moinfo.Address}}</td>
                                             <td class="text-left">
@@ -55,10 +55,10 @@
                                             </td>
                                             <td class="text-left">{{ moinfo.DistrictName }}</td>
                                             <td class="text-left">{{ moinfo.UpazilaName }}</td>
-                                            <td class="text-left">
+                                            <td class="text-center">
                                                 <button @click="edit(moinfo)" class="btn btn-success btn-sm"><i
                                                     class="far fa-edit"></i></button>
-                                                <button hidden="hidden" @click="destroy(moinfo.ID)" class="btn btn-danger btn-sm"><i
+                                                <button @click="destroy(moinfo.ID)" class="btn btn-danger btn-sm"><i
                                                     class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>

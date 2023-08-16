@@ -127,7 +127,7 @@ class CommonController extends Controller
 
     public function getAllDistrict()
     {
-        $districts = District::orderBy('CreatedDate', 'desc')->get();
+        $districts = District::orderBy('ID', 'desc')->get();
         return new DistrictCollection($districts);
     }
 

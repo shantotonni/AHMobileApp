@@ -39,7 +39,7 @@ export default {
         }
     },
     mounted() {
-        document.title = 'Login | Diesel Engine';
+        document.title = 'Login | Animal Health';
     },
     methods: {
         login(){

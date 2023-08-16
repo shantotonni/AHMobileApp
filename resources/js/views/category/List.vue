@@ -44,22 +44,22 @@
                                         </thead>
                                         <tbody>
                                         <tr v-for="(category, i) in categories" :key="category.ID" v-if="categories.length">
-                                            <td class="text-left" scope="row">{{ ++i }}</td>
-                                            <td class="text-left">{{ category.CategoryName }}</td>
-                                            <td class="text-left">
+                                            <td class="text-left" scope="row" style ="width:5px">{{ ++i }}</td>
+                                            <td class="text-left"  style ="width:5px">{{ category.CategoryName }}</td>
+                                            <td class="text-center" style ="width:10px">
                                                 <img v-if="category.CategoryImage" height="40" width="40" :src="tableImage(category.CategoryImage)" alt="">
                                             </td>
-                                            <td class="text-left">{{ category.Details }}</td>
-                                            <td class="text-left">
+                                            <td class="text-left" style ="width:10px">{{ category.Details }}</td>
+                                            <td class="text-center" style ="width:10px">
                                                 <span class="badge badge-success"
                                                       v-if="category.Active == 'Y'">Active</span>
                                                 <span class="badge badge-success" v-else>InActive</span>
                                             </td>
-                                            <td class="text-left" scope="row">{{category.PortfolioName}}</td>
-                                            <td class="text-left">
+                                            <td class="text-left" scope="row" style ="width:10px">{{category.PortfolioName}}</td>
+                                            <td class="text-enter" style ="width:10px">
                                                 <button @click="edit(category)" class="btn btn-success btn-sm"><i
                                                     class="far fa-edit"></i></button>
-                                                <button hidden="hidden" @click="destroy(category.ID)" class="btn btn-danger btn-sm"><i
+                                                <button @click="destroy(category.ID)" class="btn btn-danger btn-sm"><i
                                                     class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>

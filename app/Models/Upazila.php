@@ -17,7 +17,4 @@ class Upazila extends Model
     public function district(){
         return $this->belongsTo(District::class,'DistrictID','ID');
     }
-    public function upazila(){
-        return $this->hasMany(Upazila::class,'UpazilaID','ID');
-    }
 }

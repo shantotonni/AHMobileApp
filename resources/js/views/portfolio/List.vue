@@ -39,18 +39,18 @@
                                         </thead>
                                         <tbody>
                                         <tr v-for="(portfolio, i) in portfolios" :key="portfolio.ID" v-if="portfolios.length">
-                                            <th class="text-left" scope="row">{{ ++i }}</th>
+                                            <th class="text-center" scope="row">{{ ++i }}</th>
                                             <td class="text-left">{{ portfolio.PortfolioName }}</td>
-                                            <td class="text-left">
+                                            <td class="text-center">
                                                 <img v-if="portfolio.PortfolioImage" height="40" width="40" :src="tableImage(portfolio.PortfolioImage)" alt="">
                                             </td>
                                             <td class="text-left">
                                                 <span class="badge badge-success" v-if="portfolio.Active == 'Y'">Active</span>
                                                 <span class="badge badge-success" v-else>InActive</span>
                                             </td>
-                                            <td class="text-left">
+                                            <td class="text-center">
                                                 <button @click="edit(portfolio)" class="btn btn-success btn-sm"><i class="far fa-edit"></i></button>
-                                                <button hidden="hidden" @click="destroy(portfolio.ID)" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                                <button  @click="destroy(portfolio.ID)" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
                                         </tbody>

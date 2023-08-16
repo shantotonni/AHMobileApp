@@ -41,10 +41,10 @@
                                         <tr v-for="(banner, i) in banners" :key="banner.ID" v-if="banners.length">
                                             <th class="text-left" scope="row">{{ ++i }}</th>
                                             <td class="text-left">{{ banner.BannerName }}</td>
-                                            <td class="text-left">
+                                            <td class="text-center">
                                                 <img v-if="banner.BannerImage" height="40" width="40" :src="tableImage(banner.BannerImage)" alt="">
                                             </td>
-                                            <td class="text-left">
+                                            <td class="text-center">
                                                 <button @click="edit(banner)" class="btn btn-success btn-sm"><i class="far fa-edit"></i></button>
                                                 <button hidden="hidden" @click="destroy(banner.ID)" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                                             </td>
