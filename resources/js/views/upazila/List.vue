@@ -23,7 +23,7 @@
                                         <thead>
                                         <tr>
                                             <th class="text-left">Id</th>
-                                            <th class="text-left">District Id</th>
+                                            <th class="text-left">District Name</th>
                                             <th class="text-left">Upazila Name</th>
                                             <th class="text-left">Upazila NameBn</th>
                                             <th class="text-left">Code</th>
@@ -32,7 +32,7 @@
                                         <tbody>
                                         <tr v-for="(upazila, i) in upazilas" :key="upazila.ID" v-if="upazilas.length">
                                             <td class="text-left" scope="row">{{ ++i }}</td>
-                                            <td class="text-left">{{ upazila.DistrictID}}</td>
+                                            <td class="text-left">{{ upazila.DistrictName }}</td>
                                             <td class="text-left">{{ upazila.UpazilaName }}</td>
                                             <td class="text-left">{{ upazila.UpazilaNameBn }}</td>
                                             <td class="text-left">{{ upazila.Code }}</td>
@@ -66,7 +66,7 @@ export default {
     name: "List",
     data() {
         return {
-           upazilas: [],
+            upazilas: [],
             districts: [],
             pagination: {
                 current_page: 1
@@ -76,8 +76,8 @@ export default {
             isLoading: false,
             form: new Form({
                 ID: '',
-                DistrictID:'',
-                DistrictName:'',
+                DistrictID: '',
+                DistrictName: '',
                 UpazilaName: '',
                 UpazilaNameBn: '',
                 Code: '',

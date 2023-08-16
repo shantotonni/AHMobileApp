@@ -15,7 +15,6 @@ class UpazilaController extends Controller
 
     {
         $upazilas = Upazila::with('district')->orderBy('DistrictID', 'asc')->paginate(15);
-
         return new UpazilaCollection($upazilas);
     }
 

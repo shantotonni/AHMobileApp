@@ -15,6 +15,6 @@ class Upazila extends Model
     const UPDATED_AT = 'UpdatedDate';
 
     public function district(){
-        return $this->belongsTo(District::class,'DistrictID','ID');
+        return $this->belongsTo(District::class,'DistrictId','ID');
     }
 }
