@@ -87,8 +87,7 @@
             </div>
         </div>
         <!--  Modal content for the above example -->
-        <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-             aria-hidden="true">
+        <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="false">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -205,8 +204,8 @@
 </template>
 
 <script>
-import {VueEditor} from "vue2-editor";
 
+import {VueEditor} from "vue2-editor";
 export default {
     components: {
         VueEditor
@@ -279,6 +278,8 @@ export default {
             this.editMode = false;
             this.form.reset();
             this.form.clear();
+            $('#productModal').modal({backdrop: 'static', keyboard: false})
+            $("#productModal").modal("toggle");
             $("#productModal").modal("show");
             this.getAllPortfolio();
             this.getAllCategory();
