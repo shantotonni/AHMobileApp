@@ -32,37 +32,37 @@
                                         class="table table-bordered table-striped dt-responsive nowrap dataTable no-footer dtr-inline table-sm small">
                                         <thead>
                                         <tr>
-                                            <th class="text-left">Id</th>
-                                            <th class="text-left">Product Name</th>
-                                            <th class="text-left">Portfolio Name</th>
-                                            <th class="text-left">Category Name</th>
-                                            <th class="text-left">Product Attribute</th>
-                                            <th class="text-left">Product Image</th>
-                                            <th class="text-left">Details</th>
-                                            <th class="text-left">Action</th>
+                                            <th class="text-left" style="width: 5px">Id</th>
+                                            <th class="text-left" style="width: 5px">Product Name</th>
+                                            <th class="text-left" style="width: 5px">Portfolio Name</th>
+                                            <th class="text-left" style="width: 5px">Category Name</th>
+                                            <th class="text-left" style="width: 5px">Product Attribute</th>
+                                            <th class="text-left" style="width: 5px">Product Image</th>
+                                            <th class="text-left" style="width: 10px">Details</th>
+                                            <th class="text-left"  style="width: 10px">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr v-for="(product, i) in products" :key="product.ID" v-if="products.length">
-                                            <td class="text-left" scope="row">{{ ++i }}</td>
+                                            <td class="text-center" scope="row">{{ ++i }}</td>
                                             <td class="text-left">{{ product.ProductName }}</td>
                                             <td class="text-left" scope="row">{{ product.PortfolioName }}</td>
                                             <td class="text-left" scope="row">{{ product.CategoryName }}</td>
 
-                                            <td class="text-left">
+                                            <td class="text-right">
                                                 {{ product.ProductAttribute }}
                                             </td>
-                                            <td class="text-left">
+                                            <td class="text-center">
                                                 <img v-if="product.ProductImage" height="40" width="40"
                                                      :src="tableImage(product.ProductImage)" alt="">
                                             </td>
                                             <td class="text-left">
                                                 {{ product.Details }}
                                             </td>
-                                            <td class="text-left">
+                                            <td class="text-center">
                                                 <button @click="edit(product)" class="btn btn-success btn-sm"><i
                                                     class="far fa-edit"></i></button>
-                                                <button hidden="hidden" @click="destroy(product.ID)"
+                                                <button  @click="destroy(product.ID)"
                                                         class="btn btn-danger btn-sm"><i class="fas fa-trash"></i>
                                                 </button>
                                             </td>

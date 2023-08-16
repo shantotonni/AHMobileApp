@@ -4,7 +4,7 @@ namespace App\Http\Resources\Portfolio;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class PortfolioCollection extends ResourceCollection
+class  PortfolioCollection extends ResourceCollection
 {
     public function toArray($request)
     {

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Banner\BannerStoreRequest;
 use App\Http\Requests\Banner\BannerUpdateRequest;
 use App\Http\Resources\Banner\BannerCollection;
 use App\Models\Banner;
+use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 
 
@@ -14,6 +16,7 @@ class BannerController extends Controller
 {
     public function index()
     {
+
         $banners = Banner::orderBy('ID', 'desc')->paginate(15);
         return new BannerCollection($banners);
     }

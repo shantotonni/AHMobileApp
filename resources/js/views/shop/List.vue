@@ -192,7 +192,7 @@ export default {
     data() {
         return {
             districts: [],
-            upazila: [],
+            upazilas: [],
             shops: [],
             pagination: {
                 current_page: 1

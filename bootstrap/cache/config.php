@@ -192,7 +192,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'D:\\xampp\\htdocs\\AHMobileApp\\storage\\framework/cache/data',
+        'path' => 'D:\\XAMPP\\htdocs\\AHMobileApp\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -460,7 +460,7 @@
     ),
     'temporary_files' => 
     array (
-      'local_path' => 'D:\\xampp\\htdocs\\AHMobileApp\\storage\\framework/cache/laravel-excel',
+      'local_path' => 'D:\\XAMPP\\htdocs\\AHMobileApp\\storage\\framework/cache/laravel-excel',
       'remote_disk' => NULL,
       'remote_prefix' => NULL,
       'force_resync_remote' => NULL,
@@ -474,12 +474,12 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'D:\\xampp\\htdocs\\AHMobileApp\\storage\\app',
+        'root' => 'D:\\XAMPP\\htdocs\\AHMobileApp\\storage\\app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'D:\\xampp\\htdocs\\AHMobileApp\\storage\\app/public',
+        'root' => 'D:\\XAMPP\\htdocs\\AHMobileApp\\storage\\app/public',
         'url' => 'http://localhost/AHMobileApp//storage',
         'visibility' => 'public',
       ),
@@ -497,7 +497,7 @@
     ),
     'links' => 
     array (
-      'D:\\xampp\\htdocs\\AHMobileApp\\public\\storage' => 'D:\\xampp\\htdocs\\AHMobileApp\\storage\\app/public',
+      'D:\\XAMPP\\htdocs\\AHMobileApp\\public\\storage' => 'D:\\XAMPP\\htdocs\\AHMobileApp\\storage\\app/public',
     ),
   ),
   'hashing' => 
@@ -572,13 +572,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'D:\\xampp\\htdocs\\AHMobileApp\\storage\\logs/laravel.log',
+        'path' => 'D:\\XAMPP\\htdocs\\AHMobileApp\\storage\\logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'D:\\xampp\\htdocs\\AHMobileApp\\storage\\logs/laravel.log',
+        'path' => 'D:\\XAMPP\\htdocs\\AHMobileApp\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -629,7 +629,7 @@
       ),
       'emergency' => 
       array (
-        'path' => 'D:\\xampp\\htdocs\\AHMobileApp\\storage\\logs/laravel.log',
+        'path' => 'D:\\XAMPP\\htdocs\\AHMobileApp\\storage\\logs/laravel.log',
       ),
     ),
   ),
@@ -695,7 +695,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'D:\\xampp\\htdocs\\AHMobileApp\\resources\\views/vendor/mail',
+        0 => 'D:\\XAMPP\\htdocs\\AHMobileApp\\resources\\views/vendor/mail',
       ),
     ),
   ),
@@ -800,7 +800,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'D:\\xampp\\htdocs\\AHMobileApp\\storage\\framework/sessions',
+    'files' => 'D:\\XAMPP\\htdocs\\AHMobileApp\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -820,9 +820,9 @@
   array (
     'paths' => 
     array (
-      0 => 'D:\\xampp\\htdocs\\AHMobileApp\\resources\\views',
+      0 => 'D:\\XAMPP\\htdocs\\AHMobileApp\\resources\\views',
     ),
-    'compiled' => 'D:\\xampp\\htdocs\\AHMobileApp\\storage\\framework\\views',
+    'compiled' => 'D:\\XAMPP\\htdocs\\AHMobileApp\\storage\\framework\\views',
   ),
   'flare' => 
   array (
