@@ -79,14 +79,14 @@ class CategoryController extends Controller
     public function destroy($id)
     {
 
-        $category = Category::where('ID', $id)->first();
-        if ($category) {
-            $category = Portfolio::where('PortfolioID', $id)->get();
-            foreach ($category as $value) {
-                $value->delete();
-            }
-        }
-        Category::where('ID', $id)->delete();
+         Category::where('ID', $id)->delete();
+//        if ($category) {
+//            $category = Portfolio::where('PortfolioID', $id)->get();
+//            foreach ($category as $value) {
+//                $value->delete();
+//            }
+//        }
+//        Category::where('ID', $id);
 
         return response()->json(['message' => 'Category Deleted Successfully'], 200);
     }
