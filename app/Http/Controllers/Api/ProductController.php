@@ -23,17 +23,13 @@ class ProductController extends Controller
 
     public function store(ProductStoreRequest $request)
     {
-//        if ($request->has('ProductImage')) {
-//            $ProductImage = $request->ProductImage;
-//            $name = uniqid() . time() . '.' . explode('/', explode(':', substr($ProductImage, 0, strpos($ProductImage, ';')))[1])[1];
-//            Image::make($ProductImage)->save(public_path('images/product/') . $name);
-//        } else {
-//            $name = 'not_found_jpg';
-//        }
-
-        $utf8_string = $request->Details;
-
-        return $request->all();
+        if ($request->has('ProductImage')) {
+            $ProductImage = $request->ProductImage;
+            $name = uniqid() . time() . '.' . explode('/', explode(':', substr($ProductImage, 0, strpos($ProductImage, ';')))[1])[1];
+            Image::make($ProductImage)->save(public_path('images/product/') . $name);
+        } else {
+            $name = 'not_found_jpg';
+        }
 
         $product = new Product();
         $product->ProductName = $request->ProductName;
@@ -74,7 +70,6 @@ class ProductController extends Controller
             $name = $product->ProductImage;
         }
 
-
         $product->ProductName = $request->ProductName;
         $product->ProductAttribute = $request->ProductAttribute;
         $product->ProductImage = $name;
@@ -85,7 +80,6 @@ class ProductController extends Controller
         return response()->json([
             'message' => ' Product uploaded successfully', 200
         ]);
-
     }
 
     public function destroy($id)
