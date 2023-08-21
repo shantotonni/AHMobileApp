@@ -179,11 +179,8 @@
 
                                 <div class="form-group">
                                     <label>Details</label>
-                                    <vue-editor  name="Details" v-model="form.Details"
-                                                 :class="{ 'is-invalid': form.errors.has('Details') }"></vue-editor>
-
-                                    <div class="error" v-if="form.errors.has('Details')"
-                                         v-html="form.errors.get('Details')"/>
+                                    <vue-editor  name="Details" v-model="form.Details" :class="{ 'is-invalid': form.errors.has('Details') }"></vue-editor>
+                                    <div class="error" v-if="form.errors.has('Details')" v-html="form.errors.get('Details')"/>
                                 </div>
 
                             </div>
@@ -204,11 +201,11 @@
 </template>
 
 <script>
-
 import {VueEditor} from "vue2-editor";
+
 export default {
     components: {
-        VueEditor
+         VueEditor
     },
     name: "List",
     data() {
@@ -245,7 +242,6 @@ export default {
     mounted() {
         document.title = 'Product List | AHMobileApp';
         this.getAllProduct();
-
     },
     methods: {
         getAllProduct() {
@@ -287,8 +283,9 @@ export default {
         store() {
             this.form.busy = true;
             this.form.post("/api/product").then(response => {
-                $("#productModal").modal("hide");
-                this.getAllProduct();
+                console.log(response)
+                //$("#productModal").modal("hide");
+                //this.getAllProduct();
             }).catch(e => {
                 this.isLoading = false;
             });

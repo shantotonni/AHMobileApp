@@ -25,7 +25,6 @@ class ProductStoreRequest extends FormRequest
     {
         return [
             'ProductName'=>'required|min:3',
-
         ];
     }
 }

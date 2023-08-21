@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Portfolio;
 use App\Models\Product;
 use Intervention\Image\Facades\Image;
+use UConverter;
 
 
 class ProductController extends Controller
@@ -22,13 +23,18 @@ class ProductController extends Controller
 
     public function store(ProductStoreRequest $request)
     {
-        if ($request->has('ProductImage')) {
-            $ProductImage = $request->ProductImage;
-            $name = uniqid() . time() . '.' . explode('/', explode(':', substr($ProductImage, 0, strpos($ProductImage, ';')))[1])[1];
-            Image::make($ProductImage)->save(public_path('images/product/') . $name);
-        } else {
-            $name = 'not_found_jpg';
-        }
+//        if ($request->has('ProductImage')) {
+//            $ProductImage = $request->ProductImage;
+//            $name = uniqid() . time() . '.' . explode('/', explode(':', substr($ProductImage, 0, strpos($ProductImage, ';')))[1])[1];
+//            Image::make($ProductImage)->save(public_path('images/product/') . $name);
+//        } else {
+//            $name = 'not_found_jpg';
+//        }
+
+        $utf8_string = $request->Details;
+
+        return $request->all();
+
         $product = new Product();
         $product->ProductName = $request->ProductName;
         $product->ProductAttribute = $request->ProductAttribute;
