@@ -25,6 +25,9 @@ class ProductStoreRequest extends FormRequest
     {
         return [
             'ProductName'=>'required|min:3',
+            'CategoryID'=>'required',
+            'PortfolioID'=>'required',
+
         ];
     }
 }

@@ -46,7 +46,12 @@ class CommonController extends Controller
 
     public function getAllCategory(Request $request)
     {
-        $categories = Category::orderBy('CreatedDate', 'desc')->get();
+        $PortfolioID = $request->PortfolioID;
+        $categories = Category::query();
+        if ($PortfolioID){
+            $categories = $categories->where('PortfolioID',$PortfolioID);
+        }
+        $categories = $categories->orderBy('CreatedDate', 'desc')->get();
         return new CategoryCollection($categories);
 //        $PortfolioID = $request->PortfolioID;
 //        $categories = Category::where('PortfolioID',$PortfolioID)->orderBy('CreatedDate', 'desc')->get();
@@ -61,12 +66,20 @@ class CommonController extends Controller
 
     public function getAllProduct(Request $request)
     {
-//        $CategoryID = $request->CategoryID;
+        $CategoryID = $request->CategoryID;
+        $products = Product::query();
+        if ($CategoryID){
+            $products = $products->where('CategoryID',$CategoryID);
+        }
+        $products = $products->orderBy('CreatedDate', 'desc')->get();
+        return new ProductCollection($products);
+
+
 //        $products = Product::where('CategoryID',$CategoryID)->orderBy('CreatedDate', 'desc')->get();
 //        return new ProductCollection($products);
 
-        $products = Product::orderBy('CreatedDate', 'desc')->get();
-        return new ProductCollection($products);
+//        $products = Product::orderBy('CreatedDate', 'desc')->get();
+//        return new ProductCollection($products);
     }
 
     public function getAllBrand()
