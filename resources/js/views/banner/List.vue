@@ -11,7 +11,7 @@
                                     <div class="flex-grow-1">
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <input v-model="query" type="text" class="form-control" placeholder="Search">
+                                                <input v-model="query" type="text" class="form-control" placeholder="Search by banner">
                                             </div>
                                         </div>
                                     </div>
@@ -31,7 +31,7 @@
                                         <thead>
                                         <tr>
 
-                                            <th class="text-left">ID</th>
+                                            <th class="text-left">SN</th>
                                             <th class="text-left">Banner Name</th>
                                             <th class="text-left">Banner Image</th>
                                             <th class="text-left">Action</th>

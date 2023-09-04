@@ -85,7 +85,16 @@ class DoctorController extends Controller
 
     public function destroy($id)
     {
-        Doctor::where('ID', $id)->delete();
+        $doctor = Doctor::where('ID', $id)->first();
+        if ($doctor->DoctorImage) {
+            $destinationPath = 'images/doctor/';
+
+            $file = public_path('/') . $destinationPath . $doctor->DoctorImage;
+            if (file_exists($file)) {
+                unlink($file);
+            }
+        }
+        $doctor->delete();
         return response()->json(['message' => 'Doctor Deleted Successfully'], 200);
     }
 

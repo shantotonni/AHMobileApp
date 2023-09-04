@@ -79,7 +79,20 @@ class CategoryController extends Controller
     public function destroy($id)
     {
 
-         Category::where('ID', $id)->delete();
+
+
+        $category = Category::where('ID', $id)->first();
+        if ($category->CategoryImage) {
+            $destinationPath = 'images/category/';
+
+            $file = public_path('/') . $destinationPath . $category->CategoryImage;
+            if (file_exists($file)) {
+                unlink($file);
+            }
+        }
+        $category->delete();
+//        return response()->json(['message' => 'Portfolio Deleted Successfully'], 200);
+//         Category::where('ID', $id)->delete();
 //        if ($category) {
 //            $category = Portfolio::where('PortfolioID', $id)->get();
 //            foreach ($category as $value) {

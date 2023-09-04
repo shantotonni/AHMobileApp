@@ -11,7 +11,7 @@
                                     <div class="flex-grow-1">
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <input v-model="query" type="text" class="form-control" placeholder="Search">
+                                                <input v-model="query" type="text" class="form-control" placeholder="Search by name">
                                             </div>
                                         </div>
                                     </div>
@@ -30,7 +30,7 @@
                                     <table class="table table-bordered table-striped dt-responsive nowrap dataTable no-footer dtr-inline table-sm small">
                                         <thead>
                                         <tr>
-                                            <th class="text-left">Id</th>
+                                            <th class="text-left">SN</th>
                                             <th class="text-left">Name</th>
                                             <th class="text-left">Image</th>
                                             <th class="text-left">Status</th>

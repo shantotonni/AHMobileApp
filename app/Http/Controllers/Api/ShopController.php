@@ -73,7 +73,16 @@ class ShopController extends Controller
 
     public function destroy($id)
     {
-        Shop::where('ID', $id)->delete();
+        $shop =  Shop::where('ID', $id)->first();
+        if ($shop->ShopImage) {
+            $destinationPath = 'images/shop/';
+
+            $file = public_path('/') . $destinationPath . $shop->ShopImage;
+            if (file_exists($file)) {
+                unlink($file);
+            }
+        }
+        $shop->delete();
         return response()->json(['message' => 'Shop Deleted Successfully'], 200);
     }
 

@@ -73,8 +73,17 @@ class MOInfoController extends Controller
 
     public function destroy($id)
     {
-        MOInfo::where('ID', $id)->delete();
-        return response()->json(['message' => 'Doctor Deleted Successfully'], 200);
+        $moinfo = MOInfo::where('ID', $id)->first();
+        if ($moinfo->MOImage) {
+            $destinationPath = 'images/MOinfo/';
+
+            $file = public_path('/') . $destinationPath . $moinfo->MOImage;
+            if (file_exists($file)) {
+                unlink($file);
+            }
+        }
+        $moinfo->delete();
+        return response()->json(['message' => 'Moinfo Deleted Successfully'], 200);
     }
 
     public function search($query)

@@ -32,7 +32,7 @@
                                         class="table table-bordered table-striped dt-responsive nowrap dataTable no-footer dtr-inline table-sm small">
                                         <thead>
                                         <tr>
-                                            <th class="text-left">Id</th>
+                                            <th class="text-left">SN</th>
                                             <th class="text-left">Shop Name</th>
                                             <th class="text-left">ShopOwner Name</th>
                                             <th class="text-left">ShopOwner Mobile No</th>

@@ -64,7 +64,16 @@ class PortfolioController extends Controller
 
     public function destroy($id)
     {
-        Portfolio::where('ID', $id)->delete();
+        $portfolio = Portfolio::where('ID', $id)->first();
+        if ($portfolio->PortfolioImage) {
+            $destinationPath = 'images/portfolio/';
+
+            $file = public_path('/') . $destinationPath . $portfolio->PortfolioImage;
+            if (file_exists($file)) {
+                unlink($file);
+            }
+        }
+        $portfolio->delete();
         return response()->json(['message' => 'Portfolio Deleted Successfully'], 200);
     }
 

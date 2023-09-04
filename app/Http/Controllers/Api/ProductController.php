@@ -84,9 +84,17 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-      $product = Product::findOrFail($id);
-      $product->delete();
-        return response()->json(['message' => 'Portfolio Deleted Successfully'], 200);
+        $product = Product::where('ID', $id)->first();
+        if ($product->ProductImage) {
+            $destinationPath = 'images/product/';
+
+            $file = public_path('/') . $destinationPath . $product->ProductImage;
+            if (file_exists($file)) {
+                unlink($file);
+            }
+        }
+        $product->delete();
+        return response()->json(['message' => 'Product Deleted Successfully'], 200);
     }
 
     public function search($query)

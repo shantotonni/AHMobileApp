@@ -12,7 +12,7 @@
                                         <div class="row">
                                             <div class="col-md-2">
                                                 <input v-model="query" type="text" class="form-control"
-                                                       placeholder="Search">
+                                                       placeholder="Search by category">
                                             </div>
                                         </div>
                                     </div>
@@ -32,8 +32,7 @@
                                         class="table table-bordered table-striped dt-responsive nowrap dataTable no-footer dtr-inline table-sm small">
                                         <thead>
                                         <tr>
-                                            <th class="text-left">Id</th>
-
+                                           <th class="text-left">SN</th>
                                             <th class="text-left">Category Name</th>
                                             <th class="text-left">Category Image</th>
                                             <th class="text-left">Details</th>
