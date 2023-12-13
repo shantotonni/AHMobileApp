@@ -23,7 +23,7 @@ class ProductController extends Controller
 
     public function store(ProductStoreRequest $request)
     {
-        if ($request->has('ProductImage')) {
+        if ($request->ProductImage) {
             $ProductImage = $request->ProductImage;
             $name = uniqid() . time() . '.' . explode('/', explode(':', substr($ProductImage, 0, strpos($ProductImage, ';')))[1])[1];
             Image::make($ProductImage)->save(public_path('images/product/') . $name);
@@ -52,7 +52,7 @@ class ProductController extends Controller
         $product = Product::where('ID', $id)->first();
         $ProductImage = $request->ProductImage;
         if ($ProductImage != $product->ProductImage) {
-            if ($request->has('ProductImage')) {
+            if ($request->ProductImage) {
                 //code for remove old file
                 if ($product->ProductImage != '' && $product->ProductImage != null) {
                     $destinationPath = 'images/product/';

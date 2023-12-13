@@ -11,9 +11,12 @@
                                     <div class="flex-grow-1">
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <input v-model="query" type="text" class="form-control"
-                                                       placeholder="Search by product">
+                                                <input v-model="query" type="text" class="form-control" placeholder="Search by product">
                                             </div>
+<!--                                            <form action="">-->
+<!--                                                <button type="button" style="background-color: #4d79f6;float: right" class="btn btn-info btn-sm" @click.prevent="importExcel">Import</button>-->
+<!--                                                <input type="file" style="float: right;height: 27px!important;margin-right: 3px" ref="inputFile" @change="readExcelFile($event)" class="btn btn-info btn-sm">-->
+<!--                                            </form>-->
                                         </div>
                                     </div>
                                     <div class="card-tools">
@@ -202,6 +205,7 @@
 
 <script>
 import {VueEditor} from "vue2-editor";
+import XLSX from "xlsx";
 
 export default {
     components: {
@@ -228,6 +232,7 @@ export default {
                 PortfolioID: '',
                 CategoryID: '',
             }),
+            ExcelData: []
         }
     },
     watch: {
@@ -290,7 +295,6 @@ export default {
                 this.isLoading = false;
             });
         },
-
         edit(product) {
             this.editMode = true;
             this.form.reset();
@@ -311,6 +315,22 @@ export default {
                 this.isLoading = false;
             });
         },
+        readExcelFile(e){
+            var files = e.target.files, f = files[0];
+            var reader = new FileReader();
+            reader.onload = (e) => {
+                var data = new Uint8Array(e.target.result);
+                var workbook = XLSX.read(data, {type: 'array'});
+                let sheetName = workbook.SheetNames[0]
+                let worksheet = workbook.Sheets[sheetName];
+                this.form.ExcelData = XLSX.utils.sheet_to_json(worksheet);
+                console.log(this.form.ExcelData)
+            };
+            reader.readAsArrayBuffer(f);
+        },
+        importExcel(){
+
+        },
         changeImage(event) {
             let file = event.target.files[0];
             let reader = new FileReader();
@@ -327,7 +347,6 @@ export default {
                 return window.location.origin + "/AHMobileApp/images/product/" + this.form.ProductImage;
             }
         },
-
         getAllPortfolio() {
             axios.get('/api/get-all-portfolio').then((response) => {
                 this.portfolios = response.data.data;
