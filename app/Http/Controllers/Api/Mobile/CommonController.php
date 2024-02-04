@@ -53,9 +53,6 @@ class CommonController extends Controller
         }
         $categories = $categories->orderBy('CreatedDate', 'desc')->get();
         return new CategoryCollection($categories);
-//        $PortfolioID = $request->PortfolioID;
-//        $categories = Category::where('PortfolioID',$PortfolioID)->orderBy('CreatedDate', 'desc')->get();
-//        return new CategoryCollection($categories);
     }
 
     public function getAllDoctor()
@@ -68,6 +65,7 @@ class CommonController extends Controller
     {
         $CategoryID = $request->CategoryID;
         $products = Product::query();
+
         if ($CategoryID){
             $products = $products->where('CategoryID',$CategoryID);
         }
